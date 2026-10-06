@@ -1,0 +1,262 @@
+<!doctype html>
+<html lang="ja">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>あてな！｜3桁の数字を読み合う対戦型ロジックゲーム</title>
+  <meta name="description" content="『あてな！』は、重複しない3桁の数字を推理し、LOCK・LINKの情報と6種類のPERKを使って相手より先に3 LOCKを目指すiPhone向け対戦型ロジックゲームです。">
+  <meta name="robots" content="index, follow">
+  <meta property="og:type" content="website">
+  <meta property="og:locale" content="ja_JP">
+  <meta property="og:title" content="あてな！｜3桁の数字を読み合う対戦型ロジックゲーム">
+  <meta property="og:description" content="重複しない3桁を推理し、LOCK・LINKとPERKを駆使して3 LOCKを目指すiPhone向け対戦型ロジックゲーム。">
+  <meta property="og:site_name" content="あてな！公式サイト">
+  <meta name="twitter:card" content="summary">
+  <meta name="twitter:title" content="あてな！｜3桁の数字を読み合う対戦型ロジックゲーム">
+  <meta name="twitter:description" content="重複しない3桁を推理し、相手より先に3 LOCKを目指すiPhone向け対戦型ロジックゲーム。">
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='16' fill='%231678e8'/%3E%3Ccircle cx='32' cy='32' r='21' fill='none' stroke='%2330d4f2' stroke-width='5'/%3E%3Cpath d='M22 22h20L29 34h13L22 46' fill='none' stroke='white' stroke-width='5' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E">
+  <link rel="stylesheet" href="css/style.css">
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@graph": [
+      {
+        "@type": "SoftwareApplication",
+        "name": "あてな！",
+        "alternateName": "ATENA",
+        "applicationCategory": "GameApplication",
+        "operatingSystem": "iOS",
+        "description": "0〜9から選ばれた重複しない3桁の数字を推理し、相手より先に3 LOCKを目指すiPhone向け対戦型ロジックゲーム。",
+        "author": {
+          "@type": "Person",
+          "name": "TAKAHIKO KAWAMOTO"
+        },
+        "inLanguage": "ja"
+      },
+      {
+        "@type": "FAQPage",
+        "mainEntity": [
+          {
+            "@type": "Question",
+            "name": "あてな！とはどんなゲームですか？",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "0〜9から選ばれた重複しない3桁の数字を推理し、相手より先に3 LOCKを目指すiPhone向け対戦型ロジックゲームです。"
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "LOCKとは何ですか？",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "CALLした数字と位置の両方が一致している状態です。"
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "LINKとは何ですか？",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "CALLした数字は相手のSECRET CODEに含まれているものの、位置が異なる状態です。"
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "PERKとは何ですか？",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "対戦中に使用できる特殊能力です。PARITY、SUM、ORDER、MASK、SHUFFLE、REVEALの6種類があります。"
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "勝利条件は何ですか？",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "相手より先に、通常CALLで3 LOCKを成立させると勝利です。"
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "対応端末は何ですか？",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "現在、iPhoneおよびiOSへの対応を予定しています。"
+            }
+          }
+        ]
+      }
+    ]
+  }
+  </script>
+</head>
+<body>
+  <a class="skip-link" href="#main-content">本文へ移動</a>
+  <header class="site-header">
+    <div class="nav-wrap">
+      <a class="brand" href="index.html" aria-label="あてな！公式サイト ホーム">
+        <span class="brand-mark" aria-hidden="true">3</span>
+        <span>あてな！</span>
+      </a>
+      <nav class="site-nav" aria-label="メインナビゲーション">
+        <a href="index.html" aria-current="page">HOME</a>
+        <a href="privacy.html">PRIVACY</a>
+        <a href="terms.html">TERMS</a>
+        <a href="support.html">SUPPORT</a>
+      </nav>
+    </div>
+  </header>
+
+  <main id="main-content">
+    <section class="hero" aria-labelledby="hero-title">
+      <div class="section-inner hero-grid">
+        <div class="hero-content">
+          <p class="eyebrow">Three Digit Logic Battle</p>
+          <h1 class="hero-logo" id="hero-title">あてな<span>！</span></h1>
+          <p class="hero-copy">3桁を読み、<br>3 LOCKを決めろ。</p>
+          <p class="hero-description">0〜9から選ばれた3つの数字を推理し、相手より先に「3 LOCK」を目指す対戦型ロジックゲーム。</p>
+          <div class="hero-actions">
+            <span class="coming-soon" aria-label="App Store 近日公開">App Store <small>COMING SOON</small></span>
+            <a class="button-link" href="#about">ゲームを知る</a>
+          </div>
+        </div>
+
+        <div class="visual-stage" aria-label="キービジュアル画像の配置予定領域">
+          <span class="visual-chip">KEY VISUAL 1920 × 1080</span>
+          <div class="character-slots" aria-hidden="true">
+            <div class="character-slot"><span>CYAN CHARACTER</span></div>
+            <div class="character-slot"><span>RED CHARACTER</span></div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section section-tint" id="about" aria-labelledby="about-title">
+      <div class="section-inner about-grid">
+        <div class="number-motif" aria-hidden="true"><span>5</span><span>2</span><span>7</span></div>
+        <div class="about-copy">
+          <p class="eyebrow">About</p>
+          <h2 class="section-title" id="about-title">「あてな！」とは？</h2>
+          <p class="section-lead">「あてな！」は、0〜9から選ばれた<strong>重複しない3桁の数字</strong>を推理し、相手より先に3 LOCKを目指すiPhone向け対戦型ロジックゲームです。数字と位置が合う「LOCK」、数字だけが合う「LINK」を手がかりに、相手のコードへ迫ります。</p>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" aria-labelledby="system-title">
+      <div class="section-inner">
+        <div class="section-head">
+          <p class="eyebrow">Game System</p>
+          <h2 class="section-title" id="system-title">シンプルなルール、深い読み合い。</h2>
+        </div>
+        <div class="card-grid">
+          <article class="info-card">
+            <span class="card-index">01</span>
+            <h3>LOCK</h3>
+            <p>数字と位置の両方が一致。正解へ確実に近づいた合図です。</p>
+          </article>
+          <article class="info-card">
+            <span class="card-index">02</span>
+            <h3>LINK</h3>
+            <p>数字は一致しているものの、位置が違う状態。並びを読み替えます。</p>
+          </article>
+          <article class="info-card">
+            <span class="card-index">03</span>
+            <h3>WIN</h3>
+            <p>相手の3桁すべてをLOCKすると勝利。最後は通常CALLで決着します。</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="section section-tint" aria-labelledby="perk-title">
+      <div class="section-inner">
+        <div class="section-head">
+          <p class="eyebrow">Perk</p>
+          <h2 class="section-title" id="perk-title">6つのPERKで、推理を加速。</h2>
+          <p class="section-lead">情報を探るATTACKと、状況を動かすDEFENSE / SPECIAL。組み合わせて対戦へ挑みます。</p>
+        </div>
+        <div class="perk-columns">
+          <section class="perk-group" aria-labelledby="attack-title">
+            <h3 class="perk-group-title" id="attack-title">ATTACK <span>相手の情報を調べる</span></h3>
+            <div class="perk-list">
+              <article class="perk-card"><span class="perk-symbol" aria-hidden="true">±</span><div><h3>PARITY</h3><p>指定位置の数字が奇数か偶数かを調べる。</p></div></article>
+              <article class="perk-card"><span class="perk-symbol" aria-hidden="true">Σ</span><div><h3>SUM</h3><p>選んだ2位置の数字の合計を調べる。</p></div></article>
+              <article class="perk-card"><span class="perk-symbol" aria-hidden="true">&lt;</span><div><h3>ORDER</h3><p>選んだ2位置の数字の大小関係を調べる。</p></div></article>
+            </div>
+          </section>
+          <section class="perk-group" aria-labelledby="defense-title">
+            <h3 class="perk-group-title" id="defense-title">DEFENSE / SPECIAL <span>展開を変える</span></h3>
+            <div class="perk-list">
+              <article class="perk-card"><span class="perk-symbol" aria-hidden="true">↻</span><div><h3>SHUFFLE</h3><p>自分の3数字を、別の並びへ入れ替える。</p></div></article>
+              <article class="perk-card"><span class="perk-symbol" aria-hidden="true">?</span><div><h3>MASK</h3><p>次の判定でLOCK / LINKの内訳を隠す。</p></div></article>
+              <article class="perk-card"><span class="perk-symbol" aria-hidden="true">◇</span><div><h3>REVEAL</h3><p>互いの数字を位置なしで1つずつ公開する。</p></div></article>
+            </div>
+          </section>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" aria-labelledby="character-title">
+      <div class="section-inner">
+        <div class="section-head">
+          <p class="eyebrow">Character</p>
+          <h2 class="section-title" id="character-title">ともに挑む、6人のキャラクター。</h2>
+          <p class="section-lead">キャラクターはゲーム性能に差がなく、好きなキャラクターで対戦を楽しめます。Web用ビジュアルは今後追加予定です。</p>
+        </div>
+        <div class="character-grid">
+          <article class="character-card"><div class="character-image-placeholder" role="img" aria-label="ATENAの画像追加予定領域">VISUAL COMING SOON</div><div class="character-card-body"><h3>ATENA</h3><p>Character visual slot</p></div></article>
+          <article class="character-card"><div class="character-image-placeholder" role="img" aria-label="ISAの画像追加予定領域">VISUAL COMING SOON</div><div class="character-card-body"><h3>ISA</h3><p>Character visual slot</p></div></article>
+          <article class="character-card"><div class="character-image-placeholder" role="img" aria-label="MAHIの画像追加予定領域">VISUAL COMING SOON</div><div class="character-card-body"><h3>MAHI</h3><p>Character visual slot</p></div></article>
+          <article class="character-card"><div class="character-image-placeholder" role="img" aria-label="KAZUKIの画像追加予定領域">VISUAL COMING SOON</div><div class="character-card-body"><h3>KAZUKI</h3><p>Character visual slot</p></div></article>
+          <article class="character-card"><div class="character-image-placeholder" role="img" aria-label="OIRANの画像追加予定領域">VISUAL COMING SOON</div><div class="character-card-body"><h3>OIRAN</h3><p>Character visual slot</p></div></article>
+          <article class="character-card"><div class="character-image-placeholder" role="img" aria-label="AKARIの画像追加予定領域">VISUAL COMING SOON</div><div class="character-card-body"><h3>AKARI</h3><p>Character visual slot</p></div></article>
+        </div>
+      </div>
+    </section>
+
+    <section class="section section-tint" aria-labelledby="play-title">
+      <div class="section-inner">
+        <div class="section-head">
+          <p class="eyebrow">How to Play</p>
+          <h2 class="section-title" id="play-title">3 LOCKまでの流れ。</h2>
+        </div>
+        <div class="flow-list" aria-label="ゲームの基本的な流れ">
+          <div class="flow-step"><b>STEP 01</b><strong>SECRET CODEを設定</strong></div>
+          <div class="flow-step"><b>STEP 02</b><strong>COIN TOSSで先攻決定</strong></div>
+          <div class="flow-step"><b>STEP 03</b><strong>3桁をCALL</strong></div>
+          <div class="flow-step"><b>STEP 04</b><strong>LOCK / LINKを分析</strong></div>
+          <div class="flow-step"><b>STEP 05</b><strong>3 LOCKで勝利</strong></div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" aria-labelledby="faq-title">
+      <div class="section-inner">
+        <div class="section-head">
+          <p class="eyebrow">Frequently Asked Questions</p>
+          <h2 class="section-title" id="faq-title">よくある質問</h2>
+        </div>
+        <div class="faq-list">
+          <article class="faq-item"><h3>あてな！とはどんなゲームですか？</h3><p>0〜9から選ばれた重複しない3桁の数字を推理し、相手より先に3 LOCKを目指すiPhone向け対戦型ロジックゲームです。</p></article>
+          <article class="faq-item"><h3>LOCKとは何ですか？</h3><p>CALLした数字と位置の両方が一致している状態です。</p></article>
+          <article class="faq-item"><h3>LINKとは何ですか？</h3><p>CALLした数字は相手のSECRET CODEに含まれているものの、位置が異なる状態です。</p></article>
+          <article class="faq-item"><h3>PERKとは何ですか？</h3><p>対戦中に使用できる特殊能力です。PARITY、SUM、ORDER、MASK、SHUFFLE、REVEALの6種類があります。</p></article>
+          <article class="faq-item"><h3>勝利条件は何ですか？</h3><p>相手より先に、通常CALLで3 LOCKを成立させると勝利です。</p></article>
+          <article class="faq-item"><h3>対応端末は何ですか？</h3><p>現在、iPhoneおよびiOSへの対応を予定しています。</p></article>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="footer-inner">
+      <div class="footer-links">
+        <a href="privacy.html">プライバシーポリシー</a>
+        <a href="terms.html">利用規約</a>
+        <a href="support.html">サポート・お問い合わせ</a>
+      </div>
+      <small class="copyright">© 2026 TAKAHIKO KAWAMOTO</small>
+    </div>
+  </footer>
+</body>
+</html>
