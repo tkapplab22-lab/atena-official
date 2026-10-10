@@ -382,3 +382,19 @@ body.lp-page .lp-footer small {
   }
 
 }
+
+/* ロゴを大きくして少し下へ移動 */
+
+body.lp-page .lp-visual-wrap .lp-logo {
+  top: 57%;
+  width: 48%;
+  max-width: 600px;
+}
+
+/* スマートフォン */
+@media (max-width: 600px) {
+  body.lp-page .lp-visual-wrap .lp-logo {
+    top: 57%;
+    width: 60%;
+  }
+}
