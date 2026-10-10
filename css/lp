@@ -1,0 +1,384 @@
+/* ==========================================
+   あてな！公式LP
+   ========================================== */
+
+
+/* ==========================================
+   基本設定
+   ========================================== */
+
+html {
+  scroll-behavior: smooth;
+}
+
+body.lp-page {
+  margin: 0;
+  padding: 0;
+
+  min-height: 100vh;
+
+  background: linear-gradient(
+    180deg,
+    #f0fcff 0%,
+    #dff6ff 55%,
+    #c9eeff 100%
+  );
+
+  color: #15365d;
+
+  font-family:
+    -apple-system,
+    BlinkMacSystemFont,
+    "Hiragino Sans",
+    "Noto Sans JP",
+    sans-serif;
+
+  overflow-x: hidden;
+}
+
+.lp-page *,
+.lp-page *::before,
+.lp-page *::after {
+  box-sizing: border-box;
+}
+
+
+/* ==========================================
+   メインエリア
+   ========================================== */
+
+body.lp-page .lp-main {
+  width: 100%;
+  min-height: 100svh;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+body.lp-page .lp-hero {
+  width: 100%;
+  max-width: 1600px;
+
+  margin: 0 auto;
+  padding: 30px 20px 55px;
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
+  text-align: center;
+}
+
+
+/* ==========================================
+   メインビジュアル
+   ========================================== */
+
+/* HP.pngとロゴを重ねるための親要素 */
+
+body.lp-page .lp-visual-wrap {
+  position: relative;
+
+  display: block;
+
+  width: 100%;
+  max-width: 1250px;
+
+  margin: 0 auto;
+  padding: 0;
+}
+
+
+/* キャラクター入りメイン画像 */
+
+body.lp-page .lp-visual-wrap .lp-visual {
+  position: relative;
+
+  display: block;
+
+  width: 100%;
+  height: auto;
+
+  max-width: none;
+
+  margin: 0;
+  padding: 0;
+
+  object-fit: contain;
+
+  border: none;
+  border-radius: 0;
+}
+
+
+/* ==========================================
+   ロゴ
+   ========================================== */
+
+/* HP.pngの中央にロゴを重ねる */
+
+body.lp-page .lp-visual-wrap .lp-logo {
+  position: absolute;
+
+  top: 50%;
+  left: 50%;
+
+  width: 38%;
+  max-width: 460px;
+  height: auto;
+
+  margin: 0;
+  padding: 0;
+
+  display: block;
+
+  transform: translate(-50%, -50%);
+
+  z-index: 10;
+
+  object-fit: contain;
+
+  filter: drop-shadow(
+    0 8px 14px rgba(0, 0, 0, 0.25)
+  );
+
+  pointer-events: none;
+}
+
+
+/* ==========================================
+   キャッチコピー
+   ========================================== */
+
+body.lp-page .lp-copy {
+  margin: 25px 0 30px;
+
+  padding: 0 12px;
+
+  font-size: clamp(21px, 3vw, 38px);
+  font-weight: 900;
+
+  letter-spacing: 0.08em;
+  line-height: 1.5;
+
+  text-align: center;
+
+  color: #15365d;
+}
+
+
+/* ==========================================
+   App Store
+   ========================================== */
+
+body.lp-page .lp-download {
+  display: flex;
+  flex-direction: column;
+
+  justify-content: center;
+  align-items: center;
+
+  gap: 10px;
+
+  margin: 0 auto;
+  padding: 0;
+}
+
+
+/* App Storeボタン */
+
+body.lp-page .lp-store {
+  display: flex;
+  flex-direction: column;
+
+  justify-content: center;
+  align-items: center;
+
+  min-width: 210px;
+  min-height: 72px;
+
+  padding: 9px 26px;
+
+  border-radius: 14px;
+
+  background: #080808;
+  color: #ffffff;
+
+  box-shadow:
+    0 12px 28px rgba(0, 0, 0, 0.15);
+
+  line-height: 1.2;
+}
+
+body.lp-page .lp-store-small {
+  font-size: 13px;
+  font-weight: 500;
+
+  color: #ffffff;
+}
+
+body.lp-page .lp-store-title {
+  font-size: 29px;
+  font-weight: 700;
+
+  letter-spacing: -0.03em;
+
+  color: #ffffff;
+}
+
+
+/* COMING SOON */
+
+body.lp-page .lp-soon {
+  margin: 0;
+
+  color: #53708d;
+
+  font-size: 12px;
+  font-weight: 800;
+
+  letter-spacing: 0.22em;
+}
+
+
+/* ==========================================
+   フッター
+   ========================================== */
+
+body.lp-page .lp-footer {
+  width: 100%;
+
+  padding: 28px 16px 36px;
+
+  text-align: center;
+
+  border-top:
+    1px solid rgba(20, 100, 180, 0.12);
+}
+
+body.lp-page .lp-footer nav {
+  display: flex;
+  flex-wrap: wrap;
+
+  justify-content: center;
+  align-items: center;
+
+  gap: 12px 24px;
+
+  margin-bottom: 14px;
+}
+
+body.lp-page .lp-footer a {
+  color: #456b90;
+
+  font-size: 12px;
+
+  text-decoration: none;
+}
+
+body.lp-page .lp-footer a:hover {
+  text-decoration: underline;
+}
+
+body.lp-page .lp-footer small {
+  color: #7893a9;
+
+  font-size: 11px;
+}
+
+
+/* ==========================================
+   タブレット対応
+   ========================================== */
+
+@media (max-width: 900px) {
+
+  body.lp-page .lp-hero {
+    padding: 25px 15px 45px;
+  }
+
+  body.lp-page .lp-visual-wrap .lp-logo {
+    width: 42%;
+  }
+
+  body.lp-page .lp-copy {
+    margin-top: 22px;
+  }
+
+}
+
+
+/* ==========================================
+   スマートフォン対応
+   ========================================== */
+
+@media (max-width: 600px) {
+
+  body.lp-page .lp-main {
+    min-height: 100svh;
+  }
+
+  body.lp-page .lp-hero {
+    padding: 20px 10px 40px;
+  }
+
+  body.lp-page .lp-visual-wrap {
+    width: 100%;
+  }
+
+  body.lp-page .lp-visual-wrap .lp-visual {
+    width: 100%;
+    height: auto;
+  }
+
+  body.lp-page .lp-visual-wrap .lp-logo {
+    top: 50%;
+    left: 50%;
+
+    width: 48%;
+
+    transform: translate(-50%, -50%);
+  }
+
+  body.lp-page .lp-copy {
+    margin: 22px 0 30px;
+
+    font-size: clamp(19px, 5.5vw, 26px);
+  }
+
+  body.lp-page .lp-store {
+    min-width: 190px;
+    min-height: 66px;
+  }
+
+  body.lp-page .lp-store-title {
+    font-size: 26px;
+  }
+
+  body.lp-page .lp-footer {
+    padding: 25px 12px 30px;
+  }
+
+}
+
+
+/* ==========================================
+   小型スマートフォン対応
+   ========================================== */
+
+@media (max-width: 390px) {
+
+  body.lp-page .lp-visual-wrap .lp-logo {
+    width: 52%;
+  }
+
+  body.lp-page .lp-copy {
+    font-size: 19px;
+  }
+
+  body.lp-page .lp-footer nav {
+    gap: 10px 15px;
+  }
+
+}
