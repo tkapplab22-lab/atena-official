@@ -2,9 +2,15 @@
    ATENA! OFFICIAL LANDING PAGE
    ===================================== */
 
+
+/* =====================================
+   BASE
+   ===================================== */
+
 body.lp-page {
   margin: 0;
   min-height: 100vh;
+
   background:
     radial-gradient(
       ellipse at 50% 25%,
@@ -12,7 +18,9 @@ body.lp-page {
       #e8faff 55%,
       #c9efff 100%
     );
+
   color: #15365d;
+
   font-family:
     -apple-system,
     BlinkMacSystemFont,
@@ -27,8 +35,14 @@ body.lp-page {
   box-sizing: border-box;
 }
 
+
+/* =====================================
+   MAIN
+   ===================================== */
+
 .lp-main {
   min-height: 100svh;
+
   display: flex;
   align-items: center;
   justify-content: center;
@@ -37,68 +51,124 @@ body.lp-page {
 .lp-hero {
   width: 100%;
   max-width: 1600px;
+
   margin: 0 auto;
-  padding: 38px 20px 55px;
+  padding: 30px 20px 55px;
+
   display: flex;
   flex-direction: column;
   align-items: center;
+
   text-align: center;
 }
 
-/* LOGO */
 
-.lp-logo {
-  width: min(58%, 460px);
-  height: auto;
-  object-fit: contain;
+/* =====================================
+   MAIN VISUAL
+   ===================================== */
+
+.lp-visual-wrap {
   position: relative;
-  z-index: 2;
-  filter: drop-shadow(
-    0 8px 14px rgba(20, 100, 180, 0.15)
-  );
-}
 
-/* MAIN VISUAL */
-
-.lp-visual {
-  display: block;
   width: 100%;
   max-width: 1250px;
-  height: auto;
-  object-fit: contain;
-  margin: 5px auto 0;
+
+  margin: 0 auto;
 }
 
-/* CATCH COPY */
+/* キャラクター入り画像 */
+
+.lp-visual-wrap .lp-visual {
+  display: block;
+
+  width: 100%;
+  height: auto;
+
+  margin: 0;
+
+  object-fit: contain;
+}
+
+
+/* =====================================
+   LOGO
+   ===================================== */
+
+/* メイン画像の中央に重ねる */
+
+.lp-visual-wrap .lp-logo {
+  position: absolute;
+
+  top: 50%;
+  left: 50%;
+
+  width: 38%;
+  max-width: 460px;
+  height: auto;
+
+  transform: translate(-50%, -50%);
+
+  z-index: 2;
+
+  object-fit: contain;
+
+  filter:
+    drop-shadow(
+      0 8px 14px rgba(0, 0, 0, 0.2)
+    );
+}
+
+
+/* =====================================
+   CATCH COPY
+   ===================================== */
 
 .lp-copy {
-  margin: 12px 0 30px;
+  margin: 25px 0 30px;
+
   font-size: clamp(21px, 3vw, 38px);
   font-weight: 900;
+
   letter-spacing: 0.08em;
   line-height: 1.5;
+
+  text-align: center;
 }
 
-/* APP STORE */
+
+/* =====================================
+   APP STORE
+   ===================================== */
 
 .lp-download {
   display: flex;
   flex-direction: column;
+
   align-items: center;
+
   gap: 10px;
 }
 
 .lp-store {
   display: flex;
   flex-direction: column;
+
   justify-content: center;
+  align-items: center;
+
   min-width: 210px;
   min-height: 72px;
+
   padding: 9px 26px;
+
   border-radius: 14px;
+
   background: #080808;
-  color: white;
-  box-shadow: 0 12px 28px rgba(0, 0, 0, 0.15);
+  color: #ffffff;
+
+  box-shadow:
+    0 12px 28px rgba(0, 0, 0, 0.15);
+
   line-height: 1.2;
 }
 
@@ -110,36 +180,51 @@ body.lp-page {
 .lp-store-title {
   font-size: 29px;
   font-weight: 700;
+
   letter-spacing: -0.03em;
 }
 
 .lp-soon {
   margin: 0;
+
   color: #53708d;
+
   font-size: 12px;
   font-weight: 800;
+
   letter-spacing: 0.22em;
 }
 
-/* FOOTER */
+
+/* =====================================
+   FOOTER
+   ===================================== */
 
 .lp-footer {
   padding: 28px 16px 36px;
+
   text-align: center;
-  border-top: 1px solid rgba(20, 100, 180, 0.12);
+
+  border-top:
+    1px solid rgba(20, 100, 180, 0.12);
 }
 
 .lp-footer nav {
   display: flex;
   flex-wrap: wrap;
+
   justify-content: center;
+
   gap: 12px 24px;
+
   margin-bottom: 14px;
 }
 
 .lp-footer a {
   color: #456b90;
+
   font-size: 12px;
+
   text-decoration: none;
 }
 
@@ -149,10 +234,35 @@ body.lp-page {
 
 .lp-footer small {
   color: #7893a9;
+
   font-size: 11px;
 }
 
-/* SMARTPHONE */
+
+/* =====================================
+   TABLET
+   ===================================== */
+
+@media (max-width: 900px) {
+
+  .lp-hero {
+    padding: 25px 15px 45px;
+  }
+
+  .lp-visual-wrap .lp-logo {
+    width: 42%;
+  }
+
+  .lp-copy {
+    margin-top: 22px;
+  }
+
+}
+
+
+/* =====================================
+   SMARTPHONE
+   ===================================== */
 
 @media (max-width: 600px) {
 
@@ -161,20 +271,30 @@ body.lp-page {
   }
 
   .lp-hero {
-    padding: 35px 12px 45px;
+    padding: 20px 10px 40px;
   }
 
-  .lp-logo {
-    width: min(82%, 340px);
-  }
-
-  .lp-visual {
+  .lp-visual-wrap {
     width: 100%;
-    margin-top: 18px;
+  }
+
+  .lp-visual-wrap .lp-visual {
+    width: 100%;
+    height: auto;
+  }
+
+  .lp-visual-wrap .lp-logo {
+    top: 50%;
+    left: 50%;
+
+    width: 48%;
+
+    transform: translate(-50%, -50%);
   }
 
   .lp-copy {
     margin: 22px 0 30px;
+
     font-size: clamp(19px, 5.5vw, 26px);
   }
 
@@ -185,6 +305,31 @@ body.lp-page {
 
   .lp-store-title {
     font-size: 26px;
+  }
+
+  .lp-footer {
+    padding: 25px 12px 30px;
+  }
+
+}
+
+
+/* =====================================
+   SMALL SMARTPHONE
+   ===================================== */
+
+@media (max-width: 390px) {
+
+  .lp-visual-wrap .lp-logo {
+    width: 52%;
+  }
+
+  .lp-copy {
+    font-size: 19px;
+  }
+
+  .lp-footer nav {
+    gap: 10px 15px;
   }
 
 }
