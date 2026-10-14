@@ -78,38 +78,50 @@ document.addEventListener("DOMContentLoaded", () => {
     {
       name: "PARITY",
       type: "ATTACK PERK",
+      tagline: "偶奇を見抜け。",
       description: "相手の秘密コードから任意の位置を1つ指定し、その数字が偶数か奇数かを知ることができる。",
-      symbol: "P"
+      image: "images/perks/PARITY.png",
+      theme: "parity"
     },
     {
       name: "SUM",
       type: "ATTACK PERK",
+      tagline: "数字の和を暴け。",
       description: "相手の秘密コードから任意の2つの位置を指定し、その数字の合計を知ることができる。",
-      symbol: "S"
+      image: "images/perks/SUM.png",
+      theme: "sum"
     },
     {
       name: "ORDER",
       type: "ATTACK PERK",
+      tagline: "大小を見極めろ。",
       description: "相手の秘密コードから任意の2つの位置を指定し、どちらの数字が大きいかを知ることができる。",
-      symbol: "O"
+      image: "images/perks/ORDER.png",
+      theme: "order"
     },
     {
       name: "MASK",
       type: "DEFENSE / SPECIAL PERK",
+      tagline: "真実を覆い隠せ。",
       description: "相手の次のCALL結果を、LOCK・LINKの内訳ではなく「N MATCH」として表示する。",
-      symbol: "M"
+      image: "images/perks/MASK.png",
+      theme: "mask"
     },
     {
       name: "SHUFFLE",
       type: "DEFENSE / SPECIAL PERK",
+      tagline: "配置を変え、推理を揺さぶれ。",
       description: "自分の秘密コードに含まれる3つの数字の位置を入れ替える。",
-      symbol: "S"
+      image: "images/perks/SHUFFLE.png",
+      theme: "shuffle"
     },
     {
       name: "REVEAL",
       type: "DEFENSE / SPECIAL PERK",
+      tagline: "秘密を明かし、秘密を暴け。",
       description: "自分の秘密コードから数字を1つ選んで相手に公開する代わりに、相手の秘密コードに含まれる数字をランダムで1つ知ることができる。",
-      symbol: "R"
+      image: "images/perks/REVEAL.png",
+      theme: "reveal"
     }
   ];
 
@@ -118,71 +130,47 @@ document.addEventListener("DOMContentLoaded", () => {
 
   const perkType = document.getElementById("perk-type");
   const perkName = document.getElementById("perk-name");
+  const perkTagline = document.getElementById("perk-tagline");
   const perkDescription = document.getElementById("perk-description");
-  const perkEmblem = document.querySelector(".perk-emblem");
+  const perkImage = document.getElementById("perk-image");
 
   if (
     perkTabs.length &&
     perkPanel &&
     perkType &&
     perkName &&
+    perkTagline &&
     perkDescription &&
-    perkEmblem
+    perkImage
   ) {
 
-    const selectPerk = (index, moveFocus = false) => {
+    const selectPerk = (index) => {
       const perk = perks[index];
 
       if (!perk) return;
 
-      perkTabs.forEach((tab, tabIndex) => {
-        const selected = tabIndex === index;
+      perkTabs.forEach((tab) => {
+        const selected = Number(tab.dataset.perk) === index;
 
         tab.classList.toggle("is-active", selected);
-        tab.setAttribute("aria-selected", String(selected));
-        tab.tabIndex = selected ? 0 : -1;
+        tab.setAttribute("aria-pressed", String(selected));
       });
 
       perkType.textContent = perk.type;
       perkName.textContent = perk.name;
+      perkTagline.textContent = perk.tagline;
       perkDescription.textContent = perk.description;
-      perkEmblem.textContent = perk.symbol;
 
-      perkPanel.setAttribute(
-        "aria-labelledby",
-        perkTabs[index].id
-      );
+      perkImage.src = perk.image;
+      perkImage.alt = `${perk.name}のアイコン`;
 
-      if (moveFocus) {
-        perkTabs[index].focus();
-      }
+      perkPanel.dataset.theme = perk.theme;
     };
 
-    perkTabs.forEach((tab, index) => {
-
+    perkTabs.forEach((tab) => {
       tab.addEventListener("click", () => {
-        selectPerk(index);
+        selectPerk(Number(tab.dataset.perk));
       });
-
-      tab.addEventListener("keydown", (event) => {
-        let nextIndex = index;
-
-        if (event.key === "ArrowRight") {
-          nextIndex = (index + 1) % perkTabs.length;
-        } else if (event.key === "ArrowLeft") {
-          nextIndex = (index - 1 + perkTabs.length) % perkTabs.length;
-        } else if (event.key === "Home") {
-          nextIndex = 0;
-        } else if (event.key === "End") {
-          nextIndex = perkTabs.length - 1;
-        } else {
-          return;
-        }
-
-        event.preventDefault();
-        selectPerk(nextIndex, true);
-      });
-
     });
 
     selectPerk(0);
@@ -197,9 +185,6 @@ document.addEventListener("DOMContentLoaded", () => {
   /*
    * キャラクター画像と正式名称は後から設定する。
    * 現段階では13人分の仮表示。
-   *
-   * 例：
-   * { name: "正式名称", image: "images/characters/xxx.png" }
    */
 
   const characters = Array.from({ length: 13 }, (_, index) => ({
@@ -209,9 +194,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
   const characterCount = document.getElementById("character-count");
   const characterName = document.getElementById("character-name");
-
   const characterArt = document.querySelector(".character-art");
-
   const characterPrev = document.getElementById("character-prev");
   const characterNext = document.getElementById("character-next");
 
