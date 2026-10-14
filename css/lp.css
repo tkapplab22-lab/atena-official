@@ -3,11 +3,6 @@
    Landing Page Stylesheet
    ========================================================= */
 
-
-/* =========================================================
-   01. DESIGN TOKENS
-   ========================================================= */
-
 :root {
   --atena-white: #ffffff;
   --atena-ice: #f3fcff;
@@ -16,27 +11,17 @@
   --atena-blue: #168de8;
   --atena-pink: #ff5aa9;
   --atena-purple: #8765ed;
-
   --atena-navy: #15365d;
   --atena-text: #274867;
   --atena-muted: #6886a0;
-
   --atena-line: rgba(30, 130, 190, 0.15);
-
-  --atena-shadow:
-    0 20px 60px rgba(40, 110, 170, 0.12);
-
+  --atena-shadow: 0 20px 60px rgba(40, 110, 170, 0.12);
   --atena-radius: 24px;
-
   --atena-header-height: 76px;
-
   --atena-content-width: 1200px;
 }
 
-
-/* =========================================================
-   02. BASE
-   ========================================================= */
+/* BASE */
 
 html {
   scroll-behavior: smooth;
@@ -46,28 +31,11 @@ html {
 body.lp-page {
   margin: 0;
   padding: 0;
-
   min-height: 100vh;
-
-  background:
-    linear-gradient(
-      180deg,
-      #f0fcff 0%,
-      #e6f8ff 45%,
-      #f7fcff 100%
-    );
-
+  background: linear-gradient(180deg, #f0fcff 0%, #e6f8ff 45%, #f7fcff 100%);
   color: var(--atena-text);
-
-  font-family:
-    -apple-system,
-    BlinkMacSystemFont,
-    "Hiragino Sans",
-    "Noto Sans JP",
-    sans-serif;
-
+  font-family: -apple-system, BlinkMacSystemFont, "Hiragino Sans", "Noto Sans JP", sans-serif;
   line-height: 1.8;
-
   overflow-x: hidden;
 }
 
@@ -105,14 +73,10 @@ body.lp-page {
   position: fixed;
   top: -100px;
   left: 16px;
-
   z-index: 9999;
-
   padding: 12px 20px;
-
   background: #ffffff;
   color: #15365d;
-
   border-radius: 10px;
 }
 
@@ -120,60 +84,40 @@ body.lp-page {
   top: 12px;
 }
 
-
-/* =========================================================
-   03. HEADER
-   ========================================================= */
+/* HEADER */
 
 .site-header {
   position: fixed;
   top: 0;
   left: 0;
-
   z-index: 1000;
-
   width: 100%;
   min-height: var(--atena-header-height);
-
   display: flex;
   align-items: center;
   justify-content: space-between;
-
   gap: 24px;
-
   padding: 8px clamp(20px, 4vw, 64px);
-
   background: rgba(255, 255, 255, 0.88);
-
-  border-bottom:
-    1px solid rgba(50, 140, 200, 0.12);
-
+  border-bottom: 1px solid rgba(50, 140, 200, 0.12);
   backdrop-filter: blur(18px);
   -webkit-backdrop-filter: blur(18px);
-
-  box-shadow:
-    0 5px 30px rgba(40, 110, 170, 0.06);
+  box-shadow: 0 5px 30px rgba(40, 110, 170, 0.06);
 }
 
 .brand {
   position: relative;
-
   display: flex;
   align-items: center;
-
   flex-shrink: 0;
-
   width: 145px;
-
   text-decoration: none;
 }
 
 .brand img {
   display: block;
-
   width: 100%;
   height: auto;
-
   object-fit: contain;
 }
 
@@ -181,55 +125,34 @@ body.lp-page {
   display: flex;
   align-items: center;
   justify-content: flex-end;
-
   flex-wrap: wrap;
-
   gap: clamp(12px, 1.5vw, 25px);
 }
 
 .site-nav a {
   position: relative;
-
   display: inline-flex;
   align-items: center;
   justify-content: center;
-
   min-height: 40px;
-
   color: #274867;
-
   font-size: 12px;
   font-weight: 900;
-
   letter-spacing: 0.05em;
-
   text-decoration: none;
-
-  transition:
-    color 0.25s ease,
-    transform 0.25s ease;
+  transition: color 0.25s ease, transform 0.25s ease;
 }
 
 .site-nav a:not(.nav-download)::after {
   content: "";
-
   position: absolute;
   bottom: 3px;
   left: 0;
-
   width: 100%;
   height: 2px;
-
-  background:
-    linear-gradient(
-      90deg,
-      var(--atena-cyan),
-      var(--atena-pink)
-    );
-
+  background: linear-gradient(90deg, var(--atena-cyan), var(--atena-pink));
   transform: scaleX(0);
   transform-origin: center;
-
   transition: transform 0.25s ease;
 }
 
@@ -243,28 +166,15 @@ body.lp-page {
 
 .site-nav .nav-download {
   min-height: 42px;
-
   padding: 0 18px;
-
   color: #ffffff;
-
   border-radius: 999px;
-
-  background:
-    linear-gradient(
-      120deg,
-      #13bdeb,
-      #568df4,
-      #f56cae
-    );
-
-  box-shadow:
-    0 7px 18px rgba(50, 140, 220, 0.18);
+  background: linear-gradient(120deg, #13bdeb, #568df4, #f56cae);
+  box-shadow: 0 7px 18px rgba(50, 140, 220, 0.18);
 }
 
 .site-nav .nav-download:hover {
   color: #ffffff;
-
   transform: translateY(-2px);
 }
 
@@ -272,184 +182,115 @@ body.lp-page {
   display: none;
 }
 
-
-/* =========================================================
-   04. MAIN
-   ========================================================= */
+/* MAIN */
 
 body.lp-page .lp-main {
   display: block;
-
   width: 100%;
   min-height: 100vh;
-
   padding: 0;
   margin: 0;
 }
 
-
-/* =========================================================
-   05. HERO
-   ========================================================= */
+/* HERO */
 
 body.lp-page .lp-hero {
   position: relative;
-
   width: 100%;
   max-width: none;
-
   min-height: 100svh;
-
   margin: 0;
-
-  padding:
-    calc(var(--atena-header-height) + 34px)
-    20px
-    80px;
-
+  padding: calc(var(--atena-header-height) + 34px) 20px 80px;
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
-
   overflow: hidden;
-
   text-align: center;
-
   isolation: isolate;
 }
 
 .hero-glow {
   position: absolute;
   inset: 0;
-
   z-index: -1;
-
   background:
-    radial-gradient(
-      circle at 20% 45%,
-      rgba(0, 205, 255, 0.15),
-      transparent 38%
-    ),
-    radial-gradient(
-      circle at 80% 40%,
-      rgba(255, 85, 175, 0.13),
-      transparent 38%
-    ),
-    linear-gradient(
-      180deg,
-      #ffffff 0%,
-      #e7f9ff 75%,
-      #dff4ff 100%
-    );
+    radial-gradient(circle at 20% 45%, rgba(0, 205, 255, 0.15), transparent 38%),
+    radial-gradient(circle at 80% 40%, rgba(255, 85, 175, 0.13), transparent 38%),
+    linear-gradient(180deg, #ffffff 0%, #e7f9ff 75%, #dff4ff 100%);
 }
 
 body.lp-page .lp-visual-wrap {
   position: relative;
-
   display: block;
-
   width: 100%;
   max-width: 1250px;
-
   margin: 0 auto;
   padding: 0;
 }
 
 body.lp-page .lp-visual-wrap .lp-visual {
   position: relative;
-
   display: block;
-
   width: 100%;
   height: auto;
-
   max-width: none;
-
   margin: 0;
   padding: 0;
-
   border: 0;
   border-radius: 0;
-
   object-fit: contain;
 }
 
 body.lp-page .lp-visual-wrap .lp-logo {
   position: absolute;
-
   top: 57%;
   left: 50%;
-
   display: block;
-
   width: 48%;
   max-width: 600px;
   height: auto;
-
   margin: 0;
   padding: 0;
-
   z-index: 10;
-
   object-fit: contain;
-
   transform: translate(-50%, -50%);
-
-  filter:
-    drop-shadow(
-      0 8px 14px rgba(0, 0, 0, 0.25)
-    );
-
+  filter: drop-shadow(0 8px 14px rgba(0, 0, 0, 0.25));
   pointer-events: none;
 }
 
 .hero-text {
   position: relative;
-
   z-index: 2;
-
   width: 100%;
   max-width: 900px;
-
   margin: 0 auto;
 }
 
 .eyebrow {
   margin: 18px 0 0;
-
   color: var(--atena-blue);
-
   font-size: 12px;
   font-weight: 900;
-
   letter-spacing: 0.35em;
 }
 
 body.lp-page .lp-copy {
   margin: 12px 0 14px;
-
   padding: 0 12px;
-
   color: var(--atena-navy);
-
   font-size: clamp(25px, 3.5vw, 48px);
   font-weight: 900;
-
   letter-spacing: 0.08em;
   line-height: 1.4;
-
   text-align: center;
 }
 
 .hero-sub {
   margin: 0;
-
   color: #4f7190;
-
   font-size: clamp(13px, 1.4vw, 17px);
   font-weight: 600;
-
   letter-spacing: 0.06em;
 }
 
@@ -457,59 +298,38 @@ body.lp-page .lp-copy {
   display: inline-flex;
   flex-direction: column;
   align-items: center;
-
   gap: 4px;
-
   margin-top: 35px;
-
   color: var(--atena-blue);
-
   font-size: 11px;
   font-weight: 900;
-
   letter-spacing: 0.18em;
-
   text-decoration: none;
 }
 
 .hero-scroll span {
   font-size: 25px;
-
   animation: hero-arrow 2s ease-in-out infinite;
 }
 
 @keyframes hero-arrow {
-  0%,
-  100% {
-    transform: translateY(0);
-  }
-
-  50% {
-    transform: translateY(7px);
-  }
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(7px); }
 }
 
-
-/* =========================================================
-   06. COMMON SECTION
-   ========================================================= */
+/* COMMON SECTIONS */
 
 .section {
   position: relative;
-
   width: 100%;
-
   padding: clamp(85px, 10vw, 150px) 24px;
-
   overflow: hidden;
 }
 
 .section-inner {
   position: relative;
-
   width: 100%;
   max-width: var(--atena-content-width);
-
   margin: 0 auto;
 }
 
@@ -519,95 +339,66 @@ body.lp-page .lp-copy {
 
 .section-heading h2 {
   margin: 0;
-
   color: var(--atena-navy);
-
   font-size: clamp(46px, 7vw, 92px);
   font-weight: 900;
-
   letter-spacing: -0.045em;
   line-height: 1.1;
 }
 
 .section-heading > p:last-child {
   margin: 10px 0 0;
-
   color: #6484a0;
-
   font-size: 15px;
   font-weight: 800;
-
   letter-spacing: 0.15em;
 }
 
 .section-kicker {
   margin: 0 0 12px;
-
   color: var(--atena-blue);
-
   font-size: 11px;
   font-weight: 900;
-
   letter-spacing: 0.3em;
 }
 
 .section-intro {
   max-width: 760px;
-
   margin: -15px 0 42px;
-
   color: #4d6e8b;
-
   font-size: 16px;
   line-height: 2;
 }
 
 .section-note {
   margin: 28px 0 0;
-
   color: var(--atena-muted);
-
   font-size: 13px;
   line-height: 1.9;
 }
 
 .section::before {
   content: "";
-
   position: absolute;
   top: 0;
   left: 50%;
-
   width: min(80%, 1100px);
   height: 1px;
-
   transform: translateX(-50%);
-
-  background:
-    linear-gradient(
-      90deg,
-      transparent,
-      rgba(40, 140, 210, 0.2),
-      transparent
-    );
+  background: linear-gradient(90deg, transparent, rgba(40, 140, 210, 0.2), transparent);
 }
 
-
-/* =========================================================
-   07. NEWS
-   ========================================================= */
+/* NEWS */
 
 .section-news {
   padding-top: 75px;
   padding-bottom: 75px;
-
   background: #ffffff;
 }
 
 .section-news .section-inner {
   display: grid;
   grid-template-columns: 280px 1fr;
-
   gap: 50px;
   align-items: center;
 }
@@ -623,76 +414,47 @@ body.lp-page .lp-copy {
 .news-card {
   display: flex;
   align-items: center;
-
   gap: 22px;
-
   min-height: 100px;
-
   padding: 25px 32px;
-
   border: 1px solid var(--atena-line);
   border-radius: 18px;
-
   background: #f7fcff;
-
-  box-shadow:
-    0 10px 30px rgba(30, 110, 170, 0.05);
+  box-shadow: 0 10px 30px rgba(30, 110, 170, 0.05);
 }
 
 .news-tag {
   display: inline-flex;
   align-items: center;
   justify-content: center;
-
   min-width: 64px;
-
   padding: 6px 12px;
-
   border-radius: 999px;
-
   background: #d8f5ff;
-
   color: #087db6;
-
   font-size: 11px;
   font-weight: 900;
-
   letter-spacing: 0.08em;
 }
 
 .news-card p {
   margin: 0;
-
   color: #3c5c78;
-
   font-size: 14px;
 }
 
-
-/* =========================================================
-   08. ABOUT
-   ========================================================= */
+/* ABOUT */
 
 .section-about {
   background:
-    radial-gradient(
-      circle at 85% 20%,
-      rgba(0, 200, 255, 0.13),
-      transparent 35%
-    ),
-    linear-gradient(
-      180deg,
-      #f1fbff,
-      #e8f8ff
-    );
+    radial-gradient(circle at 85% 20%, rgba(0, 200, 255, 0.13), transparent 35%),
+    linear-gradient(180deg, #f1fbff, #e8f8ff);
 }
 
 .split-layout {
   display: grid;
   grid-template-columns: 1fr 0.9fr;
-
   gap: clamp(40px, 6vw, 100px);
-
   align-items: center;
 }
 
@@ -702,99 +464,67 @@ body.lp-page .lp-copy {
 
 .section-about .lead {
   margin: 0 0 28px;
-
   color: var(--atena-navy);
-
   font-size: clamp(23px, 2.5vw, 35px);
   font-weight: 900;
-
   line-height: 1.6;
 }
 
 .section-about .split-layout > div:first-child > p:not(.lead) {
   max-width: 580px;
-
   color: #466986;
-
   font-size: 15px;
   line-height: 2.2;
 }
 
 .about-graphic {
   position: relative;
-
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
-
   gap: 20px;
-
   min-height: 400px;
-
   padding: 35px;
-
   border: 1px solid rgba(40, 160, 220, 0.2);
   border-radius: 30px;
-
-  background:
-    radial-gradient(
-      circle at center,
-      rgba(255, 255, 255, 0.95),
-      rgba(209, 242, 255, 0.9)
-    );
-
+  background: radial-gradient(circle at center, rgba(255, 255, 255, 0.95), rgba(209, 242, 255, 0.9));
   box-shadow: var(--atena-shadow);
-
   overflow: hidden;
 }
 
 .about-graphic::before {
   content: "";
-
   position: absolute;
   inset: 15px;
-
   border: 1px solid rgba(40, 150, 220, 0.14);
   border-radius: 20px;
-
   pointer-events: none;
 }
 
 .about-graphic > span {
   color: #6ca4c3;
-
   font-size: 13px;
   font-weight: 900;
-
   letter-spacing: 0.3em;
 }
 
 .about-graphic strong {
   color: #168de8;
-
   font-size: clamp(48px, 6vw, 80px);
   font-weight: 900;
-
   letter-spacing: 0.12em;
-
-  text-shadow:
-    0 6px 20px rgba(0, 160, 255, 0.16);
+  text-shadow: 0 6px 20px rgba(0, 160, 255, 0.16);
 }
 
 .about-graphic small {
   color: #6e96b0;
-
   font-size: 11px;
   font-weight: 900;
-
   letter-spacing: 0.22em;
 }
 
-
-/* =========================================================
-   09. GAME SYSTEM
-   ========================================================= */
+/* GAME SYSTEM */
 
 .section-system {
   background: #ffffff;
@@ -803,98 +533,59 @@ body.lp-page .lp-copy {
 .system-grid {
   display: grid;
   grid-template-columns: repeat(3, minmax(0, 1fr));
-
   gap: 22px;
 }
 
 .info-card {
   position: relative;
-
   min-height: 250px;
-
   padding: 36px 30px;
-
   border: 1px solid var(--atena-line);
   border-radius: var(--atena-radius);
-
-  background:
-    linear-gradient(
-      145deg,
-      #ffffff,
-      #f0faff
-    );
-
-  box-shadow:
-    0 12px 35px rgba(40, 120, 180, 0.07);
-
-  transition:
-    transform 0.3s ease,
-    box-shadow 0.3s ease;
+  background: linear-gradient(145deg, #ffffff, #f0faff);
+  box-shadow: 0 12px 35px rgba(40, 120, 180, 0.07);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
 
 .info-card:hover {
   transform: translateY(-6px);
-
-  box-shadow:
-    0 20px 45px rgba(40, 120, 180, 0.13);
+  box-shadow: 0 20px 45px rgba(40, 120, 180, 0.13);
 }
 
 .card-number {
   display: block;
-
   margin-bottom: 30px;
-
   color: #b7e9f8;
-
   font-size: 44px;
   font-weight: 900;
-
   line-height: 1;
 }
 
 .info-card h3 {
   margin: 0 0 14px;
-
   color: var(--atena-navy);
-
   font-size: 19px;
   font-weight: 900;
-
   letter-spacing: 0.04em;
 }
 
 .info-card p {
   margin: 0;
-
   color: #54738d;
-
   font-size: 14px;
   line-height: 2;
 }
-
-
-/* LOCK / LINK */
 
 .judge-demo {
   display: flex;
   flex-wrap: wrap;
   align-items: center;
   justify-content: center;
-
   gap: 28px;
-
   margin-top: 55px;
   padding: 45px 35px;
-
   border-radius: 28px;
-
-  background:
-    linear-gradient(
-      125deg,
-      #eafaff,
-      #f6f0ff
-    );
-
+  background: linear-gradient(125deg, #eafaff, #f6f0ff);
   border: 1px solid rgba(60, 140, 220, 0.13);
 }
 
@@ -906,27 +597,19 @@ body.lp-page .lp-copy {
 .judge-code span {
   display: grid;
   place-items: center;
-
   width: 70px;
   height: 86px;
-
   border: 2px solid #b6e7fa;
   border-radius: 15px;
-
   background: #ffffff;
-
   color: #177ed2;
-
   font-size: 42px;
   font-weight: 900;
-
-  box-shadow:
-    0 8px 18px rgba(40, 130, 190, 0.09);
+  box-shadow: 0 8px 18px rgba(40, 130, 190, 0.09);
 }
 
 .judge-arrow {
   color: #81a9c4;
-
   font-size: 36px;
   font-weight: 900;
 }
@@ -934,16 +617,13 @@ body.lp-page .lp-copy {
 .judge-result {
   display: flex;
   flex-direction: column;
-
   gap: 8px;
 }
 
 .judge-result strong {
   color: #1b8cde;
-
   font-size: 24px;
   font-weight: 900;
-
   line-height: 1.3;
 }
 
@@ -954,22 +634,16 @@ body.lp-page .lp-copy {
 .judge-result em {
   font-size: 15px;
   font-style: normal;
-
   letter-spacing: 0.06em;
 }
 
 .judge-note {
   flex-basis: 100%;
-
   max-width: 650px;
-
   margin: 15px auto 0;
-
   color: #57748f;
-
   font-size: 13px;
   line-height: 2;
-
   text-align: center;
 }
 
@@ -979,174 +653,237 @@ body.lp-page .lp-copy {
 
 .system-footnote {
   margin: 28px 0 0;
-
   color: #6c879d;
-
   font-size: 13px;
   line-height: 2;
-
   text-align: center;
 }
 
-
-/* =========================================================
-   10. PERK SYSTEM
-   ========================================================= */
+/* PERK SYSTEM */
 
 .section-perk {
   background:
-    radial-gradient(
-      circle at 15% 20%,
-      rgba(0, 200, 255, 0.1),
-      transparent 32%
-    ),
-    radial-gradient(
-      circle at 85% 80%,
-      rgba(255, 90, 170, 0.09),
-      transparent 35%
-    ),
+    radial-gradient(circle at 15% 20%, rgba(0, 200, 255, 0.1), transparent 32%),
+    radial-gradient(circle at 85% 80%, rgba(255, 90, 170, 0.09), transparent 35%),
     #eaf8ff;
+}
+
+.perk-selector {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 28px;
+  margin-bottom: 28px;
+}
+
+.perk-category {
+  min-width: 0;
+}
+
+.perk-category h3 {
+  margin: 0 0 15px;
+  color: #547e9f;
+  font-size: 12px;
+  font-weight: 900;
+  letter-spacing: 0.17em;
 }
 
 .perk-tabs {
   display: grid;
-  grid-template-columns: repeat(6, minmax(0, 1fr));
-
+  grid-template-columns: repeat(3, minmax(0, 1fr));
   gap: 12px;
-
-  margin-bottom: 25px;
 }
 
 .perk-tab {
-  min-height: 74px;
-
-  padding: 12px 8px;
-
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  min-width: 0;
+  min-height: 150px;
+  padding: 18px 10px 14px;
   border: 1px solid rgba(30, 130, 190, 0.2);
-  border-radius: 15px;
-
-  background: rgba(255, 255, 255, 0.75);
-
+  border-radius: 18px;
+  background: rgba(255, 255, 255, 0.85);
   color: #557c9c;
-
   font-size: 12px;
   font-weight: 900;
-
   letter-spacing: 0.05em;
-
   cursor: pointer;
-
   transition:
     background 0.25s ease,
     color 0.25s ease,
     transform 0.25s ease,
-    box-shadow 0.25s ease;
+    box-shadow 0.25s ease,
+    border-color 0.25s ease;
+}
+
+.perk-tab img {
+  display: block;
+  width: 88px;
+  height: 88px;
+  max-width: 100%;
+  object-fit: contain;
+  transition: transform 0.3s ease;
+}
+
+.perk-tab span {
+  display: block;
+  line-height: 1.3;
 }
 
 .perk-tab:hover {
-  transform: translateY(-3px);
-
+  transform: translateY(-4px);
   background: #ffffff;
+  box-shadow: 0 10px 25px rgba(40, 130, 200, 0.12);
+}
+
+.perk-tab:hover img {
+  transform: scale(1.06);
 }
 
 .perk-tab.is-active,
-.perk-tab[aria-selected="true"] {
-  border-color: transparent;
-
-  background:
-    linear-gradient(
-      125deg,
-      #17bde8,
-      #508eeb
-    );
-
-  color: #ffffff;
-
+.perk-tab[aria-pressed="true"] {
+  border-color: var(--perk-accent, #168de8);
+  background: #ffffff;
+  color: var(--perk-accent, #168de8);
   box-shadow:
-    0 12px 28px rgba(30, 140, 220, 0.22);
+    0 0 0 2px var(--perk-glow, rgba(22, 141, 232, 0.12)),
+    0 15px 32px var(--perk-glow, rgba(22, 141, 232, 0.16));
+}
+
+.perk-tab[data-perk="0"] {
+  --perk-accent: #168de8;
+  --perk-glow: rgba(22, 141, 232, 0.16);
+}
+
+.perk-tab[data-perk="1"] {
+  --perk-accent: #dc9a15;
+  --perk-glow: rgba(220, 154, 21, 0.16);
+}
+
+.perk-tab[data-perk="2"] {
+  --perk-accent: #e34e62;
+  --perk-glow: rgba(227, 78, 98, 0.16);
+}
+
+.perk-tab[data-perk="3"] {
+  --perk-accent: #8861dc;
+  --perk-glow: rgba(136, 97, 220, 0.16);
+}
+
+.perk-tab[data-perk="4"] {
+  --perk-accent: #2cae86;
+  --perk-glow: rgba(44, 174, 134, 0.16);
+}
+
+.perk-tab[data-perk="5"] {
+  --perk-accent: #169fcf;
+  --perk-glow: rgba(22, 159, 207, 0.16);
 }
 
 .perk-detail {
+  --detail-accent: #168de8;
+  --detail-glow: rgba(22, 141, 232, 0.15);
   display: grid;
-  grid-template-columns: 220px 1fr;
-
+  grid-template-columns: 280px 1fr;
   align-items: center;
-
-  gap: 50px;
-
-  min-height: 300px;
-
-  padding: 40px 55px;
-
+  gap: 45px;
+  min-height: 360px;
+  padding: 45px 55px;
   border: 1px solid rgba(40, 150, 220, 0.14);
   border-radius: 28px;
-
   background: #ffffff;
-
   box-shadow: var(--atena-shadow);
+  transition: border-color 0.25s ease;
+}
+
+.perk-detail[data-theme="sum"] {
+  --detail-accent: #dc9a15;
+  --detail-glow: rgba(220, 154, 21, 0.15);
+}
+
+.perk-detail[data-theme="order"] {
+  --detail-accent: #e34e62;
+  --detail-glow: rgba(227, 78, 98, 0.15);
+}
+
+.perk-detail[data-theme="mask"] {
+  --detail-accent: #8861dc;
+  --detail-glow: rgba(136, 97, 220, 0.15);
+}
+
+.perk-detail[data-theme="shuffle"] {
+  --detail-accent: #2cae86;
+  --detail-glow: rgba(44, 174, 134, 0.15);
+}
+
+.perk-detail[data-theme="reveal"] {
+  --detail-accent: #169fcf;
+  --detail-glow: rgba(22, 159, 207, 0.15);
 }
 
 .perk-emblem {
   display: grid;
   place-items: center;
-
-  width: 190px;
-  height: 190px;
-
-  border-radius: 28px;
-
+  width: 250px;
+  height: 250px;
+  max-width: 100%;
+  padding: 22px;
+  border-radius: 30px;
   background:
-    linear-gradient(
-      135deg,
-      #d9f6ff,
-      #c8dfff
-    );
-
-  color: #168de8;
-
-  font-size: 95px;
-  font-weight: 900;
-
+    radial-gradient(circle at center, #ffffff, var(--detail-glow));
   box-shadow:
-    inset 0 0 0 1px rgba(40, 140, 220, 0.12);
+    inset 0 0 0 1px rgba(40, 140, 220, 0.12),
+    0 15px 35px var(--detail-glow);
+}
+
+.perk-emblem img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  filter: drop-shadow(0 10px 15px var(--detail-glow));
+}
+
+.perk-detail-text {
+  min-width: 0;
 }
 
 .perk-type {
   margin: 0 0 12px;
-
-  color: var(--atena-blue);
-
+  color: var(--detail-accent);
   font-size: 12px;
   font-weight: 900;
-
   letter-spacing: 0.2em;
 }
 
 .perk-detail h3 {
-  margin: 0 0 20px;
-
+  margin: 0 0 12px;
   color: var(--atena-navy);
-
   font-size: clamp(36px, 5vw, 64px);
   font-weight: 900;
-
   letter-spacing: -0.03em;
   line-height: 1.2;
 }
 
-.perk-detail p:last-child {
+.perk-tagline {
+  margin: 0 0 20px;
+  color: var(--detail-accent);
+  font-size: 18px;
+  font-weight: 900;
+  letter-spacing: 0.05em;
+}
+
+.perk-detail #perk-description {
   margin: 0;
-
   color: #4f6f8c;
-
   font-size: 16px;
   line-height: 2;
 }
 
-
-/* =========================================================
-   11. GAME MODE
-   ========================================================= */
+/* GAME MODE */
 
 .section-mode {
   background: #ffffff;
@@ -1155,95 +892,62 @@ body.lp-page .lp-copy {
 .mode-grid {
   display: grid;
   grid-template-columns: repeat(2, minmax(0, 1fr));
-
   gap: 25px;
 }
 
 .mode-card {
   position: relative;
-
   display: flex;
   flex-direction: column;
-
   min-height: 430px;
-
   padding: 48px 42px;
-
   border-radius: 28px;
-
   overflow: hidden;
-
-  box-shadow:
-    0 20px 45px rgba(40, 110, 170, 0.12);
+  box-shadow: 0 20px 45px rgba(40, 110, 170, 0.12);
 }
 
 .mode-card::before {
   content: "";
-
   position: absolute;
-
   width: 350px;
   height: 350px;
-
   right: -150px;
   top: -150px;
-
   border: 1px solid rgba(255, 255, 255, 0.35);
   border-radius: 50%;
-
   pointer-events: none;
 }
 
 .mode-card.ranked {
-  background:
-    linear-gradient(
-      135deg,
-      #1784db,
-      #6154c6
-    );
-
+  background: linear-gradient(135deg, #1784db, #6154c6);
   color: #ffffff;
 }
 
 .mode-card.friend {
-  background:
-    linear-gradient(
-      135deg,
-      #19c3df,
-      #4a99e5
-    );
-
+  background: linear-gradient(135deg, #19c3df, #4a99e5);
   color: #ffffff;
 }
 
 .mode-label {
   margin: 0 0 15px;
-
   opacity: 0.8;
-
   font-size: 12px;
   font-weight: 900;
-
   letter-spacing: 0.25em;
 }
 
 .mode-card h3 {
   margin: 0 0 25px;
-
   color: #ffffff;
-
   font-size: clamp(28px, 3.5vw, 43px);
   font-weight: 900;
-
   letter-spacing: -0.02em;
   line-height: 1.2;
 }
 
 .mode-card > p:not(.mode-label) {
   max-width: 400px;
-
   margin: 0;
-
   font-size: 15px;
   line-height: 2;
 }
@@ -1251,9 +955,7 @@ body.lp-page .lp-copy {
 .rank-list {
   display: flex;
   flex-wrap: wrap;
-
   gap: 8px;
-
   margin-top: auto;
   padding-top: 35px;
 }
@@ -1261,21 +963,14 @@ body.lp-page .lp-copy {
 .rank-list span {
   display: inline-flex;
   align-items: center;
-
   min-height: 32px;
-
   padding: 5px 10px;
-
   border: 1px solid rgba(255, 255, 255, 0.35);
   border-radius: 999px;
-
   background: rgba(255, 255, 255, 0.12);
-
   color: #ffffff;
-
   font-size: 10px;
   font-weight: 900;
-
   letter-spacing: 0.04em;
 }
 
@@ -1283,121 +978,77 @@ body.lp-page .lp-copy {
   display: flex;
   align-items: center;
   justify-content: center;
-
   gap: 20px;
-
   margin-top: auto;
   padding-top: 45px;
-
   color: #ffffff;
-
   font-size: clamp(19px, 3vw, 35px);
   font-weight: 900;
-
   letter-spacing: 0.04em;
 }
 
 .friend-decoration span {
   color: #d7f9ff;
-
   font-size: 18px;
 }
 
-
-/* =========================================================
-   12. CHARACTER
-   ========================================================= */
+/* CHARACTER */
 
 .section-character {
   background:
-    radial-gradient(
-      circle at 65% 35%,
-      rgba(255, 100, 175, 0.11),
-      transparent 40%
-    ),
-    linear-gradient(
-      180deg,
-      #e8f8ff,
-      #f2faff
-    );
+    radial-gradient(circle at 65% 35%, rgba(255, 100, 175, 0.11), transparent 40%),
+    linear-gradient(180deg, #e8f8ff, #f2faff);
 }
 
 .character-showcase {
   display: grid;
   grid-template-columns: 1.1fr 0.9fr;
-
   align-items: stretch;
-
   gap: 0;
-
   min-height: 550px;
-
   border: 1px solid rgba(40, 140, 220, 0.14);
   border-radius: 30px;
-
   background: rgba(255, 255, 255, 0.8);
-
   box-shadow: var(--atena-shadow);
-
   overflow: hidden;
 }
 
 .character-art {
   position: relative;
-
   display: grid;
   place-items: center;
-
   min-height: 550px;
-
   background:
-    radial-gradient(
-      circle at 50% 45%,
-      rgba(255, 255, 255, 0.95),
-      rgba(187, 235, 255, 0.65) 65%,
-      rgba(160, 220, 255, 0.6)
-    );
-
+    radial-gradient(circle at 50% 45%, rgba(255, 255, 255, 0.95), rgba(187, 235, 255, 0.65) 65%, rgba(160, 220, 255, 0.6));
   overflow: hidden;
 }
 
 .character-art::before {
   content: "";
-
   position: absolute;
-
   width: 420px;
   height: 420px;
-
   border: 1px solid rgba(35, 145, 220, 0.25);
   border-radius: 50%;
 }
 
 .character-art::after {
   content: "";
-
   position: absolute;
-
   width: 300px;
   height: 300px;
-
   border: 1px solid rgba(35, 145, 220, 0.2);
   border-radius: 50%;
 }
 
 .character-art span {
   position: relative;
-
   z-index: 2;
-
   color: rgba(25, 125, 195, 0.4);
-
   font-size: clamp(25px, 4vw, 50px);
   font-weight: 900;
-
   letter-spacing: 0.12em;
   line-height: 1.4;
-
   text-align: center;
 }
 
@@ -1405,87 +1056,61 @@ body.lp-page .lp-copy {
   display: flex;
   flex-direction: column;
   justify-content: center;
-
   padding: 60px;
 }
 
 .character-count {
   margin: 0 0 18px;
-
   color: var(--atena-blue);
-
   font-size: 14px;
   font-weight: 900;
-
   letter-spacing: 0.2em;
 }
 
 .character-info h3 {
   margin: 0 0 30px;
-
   color: var(--atena-navy);
-
   font-size: clamp(28px, 3.5vw, 48px);
   font-weight: 900;
-
   line-height: 1.3;
 }
 
 .character-note {
   margin: 0;
-
   color: #6b89a2;
-
   font-size: 14px;
   line-height: 2;
 }
 
 .character-controls {
   display: flex;
-
   gap: 14px;
-
   margin-top: 50px;
 }
 
 .character-controls button {
   display: grid;
   place-items: center;
-
   width: 60px;
   height: 60px;
-
   padding: 0;
-
   border: 1px solid rgba(40, 140, 210, 0.2);
   border-radius: 50%;
-
   background: #ffffff;
-
   color: var(--atena-blue);
-
   font-size: 26px;
   font-weight: 900;
-
   cursor: pointer;
-
-  transition:
-    transform 0.25s ease,
-    background 0.25s ease,
-    color 0.25s ease;
+  transition: transform 0.25s ease, background 0.25s ease, color 0.25s ease;
 }
 
 .character-controls button:hover {
   transform: translateY(-3px);
-
   background: var(--atena-blue);
   color: #ffffff;
 }
 
-
-/* =========================================================
-   13. GALLERY
-   ========================================================= */
+/* GALLERY */
 
 .section-gallery {
   background: #ffffff;
@@ -1494,41 +1119,30 @@ body.lp-page .lp-copy {
 .gallery-grid {
   display: grid;
   grid-template-columns: 1.2fr 0.8fr;
-
   gap: 25px;
 }
 
 .gallery-item {
   margin: 0;
-
   border: 1px solid var(--atena-line);
   border-radius: 24px;
-
   background: #f1faff;
-
   overflow: hidden;
-
-  box-shadow:
-    0 12px 35px rgba(30, 110, 170, 0.07);
+  box-shadow: 0 12px 35px rgba(30, 110, 170, 0.07);
 }
 
 .gallery-item img {
   display: block;
-
   width: 100%;
   height: 340px;
-
   object-fit: cover;
 }
 
 .gallery-item figcaption {
   padding: 18px 24px;
-
   color: #567c9c;
-
   font-size: 12px;
   font-weight: 900;
-
   letter-spacing: 0.16em;
 }
 
@@ -1537,89 +1151,55 @@ body.lp-page .lp-copy {
   flex-direction: column;
   align-items: center;
   justify-content: center;
-
   min-height: 400px;
-
   padding: 35px;
-
   border: 1px dashed rgba(50, 145, 210, 0.3);
   border-radius: 24px;
-
-  background:
-    linear-gradient(
-      145deg,
-      #f0faff,
-      #f8f3ff
-    );
-
+  background: linear-gradient(145deg, #f0faff, #f8f3ff);
   text-align: center;
 }
 
 .gallery-placeholder span {
   color: #79a4c3;
-
   font-size: 18px;
   font-weight: 900;
-
   letter-spacing: 0.12em;
 }
 
 .gallery-placeholder p {
   margin: 12px 0 0;
-
   color: #829db1;
-
   font-size: 13px;
 }
 
-
-/* =========================================================
-   14. FAQ
-   ========================================================= */
+/* FAQ */
 
 .section-faq {
-  background:
-    linear-gradient(
-      180deg,
-      #effaff,
-      #e6f6ff
-    );
+  background: linear-gradient(180deg, #effaff, #e6f6ff);
 }
 
 .faq-list {
   max-width: 900px;
-
   margin: 0 auto;
 }
 
 .faq-list details {
   margin-bottom: 15px;
-
   border: 1px solid rgba(40, 140, 220, 0.15);
   border-radius: 16px;
-
   background: #ffffff;
-
-  box-shadow:
-    0 8px 22px rgba(40, 120, 180, 0.05);
-
+  box-shadow: 0 8px 22px rgba(40, 120, 180, 0.05);
   overflow: hidden;
 }
 
 .faq-list summary {
   position: relative;
-
   padding: 23px 65px 23px 28px;
-
   color: var(--atena-navy);
-
   font-size: 15px;
   font-weight: 900;
-
   line-height: 1.7;
-
   cursor: pointer;
-
   list-style: none;
 }
 
@@ -1629,15 +1209,11 @@ body.lp-page .lp-copy {
 
 .faq-list summary::after {
   content: "+";
-
   position: absolute;
   top: 50%;
   right: 28px;
-
   transform: translateY(-50%);
-
   color: var(--atena-blue);
-
   font-size: 28px;
   font-weight: 400;
 }
@@ -1648,41 +1224,21 @@ body.lp-page .lp-copy {
 
 .faq-list details p {
   margin: 0;
-
   padding: 0 28px 26px;
-
   color: #55748e;
-
   font-size: 14px;
   line-height: 2;
 }
 
-
-/* =========================================================
-   15. DOWNLOAD
-   ========================================================= */
+/* DOWNLOAD */
 
 .section-download {
   padding-top: 120px;
   padding-bottom: 130px;
-
   background:
-    radial-gradient(
-      circle at 25% 30%,
-      rgba(0, 205, 255, 0.18),
-      transparent 40%
-    ),
-    radial-gradient(
-      circle at 75% 60%,
-      rgba(255, 90, 170, 0.14),
-      transparent 40%
-    ),
-    linear-gradient(
-      180deg,
-      #ffffff,
-      #dff5ff
-    );
-
+    radial-gradient(circle at 25% 30%, rgba(0, 205, 255, 0.18), transparent 40%),
+    radial-gradient(circle at 75% 60%, rgba(255, 90, 170, 0.14), transparent 40%),
+    linear-gradient(180deg, #ffffff, #dff5ff);
   text-align: center;
 }
 
@@ -1694,35 +1250,24 @@ body.lp-page .lp-copy {
 
 .section-download h2 {
   margin: 0 0 25px;
-
   color: var(--atena-navy);
-
   font-size: clamp(48px, 8vw, 100px);
   font-weight: 900;
-
   letter-spacing: -0.04em;
   line-height: 1.1;
 }
 
 .download-logo {
   display: block;
-
   width: min(450px, 75%);
   height: auto;
-
   margin: 0 auto 25px;
-
-  filter:
-    drop-shadow(
-      0 12px 18px rgba(30, 110, 180, 0.18)
-    );
+  filter: drop-shadow(0 12px 18px rgba(30, 110, 180, 0.18));
 }
 
 .section-download .section-inner > p:not(.section-kicker) {
   margin: 0 0 35px;
-
   color: #5d7f9b;
-
   font-size: 15px;
   font-weight: 700;
 }
@@ -1730,126 +1275,90 @@ body.lp-page .lp-copy {
 body.lp-page .lp-download {
   display: flex;
   flex-direction: column;
-
   align-items: center;
   justify-content: center;
-
   gap: 12px;
-
   margin: 0 auto;
 }
 
 body.lp-page .lp-store {
   display: flex;
   flex-direction: column;
-
   align-items: center;
   justify-content: center;
-
   min-width: 230px;
   min-height: 78px;
-
   padding: 10px 30px;
-
   border-radius: 15px;
-
   background: #080808;
   color: #ffffff;
-
-  box-shadow:
-    0 15px 35px rgba(0, 0, 0, 0.16);
-
+  box-shadow: 0 15px 35px rgba(0, 0, 0, 0.16);
   line-height: 1.2;
 }
 
 body.lp-page .lp-store-small {
   color: #ffffff;
-
   font-size: 13px;
   font-weight: 500;
 }
 
 body.lp-page .lp-store-title {
   color: #ffffff;
-
   font-size: 30px;
   font-weight: 700;
-
   letter-spacing: -0.03em;
 }
 
 body.lp-page .lp-soon {
   margin: 0;
-
   color: #53708d;
-
   font-size: 12px;
   font-weight: 900;
-
   letter-spacing: 0.25em;
 }
 
-
-/* =========================================================
-   16. FOOTER
-   ========================================================= */
+/* FOOTER */
 
 body.lp-page .lp-footer {
   width: 100%;
-
   padding: 35px 20px 40px;
-
-  border-top:
-    1px solid rgba(40, 140, 220, 0.12);
-
+  border-top: 1px solid rgba(40, 140, 220, 0.12);
   background: #f6fcff;
-
   text-align: center;
 }
 
 body.lp-page .lp-footer nav {
   display: flex;
   flex-wrap: wrap;
-
   align-items: center;
   justify-content: center;
-
   gap: 14px 28px;
-
   margin-bottom: 18px;
 }
 
 body.lp-page .lp-footer a {
   color: #557b9b;
-
   font-size: 12px;
   font-weight: 600;
-
   text-decoration: none;
 }
 
 body.lp-page .lp-footer a:hover {
   color: var(--atena-blue);
-
   text-decoration: underline;
 }
 
 body.lp-page .lp-footer small {
   color: #8aa3b6;
-
   font-size: 11px;
 }
 
-
-/* =========================================================
-   17. TABLET
-   ========================================================= */
+/* TABLET */
 
 @media (max-width: 1100px) {
 
   .site-header {
     gap: 15px;
-
     padding-left: 20px;
     padding-right: 20px;
   }
@@ -1872,10 +1381,7 @@ body.lp-page .lp-footer small {
 
 }
 
-
-/* =========================================================
-   18. MOBILE NAVIGATION
-   ========================================================= */
+/* MOBILE NAVIGATION */
 
 @media (max-width: 900px) {
 
@@ -1885,7 +1391,6 @@ body.lp-page .lp-footer small {
 
   .site-header {
     min-height: var(--atena-header-height);
-
     padding: 8px 18px;
   }
 
@@ -1895,42 +1400,28 @@ body.lp-page .lp-footer small {
 
   .menu-toggle {
     position: relative;
-
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: center;
-
     gap: 6px;
-
     width: 46px;
     height: 46px;
-
     padding: 0;
-
     border: 1px solid rgba(30, 140, 210, 0.16);
     border-radius: 12px;
-
     background: #ffffff;
-
     cursor: pointer;
-
     z-index: 1002;
   }
 
   .menu-toggle span {
     display: block;
-
     width: 22px;
     height: 2px;
-
     border-radius: 2px;
-
     background: #227cba;
-
-    transition:
-      transform 0.25s ease,
-      opacity 0.25s ease;
+    transition: transform 0.25s ease, opacity 0.25s ease;
   }
 
   .menu-toggle.is-open span:nth-child(1) {
@@ -1947,51 +1438,30 @@ body.lp-page .lp-footer small {
 
   .site-nav {
     position: fixed;
-
     top: var(--atena-header-height);
     left: 0;
     right: 0;
-
     display: flex;
     flex-direction: column;
     align-items: stretch;
-
     gap: 0;
-
-    max-height:
-      calc(100svh - var(--atena-header-height));
-
+    max-height: calc(100svh - var(--atena-header-height));
     padding: 14px 25px 25px;
-
     background: rgba(255, 255, 255, 0.98);
-
-    border-bottom:
-      1px solid rgba(40, 140, 220, 0.14);
-
-    box-shadow:
-      0 25px 45px rgba(40, 110, 170, 0.12);
-
+    border-bottom: 1px solid rgba(40, 140, 220, 0.14);
+    box-shadow: 0 25px 45px rgba(40, 110, 170, 0.12);
     overflow-y: auto;
-
     opacity: 0;
     visibility: hidden;
-
     transform: translateY(-12px);
-
     pointer-events: none;
-
-    transition:
-      opacity 0.25s ease,
-      visibility 0.25s ease,
-      transform 0.25s ease;
+    transition: opacity 0.25s ease, visibility 0.25s ease, transform 0.25s ease;
   }
 
   .site-nav.is-open {
     opacity: 1;
     visibility: visible;
-
     transform: translateY(0);
-
     pointer-events: auto;
   }
 
@@ -1999,14 +1469,9 @@ body.lp-page .lp-footer small {
     display: flex;
     align-items: center;
     justify-content: flex-start;
-
     min-height: 52px;
-
     padding: 10px 6px;
-
-    border-bottom:
-      1px solid rgba(40, 140, 220, 0.1);
-
+    border-bottom: 1px solid rgba(40, 140, 220, 0.1);
     font-size: 14px;
   }
 
@@ -2016,15 +1481,12 @@ body.lp-page .lp-footer small {
 
   .site-nav .nav-download {
     justify-content: center;
-
     margin-top: 15px;
-
     border-bottom: 0;
   }
 
   .section-news .section-inner {
     grid-template-columns: 1fr;
-
     gap: 25px;
   }
 
@@ -2040,8 +1502,20 @@ body.lp-page .lp-footer small {
     padding: 30px 22px;
   }
 
-  .perk-tabs {
-    grid-template-columns: repeat(3, minmax(0, 1fr));
+  .perk-selector {
+    grid-template-columns: 1fr;
+    gap: 30px;
+  }
+
+  .perk-detail {
+    grid-template-columns: 220px 1fr;
+    gap: 28px;
+    padding: 35px;
+  }
+
+  .perk-emblem {
+    width: 210px;
+    height: 210px;
   }
 
   .character-showcase {
@@ -2058,10 +1532,7 @@ body.lp-page .lp-footer small {
 
 }
 
-
-/* =========================================================
-   19. SMARTPHONE
-   ========================================================= */
+/* SMARTPHONE */
 
 @media (max-width: 600px) {
 
@@ -2079,11 +1550,7 @@ body.lp-page .lp-footer small {
 
   body.lp-page .lp-hero {
     min-height: 100svh;
-
-    padding:
-      calc(var(--atena-header-height) + 25px)
-      10px
-      65px;
+    padding: calc(var(--atena-header-height) + 25px) 10px 65px;
   }
 
   body.lp-page .lp-visual-wrap {
@@ -2098,37 +1565,30 @@ body.lp-page .lp-footer small {
   body.lp-page .lp-visual-wrap .lp-logo {
     top: 57%;
     left: 50%;
-
     width: 60%;
     max-width: none;
-
     transform: translate(-50%, -50%);
   }
 
   .eyebrow {
     margin-top: 22px;
-
     font-size: 10px;
-
     letter-spacing: 0.25em;
   }
 
   body.lp-page .lp-copy {
     margin: 10px 0 15px;
-
     font-size: clamp(21px, 5.8vw, 30px);
   }
 
   .hero-sub {
     padding: 0 15px;
-
     font-size: 13px;
     line-height: 1.9;
   }
 
   .hero-scroll {
     margin-top: 30px;
-
     font-size: 10px;
   }
 
@@ -2150,7 +1610,6 @@ body.lp-page .lp-footer small {
 
   .section-intro {
     margin-top: -10px;
-
     font-size: 14px;
   }
 
@@ -2162,9 +1621,7 @@ body.lp-page .lp-footer small {
   .news-card {
     flex-direction: column;
     align-items: flex-start;
-
     gap: 12px;
-
     padding: 24px;
   }
 
@@ -2174,7 +1631,6 @@ body.lp-page .lp-footer small {
 
   .about-graphic {
     min-height: 280px;
-
     padding: 25px;
   }
 
@@ -2184,25 +1640,21 @@ body.lp-page .lp-footer small {
 
   .system-grid {
     grid-template-columns: 1fr;
-
     gap: 15px;
   }
 
   .info-card {
     min-height: auto;
-
     padding: 28px;
   }
 
   .card-number {
     margin-bottom: 20px;
-
     font-size: 35px;
   }
 
   .judge-demo {
     gap: 15px;
-
     margin-top: 35px;
     padding: 30px 15px;
   }
@@ -2214,9 +1666,7 @@ body.lp-page .lp-footer small {
   .judge-code span {
     width: 50px;
     height: 65px;
-
     border-radius: 10px;
-
     font-size: 31px;
   }
 
@@ -2236,52 +1686,63 @@ body.lp-page .lp-footer small {
     font-size: 12px;
   }
 
-  .perk-tabs {
-    grid-template-columns: repeat(2, minmax(0, 1fr));
+  .perk-selector {
+    gap: 25px;
+  }
 
-    gap: 10px;
+  .perk-category h3 {
+    font-size: 11px;
+  }
+
+  .perk-tabs {
+    gap: 8px;
   }
 
   .perk-tab {
-    min-height: 65px;
+    min-height: 125px;
+    padding: 13px 6px 12px;
+    gap: 8px;
+    border-radius: 14px;
+    font-size: 10px;
+  }
 
-    font-size: 12px;
+  .perk-tab img {
+    width: 70px;
+    height: 70px;
   }
 
   .perk-detail {
     grid-template-columns: 1fr;
-
-    gap: 28px;
-
-    padding: 30px 25px;
+    gap: 25px;
+    padding: 30px 24px;
   }
 
   .perk-emblem {
-    width: 130px;
-    height: 130px;
-
-    border-radius: 20px;
-
-    font-size: 65px;
+    width: 180px;
+    height: 180px;
+    padding: 15px;
+    border-radius: 24px;
   }
 
   .perk-detail h3 {
     font-size: 38px;
   }
 
-  .perk-detail p:last-child {
+  .perk-tagline {
+    font-size: 16px;
+  }
+
+  .perk-detail #perk-description {
     font-size: 14px;
   }
 
   .mode-grid {
     grid-template-columns: 1fr;
-
     gap: 18px;
   }
 
   .mode-card {
     min-height: 350px;
-
     padding: 35px 28px;
   }
 
@@ -2335,7 +1796,6 @@ body.lp-page .lp-footer small {
   .gallery-item img {
     height: auto;
     aspect-ratio: 16 / 9;
-
     object-fit: cover;
   }
 
@@ -2345,7 +1805,6 @@ body.lp-page .lp-footer small {
 
   .faq-list summary {
     padding: 20px 55px 20px 20px;
-
     font-size: 14px;
   }
 
@@ -2355,7 +1814,6 @@ body.lp-page .lp-footer small {
 
   .faq-list details p {
     padding: 0 20px 22px;
-
     font-size: 13px;
   }
 
@@ -2391,10 +1849,7 @@ body.lp-page .lp-footer small {
 
 }
 
-
-/* =========================================================
-   20. SMALL SMARTPHONE
-   ========================================================= */
+/* SMALL SMARTPHONE */
 
 @media (max-width: 390px) {
 
@@ -2414,7 +1869,6 @@ body.lp-page .lp-footer small {
   .judge-code span {
     width: 43px;
     height: 58px;
-
     font-size: 27px;
   }
 
@@ -2427,7 +1881,13 @@ body.lp-page .lp-footer small {
   }
 
   .perk-tab {
-    font-size: 11px;
+    min-height: 110px;
+    font-size: 9px;
+  }
+
+  .perk-tab img {
+    width: 58px;
+    height: 58px;
   }
 
   .character-art {
@@ -2436,16 +1896,12 @@ body.lp-page .lp-footer small {
 
   .friend-decoration {
     gap: 12px;
-
     font-size: 21px;
   }
 
 }
 
-
-/* =========================================================
-   21. REDUCED MOTION
-   ========================================================= */
+/* REDUCED MOTION */
 
 @media (prefers-reduced-motion: reduce) {
 
