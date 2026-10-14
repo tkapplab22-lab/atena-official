@@ -1,11 +1,12 @@
-/* =========================================================
+/* ==========================================================
    あてな！ OFFICIAL WEBSITE
-   Complete Landing Page Stylesheet
-   ========================================================= */
+   FULL STYLESHEET
+   CHARACTER RENEWAL VERSION
+   ========================================================== */
 
-/* =========================================================
+/* ==========================================================
    01. BASE
-   ========================================================= */
+   ========================================================== */
 
 :root {
   --atena-cyan: #21b8f5;
@@ -26,7 +27,9 @@ html {
 }
 
 body.lp-page,
-body.lp-page * {
+body.lp-page *,
+body.lp-page *::before,
+body.lp-page *::after {
   box-sizing: border-box;
 }
 
@@ -59,17 +62,19 @@ body.lp-page input {
   font: inherit;
 }
 
-body.lp-page button {
-  -webkit-tap-highlight-color: transparent;
-}
-
 body.lp-page a {
   color: inherit;
 }
 
-body.lp-page .lp-main {
+/* 旧style.cssの横並び指定を確実に解除 */
+
+body.lp-page main.lp-main {
+  display: block;
   width: 100%;
   min-width: 0;
+  min-height: 100svh;
+  margin: 0;
+  padding: 0;
   overflow: clip;
 }
 
@@ -88,9 +93,9 @@ body.lp-page .skip-link:focus {
   top: 12px;
 }
 
-/* =========================================================
+/* ==========================================================
    02. HEADER
-   ========================================================= */
+   ========================================================== */
 
 body.lp-page .site-header {
   position: fixed;
@@ -110,6 +115,7 @@ body.lp-page .site-header {
   background: rgba(255, 255, 255, 0.94);
   border-bottom: 1px solid rgba(180, 215, 238, 0.55);
   box-shadow: 0 5px 25px rgba(29, 82, 128, 0.07);
+
   backdrop-filter: blur(18px);
   -webkit-backdrop-filter: blur(18px);
 }
@@ -163,18 +169,13 @@ body.lp-page .site-nav .nav-download {
   color: #ffffff;
 }
 
-body.lp-page .site-nav .nav-download:hover {
-  color: #ffffff;
-  opacity: 0.85;
-}
-
 body.lp-page .menu-toggle {
   display: none;
 }
 
-/* =========================================================
+/* ==========================================================
    03. HERO
-   ========================================================= */
+   ========================================================== */
 
 body.lp-page .lp-hero {
   position: relative;
@@ -186,7 +187,10 @@ body.lp-page .lp-hero {
   justify-content: center;
 
   width: 100%;
+  max-width: none;
   min-height: min(920px, 100svh);
+
+  margin: 0;
   padding: 100px 0 65px;
 
   overflow: hidden;
@@ -202,7 +206,7 @@ body.lp-page .lp-hero {
       rgba(255, 163, 207, 0.30),
       transparent 40%
     ),
-    linear-gradient(180deg, #effaff 0%, #ffffff 100%);
+    linear-gradient(180deg, #effaff, #ffffff);
 }
 
 body.lp-page .hero-glow {
@@ -219,34 +223,42 @@ body.lp-page .lp-visual-wrap {
   justify-content: center;
 
   width: min(100%, 1320px);
+  max-width: 1320px;
   min-width: 0;
+
   margin: 0 auto;
   padding: 0 24px;
 }
 
-body.lp-page .lp-visual {
+body.lp-page .lp-visual-wrap .lp-visual {
   display: block;
   width: 100%;
   height: auto;
   max-height: 650px;
+  margin: 0;
   object-fit: contain;
-  object-position: center;
 }
 
-body.lp-page .lp-logo {
+body.lp-page .lp-visual-wrap .lp-logo {
   position: absolute;
   top: 3%;
   left: 50%;
+  z-index: 2;
+
   width: clamp(140px, 20vw, 310px);
+  max-width: 310px;
   max-height: 160px;
-  object-fit: contain;
+
   transform: translateX(-50%);
+  object-fit: contain;
+
   filter: drop-shadow(0 8px 15px rgba(25, 90, 155, 0.12));
 }
 
 body.lp-page .hero-text {
   position: relative;
   z-index: 2;
+
   width: min(100% - 40px, 900px);
   margin: 20px auto 0;
   text-align: center;
@@ -292,13 +304,15 @@ body.lp-page .hero-scroll span {
   font-size: 22px;
 }
 
-/* =========================================================
-   04. COMMON SECTION
-   ========================================================= */
+/* ==========================================================
+   04. COMMON SECTIONS
+   ========================================================== */
 
 body.lp-page .section {
   position: relative;
+  display: block;
   width: 100%;
+  min-width: 0;
   padding: 110px 24px;
   overflow: hidden;
 }
@@ -356,9 +370,9 @@ body.lp-page .section-note {
   text-align: center;
 }
 
-/* =========================================================
+/* ==========================================================
    05. NEWS
-   ========================================================= */
+   ========================================================== */
 
 body.lp-page .section-news {
   padding-top: 85px;
@@ -370,6 +384,7 @@ body.lp-page .news-card {
   display: flex;
   align-items: center;
   gap: 24px;
+
   width: min(100%, 820px);
   margin: 0 auto;
   padding: 24px 30px;
@@ -388,7 +403,6 @@ body.lp-page .news-tag {
   color: #128fd7;
   font-size: 11px;
   font-weight: 900;
-  letter-spacing: 0.08em;
 }
 
 body.lp-page .news-card p {
@@ -396,9 +410,9 @@ body.lp-page .news-card p {
   font-size: 14px;
 }
 
-/* =========================================================
+/* ==========================================================
    06. ABOUT
-   ========================================================= */
+   ========================================================== */
 
 body.lp-page .section-about {
   background:
@@ -448,15 +462,7 @@ body.lp-page .about-graphic {
 
   border: 1px solid #d4eaf9;
   border-radius: 30px;
-
-  background:
-    radial-gradient(
-      circle at center,
-      rgba(106, 207, 255, 0.25),
-      transparent 65%
-    ),
-    rgba(255, 255, 255, 0.85);
-
+  background: rgba(255, 255, 255, 0.85);
   box-shadow: var(--atena-shadow);
 }
 
@@ -483,9 +489,9 @@ body.lp-page .about-graphic small {
   text-align: center;
 }
 
-/* =========================================================
+/* ==========================================================
    07. GAME SYSTEM
-   ========================================================= */
+   ========================================================== */
 
 body.lp-page .section-system {
   background: #ffffff;
@@ -540,7 +546,6 @@ body.lp-page .judge-demo {
 
   border: 1px solid #cfe9fa;
   border-radius: 26px;
-
   background: linear-gradient(135deg, #effaff, #f6f4ff);
 }
 
@@ -606,9 +611,9 @@ body.lp-page .system-footnote {
   text-align: center;
 }
 
-/* =========================================================
+/* ==========================================================
    08. PERK SYSTEM
-   ========================================================= */
+   ========================================================== */
 
 body.lp-page .section-perk {
   background:
@@ -663,7 +668,6 @@ body.lp-page .perk-tab {
 
   border: 1px solid #cde5f5;
   border-radius: 18px;
-
   background: rgba(255, 255, 255, 0.90);
   color: #41688a;
 
@@ -708,7 +712,6 @@ body.lp-page .perk-detail {
 
   border: 1px solid #d2e9f8;
   border-radius: 30px;
-
   background: rgba(255, 255, 255, 0.93);
   box-shadow: var(--atena-shadow);
 }
@@ -763,9 +766,9 @@ body.lp-page #perk-description {
   line-height: 2;
 }
 
-/* =========================================================
+/* ==========================================================
    09. GAME MODE
-   ========================================================= */
+   ========================================================== */
 
 body.lp-page .section-mode {
   background: #ffffff;
@@ -862,178 +865,287 @@ body.lp-page .friend-decoration span {
   color: #f56aa6;
 }
 
-/* =========================================================
-   10. CHARACTER SECTION
-   ========================================================= */
+/* ==========================================================
+   10. CHARACTER - NEW DESIGN
+   LEFT: NAME
+   RIGHT: LARGE CHARACTER
+   BOTTOM: THUMBNAILS
+   ========================================================== */
 
 body.lp-page .section-character {
+  position: relative;
+  isolation: isolate;
+
+  padding-top: 100px;
+  padding-bottom: 100px;
+
   background:
     radial-gradient(
-      circle at 75% 40%,
-      rgba(111, 205, 255, 0.24),
+      ellipse at 75% 38%,
+      rgba(104, 202, 255, 0.28),
+      transparent 46%
+    ),
+    radial-gradient(
+      ellipse at 15% 85%,
+      rgba(170, 155, 255, 0.18),
       transparent 45%
     ),
     linear-gradient(
-      135deg,
-      #f5fcff 0%,
-      #e6f5ff 50%,
-      #f4edff 100%
+      125deg,
+      #f6fcff 0%,
+      #e8f6ff 55%,
+      #f4f1ff 100%
     );
 }
 
+/* CHARACTERセクションのみ広めに */
+
+body.lp-page .section-character .section-inner {
+  width: min(100%, 1360px);
+}
+
+body.lp-page .section-character .section-heading {
+  margin-bottom: 24px;
+}
+
+body.lp-page .section-character .section-intro {
+  margin-bottom: 28px;
+}
+
+/* 全体：上にメイン表示、下に一覧 */
+
 body.lp-page .character-layout {
-  display: grid;
-  grid-template-columns: 270px minmax(0, 1fr);
-  align-items: stretch;
-  gap: 36px;
-  margin-top: 48px;
-}
+  display: flex;
+  flex-direction: column;
+  gap: 28px;
 
-body.lp-page .character-select-area {
+  width: 100%;
   min-width: 0;
+  margin-top: 0;
 }
 
-body.lp-page .character-select-title {
-  margin: 0 0 20px;
-  color: #1589df;
+/* ==========================================================
+   MAIN SHOWCASE
+   ========================================================== */
+
+body.lp-page .character-showcase {
+  position: relative;
+  isolation: isolate;
+
+  display: grid;
+  grid-template-columns: minmax(0, 40%) minmax(0, 60%);
+  grid-template-rows: minmax(620px, auto);
+
+  width: 100%;
+  min-width: 0;
+  min-height: 620px;
+
+  overflow: hidden;
+
+  border: none;
+  border-radius: 0;
+  background: transparent;
+  box-shadow: none;
+}
+
+/* 背景の大きな円 */
+
+body.lp-page .character-showcase::before {
+  content: "";
+  position: absolute;
+  z-index: -1;
+
+  width: min(56vw, 700px);
+  height: min(56vw, 700px);
+
+  top: 50%;
+  left: 72%;
+
+  transform: translate(-50%, -50%);
+
+  border: 1px solid rgba(35, 151, 232, 0.22);
+  border-radius: 50%;
+
+  background:
+    radial-gradient(
+      circle,
+      rgba(255, 255, 255, 0.68) 0%,
+      rgba(151, 219, 255, 0.13) 54%,
+      transparent 72%
+    );
+
+  pointer-events: none;
+}
+
+/* 背景の二重円 */
+
+body.lp-page .character-showcase::after {
+  content: "";
+  position: absolute;
+  z-index: -1;
+
+  width: min(44vw, 550px);
+  height: min(44vw, 550px);
+
+  top: 50%;
+  left: 72%;
+
+  transform: translate(-50%, -50%);
+
+  border: 1px dashed rgba(35, 151, 232, 0.25);
+  border-radius: 50%;
+
+  pointer-events: none;
+}
+
+/* ==========================================================
+   LEFT: CHARACTER INFORMATION
+   ========================================================== */
+
+body.lp-page .character-info {
+  position: relative;
+  z-index: 3;
+
+  grid-column: 1;
+  grid-row: 1;
+
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: center;
+
+  min-width: 0;
+  padding: 35px 10px 35px 5%;
+
+  text-align: left;
+}
+
+body.lp-page .character-info-label {
+  margin: 0 0 30px;
+
+  color: #168fe5;
   font-size: 13px;
+  font-weight: 900;
+  letter-spacing: 0.24em;
+}
+
+body.lp-page .character-count {
+  margin: 0 0 14px;
+
+  color: #6c9fbe;
+  font-size: 18px;
   font-weight: 900;
   letter-spacing: 0.18em;
 }
 
-body.lp-page .character-list {
-  display: grid;
-  grid-template-columns: repeat(3, minmax(0, 1fr));
-  gap: 10px;
+/* キャラクター名 */
+
+body.lp-page #character-name {
+  width: 100%;
+  max-width: 100%;
+  margin: 0;
+
+  color: #15375c;
+
+  font-size: clamp(35px, 4.1vw, 66px);
+  font-weight: 900;
+  line-height: 1.28;
+  letter-spacing: 0.015em;
+
+  overflow-wrap: normal;
+  word-break: keep-all;
+  line-break: strict;
 }
 
-body.lp-page .character-select-item {
+/* 名前の下に装飾ライン */
+
+body.lp-page .character-info::after {
+  content: "";
+  display: block;
+
+  width: 110px;
+  height: 5px;
+  margin-top: 28px;
+
+  border-radius: 999px;
+  background: linear-gradient(90deg, #24b9f6, #8b7cf1);
+}
+
+/* ==========================================================
+   CHARACTER CONTROLS
+   ========================================================== */
+
+body.lp-page .character-controls {
   display: flex;
-  flex-direction: column;
+  gap: 15px;
+
+  margin-top: 35px;
+}
+
+body.lp-page .character-controls button {
+  display: flex;
   align-items: center;
-  justify-content: flex-end;
+  justify-content: center;
 
-  min-width: 0;
-  height: 112px;
-  padding: 6px;
-  overflow: hidden;
+  width: 64px;
+  height: 64px;
 
-  border: 1px solid #cde8fa;
-  border-radius: 14px;
-  background: rgba(255, 255, 255, 0.86);
+  border: 1px solid rgba(42, 161, 237, 0.32);
+  border-radius: 50%;
+
+  background: rgba(255, 255, 255, 0.88);
+
+  color: #168fe5;
+  font-size: 29px;
+  font-weight: 700;
 
   cursor: pointer;
 
+  box-shadow: 0 10px 28px rgba(43, 121, 180, 0.07);
+
   transition:
     transform 0.25s ease,
-    border-color 0.25s ease,
+    background 0.25s ease,
+    color 0.25s ease,
     box-shadow 0.25s ease;
 }
 
-body.lp-page .character-select-item img {
-  display: block;
-  width: 100%;
-  height: 78px;
-  object-fit: contain;
-  object-position: center bottom;
-}
-
-body.lp-page .character-select-item span {
-  display: block;
-  width: 100%;
-  margin-top: 4px;
-  color: #41658a;
-  font-size: 10px;
-  font-weight: 800;
-  line-height: 1.3;
-  text-align: center;
-  overflow-wrap: anywhere;
-}
-
-body.lp-page .character-select-item.is-active {
-  border: 2px solid #1a9cff;
-  background: linear-gradient(145deg, #ffffff, #d9f3ff);
-  box-shadow:
-    0 0 0 3px rgba(35, 164, 255, 0.12),
-    0 10px 25px rgba(20, 133, 223, 0.16);
-}
-
-body.lp-page .character-select-item.is-active span {
-  color: #0789e8;
-}
-
-body.lp-page .character-showcase {
-  position: relative;
-  display: grid;
-  grid-template-columns: minmax(0, 1fr) 240px;
-  align-items: center;
-
-  min-width: 0;
-  min-height: 620px;
-  overflow: hidden;
-
-  border: 1px solid rgba(183, 220, 247, 0.8);
-  border-radius: 30px;
-
-  background:
-    radial-gradient(
-      circle at 38% 50%,
-      rgba(123, 211, 255, 0.28),
-      transparent 45%
-    ),
-    linear-gradient(
-      135deg,
-      rgba(255, 255, 255, 0.96),
-      rgba(229, 244, 255, 0.94)
-    );
-
-  box-shadow: 0 24px 60px rgba(46, 112, 166, 0.10);
-}
-
-body.lp-page .character-showcase::before,
-body.lp-page .character-showcase::after {
-  content: "";
-  position: absolute;
-  top: 50%;
-  left: 35%;
-  border-radius: 50%;
-  transform: translate(-50%, -50%);
-  pointer-events: none;
-}
-
-body.lp-page .character-showcase::before {
-  width: 430px;
-  height: 430px;
-  border: 1px solid rgba(56, 166, 242, 0.18);
-}
-
-body.lp-page .character-showcase::after {
-  width: 310px;
-  height: 310px;
-  border: 1px dashed rgba(56, 166, 242, 0.18);
-}
+/* ==========================================================
+   RIGHT: LARGE CHARACTER ART
+   ========================================================== */
 
 body.lp-page .character-art {
   position: relative;
-  z-index: 1;
+  z-index: 2;
+
+  grid-column: 2;
+  grid-row: 1;
 
   display: flex;
   align-items: flex-end;
   justify-content: center;
 
+  width: 100%;
   min-width: 0;
   height: 620px;
-  overflow: hidden;
+
+  overflow: visible;
 }
 
 body.lp-page .character-main-image {
   display: block;
+
   width: 100%;
   height: 100%;
+  max-width: none;
+
   object-fit: contain;
   object-position: center bottom;
 
-  filter: drop-shadow(0 16px 18px rgba(24, 74, 115, 0.15));
+  filter:
+    drop-shadow(
+      0 18px 22px rgba(26, 78, 128, 0.12)
+    );
 
   transition:
     opacity 0.25s ease,
@@ -1042,74 +1154,145 @@ body.lp-page .character-main-image {
 
 body.lp-page .character-main-image.is-changing {
   opacity: 0;
-  transform: translateY(14px);
+  transform: translateX(25px);
 }
 
-body.lp-page .character-info {
+/* ==========================================================
+   BOTTOM: CHARACTER SELECT
+   ========================================================== */
+
+body.lp-page .character-select-area {
   position: relative;
-  z-index: 2;
+  z-index: 5;
+
+  width: 100%;
   min-width: 0;
-  padding: 30px 22px 30px 0;
+
+  padding: 20px 0 0;
+  border-top: 1px solid rgba(57, 150, 217, 0.20);
 }
 
-body.lp-page .character-info-label {
-  margin: 0 0 18px;
+body.lp-page .character-select-title {
+  margin: 0 0 16px;
+
   color: #168fe5;
   font-size: 12px;
   font-weight: 900;
-  letter-spacing: 0.18em;
+  letter-spacing: 0.20em;
 }
 
-body.lp-page .character-count {
-  margin: 0 0 8px;
-  color: #7a9bb7;
-  font-size: 14px;
-  font-weight: 800;
-  letter-spacing: 0.12em;
-}
+/* 横スクロール式キャラクター一覧 */
 
-body.lp-page #character-name {
-  margin: 0;
-  color: #16385e;
-  font-size: clamp(26px, 3vw, 46px);
-  font-weight: 900;
-  line-height: 1.2;
-  overflow-wrap: anywhere;
-}
-
-body.lp-page .character-controls {
+body.lp-page .character-list {
   display: flex;
+  flex-wrap: nowrap;
+  align-items: stretch;
   gap: 12px;
-  margin-top: 34px;
+
+  width: 100%;
+  min-width: 0;
+
+  padding: 5px 4px 20px;
+
+  overflow-x: auto;
+  overflow-y: hidden;
+
+  scroll-behavior: smooth;
+  scroll-snap-type: x proximity;
+
+  scrollbar-width: thin;
+  scrollbar-color: #a3d7f5 transparent;
+
+  -webkit-overflow-scrolling: touch;
 }
 
-body.lp-page .character-controls button {
+body.lp-page .character-list::-webkit-scrollbar {
+  height: 7px;
+}
+
+body.lp-page .character-list::-webkit-scrollbar-thumb {
+  border-radius: 999px;
+  background: #a3d7f5;
+}
+
+body.lp-page .character-select-item {
+  position: relative;
+
   display: flex;
+  flex: 0 0 105px;
+  flex-direction: column;
   align-items: center;
-  justify-content: center;
+  justify-content: flex-end;
 
-  width: 58px;
-  height: 58px;
+  width: 105px;
+  min-width: 105px;
+  height: 125px;
 
-  border: 1px solid #b8dff8;
-  border-radius: 50%;
-  background: #ffffff;
+  padding: 8px 5px;
+  overflow: hidden;
 
-  color: #168fe5;
-  font-size: 26px;
-  font-weight: 700;
+  border: 1px solid rgba(119, 189, 234, 0.40);
+  border-radius: 13px;
+
+  background: rgba(255, 255, 255, 0.75);
 
   cursor: pointer;
+  scroll-snap-align: start;
 
   transition:
     transform 0.25s ease,
+    border-color 0.25s ease,
     background 0.25s ease,
-    color 0.25s ease;
+    box-shadow 0.25s ease;
 }
 
-/* =========================================================
+body.lp-page .character-select-item img {
+  display: block;
+
+  width: 100%;
+  height: 88px;
+
+  object-fit: contain;
+  object-position: center bottom;
+}
+
+body.lp-page .character-select-item span {
+  display: block;
+
+  width: 100%;
+  margin-top: 5px;
+
+  color: #476d90;
+  font-size: 10px;
+  font-weight: 900;
+  line-height: 1.3;
+  text-align: center;
+
+  overflow-wrap: anywhere;
+}
+
+body.lp-page .character-select-item.is-active {
+  border: 2px solid #159dff;
+
+  background:
+    linear-gradient(
+      145deg,
+      #ffffff,
+      #d9f2ff
+    );
+
+  box-shadow:
+    0 0 0 3px rgba(35, 164, 255, 0.12),
+    0 8px 20px rgba(20, 133, 223, 0.15);
+}
+
+body.lp-page .character-select-item.is-active span {
+  color: #0789e8;
+}
+
+/* ==========================================================
    11. GALLERY
-   ========================================================= */
+   ========================================================== */
 
 body.lp-page .section-gallery {
   background: #ffffff;
@@ -1125,8 +1308,10 @@ body.lp-page .gallery-item {
   min-width: 0;
   margin: 0;
   overflow: hidden;
+
   border: 1px solid #d9eaf5;
   border-radius: 24px;
+
   background: #f6fbff;
   box-shadow: var(--atena-shadow);
 }
@@ -1175,9 +1360,9 @@ body.lp-page .gallery-placeholder p {
   font-size: 13px;
 }
 
-/* =========================================================
+/* ==========================================================
    12. FAQ
-   ========================================================= */
+   ========================================================== */
 
 body.lp-page .section-faq {
   background: linear-gradient(135deg, #f4fbff, #f7f5ff);
@@ -1187,6 +1372,7 @@ body.lp-page .faq-list {
   display: flex;
   flex-direction: column;
   gap: 14px;
+
   width: min(100%, 860px);
   margin: 0 auto;
 }
@@ -1201,9 +1387,11 @@ body.lp-page .faq-list details {
 body.lp-page .faq-list summary {
   position: relative;
   padding: 23px 55px 23px 25px;
+
   color: #274b6c;
   font-size: 15px;
   font-weight: 800;
+
   cursor: pointer;
   list-style: none;
 }
@@ -1217,9 +1405,11 @@ body.lp-page .faq-list summary::after {
   position: absolute;
   top: 50%;
   right: 25px;
+
   color: var(--atena-blue);
   font-size: 25px;
   line-height: 1;
+
   transform: translateY(-50%);
 }
 
@@ -1230,14 +1420,15 @@ body.lp-page .faq-list details[open] summary::after {
 body.lp-page .faq-list details p {
   margin: 0;
   padding: 0 25px 24px;
+
   color: #607b94;
   font-size: 14px;
   line-height: 2;
 }
 
-/* =========================================================
+/* ==========================================================
    13. DOWNLOAD
-   ========================================================= */
+   ========================================================== */
 
 body.lp-page .section-download {
   background:
@@ -1262,8 +1453,10 @@ body.lp-page .section-download .section-kicker {
 
 body.lp-page .download-logo {
   display: block;
+
   width: min(280px, 70%);
   max-height: 180px;
+
   margin: 32px auto 12px;
   object-fit: contain;
 }
@@ -1316,9 +1509,9 @@ body.lp-page .lp-soon {
   letter-spacing: 0.20em;
 }
 
-/* =========================================================
+/* ==========================================================
    14. FOOTER
-   ========================================================= */
+   ========================================================== */
 
 body.lp-page .lp-footer {
   padding: 42px 24px 30px;
@@ -1333,6 +1526,7 @@ body.lp-page .lp-footer nav {
   align-items: center;
   justify-content: center;
   gap: 15px 30px;
+
   margin-bottom: 24px;
 }
 
@@ -1352,11 +1546,12 @@ body.lp-page .lp-footer small {
   letter-spacing: 0.08em;
 }
 
-/* =========================================================
+/* ==========================================================
    15. HOVER & FOCUS
-   ========================================================= */
+   ========================================================== */
 
 @media (hover: hover) {
+
   body.lp-page .perk-tab:hover,
   body.lp-page .character-select-item:hover {
     transform: translateY(-4px);
@@ -1368,7 +1563,9 @@ body.lp-page .lp-footer small {
     transform: translateY(-3px);
     background: #159bf0;
     color: #ffffff;
+    box-shadow: 0 10px 24px rgba(21, 155, 240, 0.20);
   }
+
 }
 
 body.lp-page a:focus-visible,
@@ -1378,9 +1575,9 @@ body.lp-page summary:focus-visible {
   outline-offset: 4px;
 }
 
-/* =========================================================
-   16. TABLET / MOBILE NAVIGATION
-   ========================================================= */
+/* ==========================================================
+   16. TABLET / NAVIGATION
+   ========================================================== */
 
 @media (max-width: 1100px) {
 
@@ -1420,7 +1617,10 @@ body.lp-page summary:focus-visible {
     height: 2px;
     border-radius: 2px;
     background: #247db7;
-    transition: transform 0.2s ease, opacity 0.2s ease;
+
+    transition:
+      transform 0.2s ease,
+      opacity 0.2s ease;
   }
 
   body.lp-page .menu-toggle.is-open span:nth-child(1) {
@@ -1449,6 +1649,7 @@ body.lp-page summary:focus-visible {
 
     max-height: calc(100svh - 70px);
     padding: 12px 24px 24px;
+
     overflow-y: auto;
 
     border-bottom: 1px solid #d5e8f5;
@@ -1473,47 +1674,37 @@ body.lp-page summary:focus-visible {
     border-bottom: none;
   }
 
-  body.lp-page .character-layout {
-    grid-template-columns: 220px minmax(0, 1fr);
-    gap: 22px;
-  }
-
-  body.lp-page .character-select-item {
-    height: 100px;
-  }
-
-  body.lp-page .character-select-item img {
-    height: 68px;
-  }
+  /* CHARACTER */
 
   body.lp-page .character-showcase {
-    grid-template-columns: minmax(0, 1fr) 180px;
-    min-height: 540px;
+    grid-template-columns: minmax(0, 43%) minmax(0, 57%);
+    grid-template-rows: minmax(530px, auto);
+    min-height: 530px;
   }
 
   body.lp-page .character-art {
-    height: 540px;
+    height: 530px;
   }
 
-  body.lp-page .character-info {
-    padding-right: 16px;
+  body.lp-page #character-name {
+    font-size: clamp(30px, 4vw, 48px);
   }
 
   body.lp-page .character-showcase::before {
-    width: 340px;
-    height: 340px;
+    width: 520px;
+    height: 520px;
   }
 
   body.lp-page .character-showcase::after {
-    width: 250px;
-    height: 250px;
+    width: 400px;
+    height: 400px;
   }
 
 }
 
-/* =========================================================
+/* ==========================================================
    17. MOBILE
-   ========================================================= */
+   ========================================================== */
 
 @media (max-width: 767px) {
 
@@ -1551,12 +1742,12 @@ body.lp-page summary:focus-visible {
     padding: 0 8px;
   }
 
-  body.lp-page .lp-visual {
+  body.lp-page .lp-visual-wrap .lp-visual {
     width: 100%;
     max-height: 520px;
   }
 
-  body.lp-page .lp-logo {
+  body.lp-page .lp-visual-wrap .lp-logo {
     top: 0;
     width: clamp(130px, 38vw, 220px);
   }
@@ -1707,49 +1898,67 @@ body.lp-page summary:focus-visible {
 
   /* CHARACTER */
 
-  body.lp-page .character-layout {
-    display: flex;
-    flex-direction: column-reverse;
-    gap: 24px;
-    margin-top: 32px;
+  body.lp-page .section-character {
+    padding-top: 75px;
+    padding-bottom: 75px;
   }
+
+  body.lp-page .section-character .section-intro {
+    text-align: center;
+  }
+
+  body.lp-page .character-layout {
+    gap: 18px;
+  }
+
+  /* スマホでは立ち絵を上、名前を下に */
 
   body.lp-page .character-showcase {
     display: flex;
     flex-direction: column;
-    min-height: 0;
-    border-radius: 24px;
-  }
+    align-items: stretch;
 
-  body.lp-page .character-showcase::before,
-  body.lp-page .character-showcase::after {
-    top: 38%;
-    left: 50%;
+    min-height: 0;
+    overflow: hidden;
   }
 
   body.lp-page .character-showcase::before {
-    width: 300px;
-    height: 300px;
+    top: 35%;
+    left: 50%;
+    width: 360px;
+    height: 360px;
   }
 
   body.lp-page .character-showcase::after {
-    width: 220px;
-    height: 220px;
+    top: 35%;
+    left: 50%;
+    width: 270px;
+    height: 270px;
   }
 
   body.lp-page .character-art {
+    order: 1;
+
     width: 100%;
-    height: 440px;
+    height: min(115vw, 490px);
+
+    overflow: visible;
   }
 
   body.lp-page .character-main-image {
     width: 100%;
     height: 100%;
+    object-position: center bottom;
   }
 
   body.lp-page .character-info {
+    order: 2;
+
+    align-items: center;
     width: 100%;
-    padding: 16px 22px 26px;
+
+    padding: 14px 10px 26px;
+
     text-align: center;
   }
 
@@ -1760,15 +1969,23 @@ body.lp-page summary:focus-visible {
 
   body.lp-page .character-count {
     margin-bottom: 8px;
+    font-size: 14px;
   }
 
   body.lp-page #character-name {
     font-size: clamp(28px, 8vw, 42px);
+    line-height: 1.35;
+  }
+
+  body.lp-page .character-info::after {
+    width: 80px;
+    height: 4px;
+    margin-top: 18px;
   }
 
   body.lp-page .character-controls {
     justify-content: center;
-    margin-top: 22px;
+    margin-top: 24px;
   }
 
   body.lp-page .character-controls button {
@@ -1776,23 +1993,36 @@ body.lp-page summary:focus-visible {
     height: 54px;
   }
 
+  /* 横スクロール一覧 */
+
+  body.lp-page .character-select-area {
+    padding-top: 18px;
+  }
+
   body.lp-page .character-select-title {
-    margin-bottom: 14px;
+    margin-bottom: 12px;
     text-align: center;
   }
 
   body.lp-page .character-list {
-    grid-template-columns: repeat(4, minmax(0, 1fr));
     gap: 9px;
+    padding-bottom: 16px;
   }
 
   body.lp-page .character-select-item {
+    flex-basis: 86px;
+    width: 86px;
+    min-width: 86px;
     height: 110px;
     border-radius: 12px;
   }
 
   body.lp-page .character-select-item img {
     height: 76px;
+  }
+
+  body.lp-page .character-select-item span {
+    font-size: 9px;
   }
 
   /* GALLERY */
@@ -1805,7 +2035,6 @@ body.lp-page summary:focus-visible {
   body.lp-page .gallery-item img {
     height: auto;
     max-height: 350px;
-    object-fit: cover;
   }
 
   body.lp-page .gallery-placeholder {
@@ -1825,9 +2054,9 @@ body.lp-page summary:focus-visible {
 
 }
 
-/* =========================================================
+/* ==========================================================
    18. SMALL MOBILE
-   ========================================================= */
+   ========================================================== */
 
 @media (max-width: 390px) {
 
@@ -1835,16 +2064,19 @@ body.lp-page summary:focus-visible {
     height: 360px;
   }
 
-  body.lp-page .character-list {
-    grid-template-columns: repeat(3, minmax(0, 1fr));
+  body.lp-page #character-name {
+    font-size: 28px;
   }
 
   body.lp-page .character-select-item {
+    flex-basis: 78px;
+    width: 78px;
+    min-width: 78px;
     height: 104px;
   }
 
   body.lp-page .character-select-item img {
-    height: 72px;
+    height: 70px;
   }
 
   body.lp-page .perk-tab img {
@@ -1859,9 +2091,9 @@ body.lp-page summary:focus-visible {
 
 }
 
-/* =========================================================
+/* ==========================================================
    19. REDUCED MOTION
-   ========================================================= */
+   ========================================================== */
 
 @media (prefers-reduced-motion: reduce) {
 
@@ -1874,6 +2106,7 @@ body.lp-page summary:focus-visible {
   body.lp-page *::after {
     animation-duration: 0.01ms !important;
     transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
   }
 
 }
