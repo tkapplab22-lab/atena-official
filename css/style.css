@@ -40,20 +40,36 @@ body.lp-page {
    MAIN
    ===================================== */
 
-.lp-main {
+/*
+   旧サイトでは display: flex により
+   メインビジュアルを中央配置していた。
+
+   現在は複数のセクションを縦に並べるため、
+   display: block に変更する。
+*/
+
+body.lp-page .lp-main {
+  display: block;
+
+  width: 100%;
+  min-width: 0;
   min-height: 100svh;
 
-  display: flex;
-  align-items: center;
-  justify-content: center;
+  margin: 0;
+  padding: 0;
 }
+
+
+/* =====================================
+   MAIN VISUAL
+   ===================================== */
 
 .lp-hero {
   width: 100%;
-  max-width: 1600px;
+  max-width: none;
 
   margin: 0 auto;
-  padding: 30px 20px 55px;
+  padding: 100px 20px 55px;
 
   display: flex;
   flex-direction: column;
@@ -61,11 +77,6 @@ body.lp-page {
 
   text-align: center;
 }
-
-
-/* =====================================
-   MAIN VISUAL
-   ===================================== */
 
 .lp-visual-wrap {
   position: relative;
@@ -93,8 +104,6 @@ body.lp-page {
 /* =====================================
    LOGO
    ===================================== */
-
-/* メイン画像の中央に重ねる */
 
 .lp-visual-wrap .lp-logo {
   position: absolute;
@@ -246,7 +255,7 @@ body.lp-page {
 @media (max-width: 900px) {
 
   .lp-hero {
-    padding: 25px 15px 45px;
+    padding: 90px 15px 45px;
   }
 
   .lp-visual-wrap .lp-logo {
@@ -266,12 +275,13 @@ body.lp-page {
 
 @media (max-width: 600px) {
 
-  .lp-main {
+  body.lp-page .lp-main {
+    display: block;
     min-height: 100svh;
   }
 
   .lp-hero {
-    padding: 20px 10px 40px;
+    padding: 90px 10px 40px;
   }
 
   .lp-visual-wrap {
