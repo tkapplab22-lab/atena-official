@@ -193,13 +193,16 @@ document.addEventListener("DOMContentLoaded", () => {
   const characterPrev = document.getElementById("character-prev");
   const characterNext = document.getElementById("character-next");
 
+  const characterList = document.querySelector(".character-list");
+
   if (
     characterButtons.length &&
     characterCount &&
     characterName &&
     characterImage &&
     characterPrev &&
-    characterNext
+    characterNext &&
+    characterList
   ) {
 
     const characters = characterButtons.map((button, index) => ({
@@ -215,6 +218,10 @@ document.addEventListener("DOMContentLoaded", () => {
     let currentCharacter = 0;
     let changeTimer = null;
     let changeToken = 0;
+
+    /* =====================================================
+       CHARACTER SELECTION
+       ===================================================== */
 
     const updateSelection = (index) => {
       characterButtons.forEach((button, buttonIndex) => {
@@ -301,6 +308,207 @@ document.addEventListener("DOMContentLoaded", () => {
     });
 
     changeCharacter(0, false);
+
+
+    /* =====================================================
+       04. AUTOMATIC CHARACTER CAROUSEL
+       ===================================================== */
+
+    /*
+      元の13人を複製して横に連結する。
+      2セット分を使い、途切れないループを実現する。
+
+      複製したボタンにも元のキャラクター番号を
+      紐づけることで、クリック選択に対応する。
+    */
+
+    const originalButtons = [...characterButtons];
+
+    originalButtons.forEach((button, index) => {
+      button.dataset.characterIndex = String(index);
+    });
+
+    const cloneFragment = document.createDocumentFragment();
+
+    originalButtons.forEach((button, index) => {
+      const clone = button.cloneNode(true);
+
+      clone.dataset.characterIndex = String(index);
+      clone.setAttribute("aria-hidden", "true");
+      clone.setAttribute("tabindex", "-1");
+
+      cloneFragment.appendChild(clone);
+    });
+
+    characterList.appendChild(cloneFragment);
+
+    /*
+      連続スクロールのため、JavaScriptで位置を更新。
+      requestAnimationFrameを使用する。
+    */
+
+    let animationFrame = null;
+    let lastFrameTime = null;
+
+    let pausedByHover = false;
+    let pausedByTouch = false;
+    let pausedByFocus = false;
+    let pausedByVisibility = false;
+
+    const SCROLL_SPEED = 32;
+
+    const getLoopWidth = () => {
+      const first = characterList.children[0];
+      const duplicateFirst =
+        characterList.children[originalButtons.length];
+
+      if (!first || !duplicateFirst) return 0;
+
+      return duplicateFirst.offsetLeft - first.offsetLeft;
+    };
+
+    const normalizeScroll = () => {
+      const loopWidth = getLoopWidth();
+
+      if (loopWidth <= 0) return;
+
+      if (characterList.scrollLeft >= loopWidth) {
+        characterList.scrollLeft -= loopWidth;
+      }
+
+      if (characterList.scrollLeft < 0) {
+        characterList.scrollLeft += loopWidth;
+      }
+    };
+
+    const shouldPause = () => (
+      pausedByHover ||
+      pausedByTouch ||
+      pausedByFocus ||
+      pausedByVisibility ||
+      reduceMotion.matches
+    );
+
+    const animateCarousel = (timestamp) => {
+      if (lastFrameTime === null) {
+        lastFrameTime = timestamp;
+      }
+
+      const elapsed = Math.min(
+        (timestamp - lastFrameTime) / 1000,
+        0.05
+      );
+
+      lastFrameTime = timestamp;
+
+      if (!shouldPause()) {
+        characterList.scrollLeft += SCROLL_SPEED * elapsed;
+        normalizeScroll();
+      }
+
+      animationFrame = window.requestAnimationFrame(
+        animateCarousel
+      );
+    };
+
+    /*
+      ホバー時は一時停止。
+    */
+
+    characterList.addEventListener("mouseenter", () => {
+      pausedByHover = true;
+    });
+
+    characterList.addEventListener("mouseleave", () => {
+      pausedByHover = false;
+    });
+
+    /*
+      タッチ操作中は一時停止。
+    */
+
+    characterList.addEventListener("touchstart", () => {
+      pausedByTouch = true;
+    }, { passive: true });
+
+    characterList.addEventListener("touchend", () => {
+      window.setTimeout(() => {
+        pausedByTouch = false;
+      }, 1800);
+    }, { passive: true });
+
+    characterList.addEventListener("touchcancel", () => {
+      pausedByTouch = false;
+    }, { passive: true });
+
+    /*
+      キーボード操作中も停止。
+    */
+
+    characterList.addEventListener("focusin", () => {
+      pausedByFocus = true;
+    });
+
+    characterList.addEventListener("focusout", (event) => {
+      if (!characterList.contains(event.relatedTarget)) {
+        pausedByFocus = false;
+      }
+    });
+
+    /*
+      別タブを開いている間は停止。
+    */
+
+    document.addEventListener("visibilitychange", () => {
+      pausedByVisibility = document.hidden;
+      lastFrameTime = null;
+    });
+
+    /*
+      複製されたキャラクターもクリック可能にする。
+    */
+
+    characterList.addEventListener("click", (event) => {
+      const button = event.target.closest(
+        ".character-select-item"
+      );
+
+      if (!button) return;
+
+      const index = Number(
+        button.dataset.characterIndex
+      );
+
+      if (!Number.isInteger(index)) return;
+
+      changeCharacter(index);
+    });
+
+    /*
+      スクロール位置がリセットされないようにする。
+    */
+
+    characterList.addEventListener("scroll", () => {
+      normalizeScroll();
+    }, { passive: true });
+
+    /*
+      CSSのスクロールスナップを無効化する。
+      自動スクロール時に引っかかるのを防ぐ。
+    */
+
+    characterList.style.scrollSnapType = "none";
+    characterList.style.scrollBehavior = "auto";
+
+    /*
+      自動スクロール開始。
+    */
+
+    if (!reduceMotion.matches) {
+      animationFrame = window.requestAnimationFrame(
+        animateCarousel
+      );
+    }
 
   }
 
