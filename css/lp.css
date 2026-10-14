@@ -1,11 +1,872 @@
 /* =========================================================
-   CHARACTER SECTION
-   あてな！公式サイト
+   あてな！ OFFICIAL WEBSITE
+   Complete Landing Page Stylesheet
+   ========================================================= */
+
+/* =========================================================
+   01. BASE
+   ========================================================= */
+
+:root {
+  --atena-cyan: #21b8f5;
+  --atena-blue: #168fe5;
+  --atena-pink: #ff69ad;
+  --atena-purple: #8168e8;
+  --atena-navy: #173454;
+  --atena-text: #28445f;
+  --atena-muted: #69829a;
+  --atena-white: #ffffff;
+  --atena-border: #d8eaf5;
+  --atena-shadow: 0 18px 50px rgba(35, 92, 145, 0.10);
+}
+
+html {
+  scroll-behavior: smooth;
+  scroll-padding-top: 85px;
+}
+
+body.lp-page,
+body.lp-page * {
+  box-sizing: border-box;
+}
+
+body.lp-page {
+  margin: 0;
+  padding: 0;
+  min-width: 320px;
+  overflow-x: clip;
+  background: #ffffff;
+  color: var(--atena-text);
+  font-family:
+    -apple-system,
+    BlinkMacSystemFont,
+    "Hiragino Kaku Gothic ProN",
+    "Hiragino Sans",
+    "Yu Gothic",
+    Meiryo,
+    sans-serif;
+  font-size: 16px;
+  line-height: 1.8;
+  -webkit-font-smoothing: antialiased;
+}
+
+body.lp-page img {
+  max-width: 100%;
+}
+
+body.lp-page button,
+body.lp-page input {
+  font: inherit;
+}
+
+body.lp-page button {
+  -webkit-tap-highlight-color: transparent;
+}
+
+body.lp-page a {
+  color: inherit;
+}
+
+body.lp-page .lp-main {
+  width: 100%;
+  min-width: 0;
+  overflow: clip;
+}
+
+body.lp-page .skip-link {
+  position: fixed;
+  top: -100px;
+  left: 16px;
+  z-index: 9999;
+  padding: 12px 20px;
+  background: #ffffff;
+  color: #173454;
+  border-radius: 8px;
+}
+
+body.lp-page .skip-link:focus {
+  top: 12px;
+}
+
+/* =========================================================
+   02. HEADER
+   ========================================================= */
+
+body.lp-page .site-header {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 1000;
+
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+
+  width: 100%;
+  height: 76px;
+  padding: 0 4%;
+
+  background: rgba(255, 255, 255, 0.94);
+  border-bottom: 1px solid rgba(180, 215, 238, 0.55);
+  box-shadow: 0 5px 25px rgba(29, 82, 128, 0.07);
+  backdrop-filter: blur(18px);
+  -webkit-backdrop-filter: blur(18px);
+}
+
+body.lp-page .brand {
+  display: flex;
+  align-items: center;
+  flex: 0 0 auto;
+  width: 135px;
+  height: 100%;
+  text-decoration: none;
+}
+
+body.lp-page .brand img {
+  display: block;
+  width: 100%;
+  max-height: 65px;
+  object-fit: contain;
+}
+
+body.lp-page .site-nav {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  gap: clamp(12px, 1.7vw, 27px);
+  min-width: 0;
+}
+
+body.lp-page .site-nav a {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 44px;
+  color: #294664;
+  font-size: 12px;
+  font-weight: 800;
+  letter-spacing: 0.055em;
+  text-decoration: none;
+  white-space: nowrap;
+  transition: color 0.2s ease;
+}
+
+body.lp-page .site-nav a:hover {
+  color: var(--atena-blue);
+}
+
+body.lp-page .site-nav .nav-download {
+  padding: 0 18px;
+  border-radius: 999px;
+  background: linear-gradient(110deg, #22b8f4, #7a8df4);
+  color: #ffffff;
+}
+
+body.lp-page .site-nav .nav-download:hover {
+  color: #ffffff;
+  opacity: 0.85;
+}
+
+body.lp-page .menu-toggle {
+  display: none;
+}
+
+/* =========================================================
+   03. HERO
+   ========================================================= */
+
+body.lp-page .lp-hero {
+  position: relative;
+  isolation: isolate;
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+
+  width: 100%;
+  min-height: min(920px, 100svh);
+  padding: 100px 0 65px;
+
+  overflow: hidden;
+
+  background:
+    radial-gradient(
+      circle at 15% 25%,
+      rgba(117, 222, 255, 0.38),
+      transparent 38%
+    ),
+    radial-gradient(
+      circle at 90% 65%,
+      rgba(255, 163, 207, 0.30),
+      transparent 40%
+    ),
+    linear-gradient(180deg, #effaff 0%, #ffffff 100%);
+}
+
+body.lp-page .hero-glow {
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  pointer-events: none;
+}
+
+body.lp-page .lp-visual-wrap {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  width: min(100%, 1320px);
+  min-width: 0;
+  margin: 0 auto;
+  padding: 0 24px;
+}
+
+body.lp-page .lp-visual {
+  display: block;
+  width: 100%;
+  height: auto;
+  max-height: 650px;
+  object-fit: contain;
+  object-position: center;
+}
+
+body.lp-page .lp-logo {
+  position: absolute;
+  top: 3%;
+  left: 50%;
+  width: clamp(140px, 20vw, 310px);
+  max-height: 160px;
+  object-fit: contain;
+  transform: translateX(-50%);
+  filter: drop-shadow(0 8px 15px rgba(25, 90, 155, 0.12));
+}
+
+body.lp-page .hero-text {
+  position: relative;
+  z-index: 2;
+  width: min(100% - 40px, 900px);
+  margin: 20px auto 0;
+  text-align: center;
+}
+
+body.lp-page .eyebrow {
+  margin: 0 0 10px;
+  color: var(--atena-blue);
+  font-size: 12px;
+  font-weight: 900;
+  letter-spacing: 0.28em;
+}
+
+body.lp-page .lp-copy {
+  margin: 0;
+  color: var(--atena-navy);
+  font-size: clamp(28px, 4.6vw, 64px);
+  font-weight: 900;
+  line-height: 1.3;
+  letter-spacing: 0.04em;
+}
+
+body.lp-page .hero-sub {
+  margin: 14px 0 0;
+  color: #53718c;
+  font-size: clamp(13px, 1.5vw, 18px);
+  font-weight: 700;
+}
+
+body.lp-page .hero-scroll {
+  display: inline-flex;
+  align-items: center;
+  gap: 14px;
+  margin-top: 26px;
+  color: var(--atena-blue);
+  font-size: 11px;
+  font-weight: 900;
+  letter-spacing: 0.16em;
+  text-decoration: none;
+}
+
+body.lp-page .hero-scroll span {
+  font-size: 22px;
+}
+
+/* =========================================================
+   04. COMMON SECTION
+   ========================================================= */
+
+body.lp-page .section {
+  position: relative;
+  width: 100%;
+  padding: 110px 24px;
+  overflow: hidden;
+}
+
+body.lp-page .section-inner {
+  position: relative;
+  z-index: 1;
+  width: min(100%, 1160px);
+  min-width: 0;
+  margin: 0 auto;
+}
+
+body.lp-page .section-heading {
+  margin-bottom: 42px;
+  text-align: center;
+}
+
+body.lp-page .section-kicker {
+  margin: 0 0 8px;
+  color: var(--atena-blue);
+  font-size: 12px;
+  font-weight: 900;
+  letter-spacing: 0.24em;
+}
+
+body.lp-page .section-heading h2,
+body.lp-page .section-download h2 {
+  margin: 0;
+  color: var(--atena-navy);
+  font-size: clamp(36px, 5vw, 64px);
+  font-weight: 900;
+  line-height: 1.15;
+  letter-spacing: 0.045em;
+}
+
+body.lp-page .section-heading > p:last-child {
+  margin: 10px 0 0;
+  color: var(--atena-muted);
+  font-size: 14px;
+  font-weight: 700;
+}
+
+body.lp-page .section-intro {
+  max-width: 750px;
+  margin: 0 auto 40px;
+  color: #4c6984;
+  text-align: center;
+  line-height: 2;
+}
+
+body.lp-page .section-note {
+  margin: 32px 0 0;
+  color: #68849d;
+  font-size: 13px;
+  text-align: center;
+}
+
+/* =========================================================
+   05. NEWS
+   ========================================================= */
+
+body.lp-page .section-news {
+  padding-top: 85px;
+  padding-bottom: 85px;
+  background: #ffffff;
+}
+
+body.lp-page .news-card {
+  display: flex;
+  align-items: center;
+  gap: 24px;
+  width: min(100%, 820px);
+  margin: 0 auto;
+  padding: 24px 30px;
+
+  border: 1px solid var(--atena-border);
+  border-radius: 16px;
+  background: #f8fcff;
+  box-shadow: 0 10px 28px rgba(34, 97, 147, 0.05);
+}
+
+body.lp-page .news-tag {
+  flex: 0 0 auto;
+  padding: 5px 16px;
+  border-radius: 999px;
+  background: #ddf5ff;
+  color: #128fd7;
+  font-size: 11px;
+  font-weight: 900;
+  letter-spacing: 0.08em;
+}
+
+body.lp-page .news-card p {
+  margin: 0;
+  font-size: 14px;
+}
+
+/* =========================================================
+   06. ABOUT
+   ========================================================= */
+
+body.lp-page .section-about {
+  background:
+    radial-gradient(
+      circle at 90% 20%,
+      rgba(124, 210, 255, 0.18),
+      transparent 40%
+    ),
+    linear-gradient(135deg, #f4fbff, #f9f5ff);
+}
+
+body.lp-page .split-layout {
+  display: grid;
+  grid-template-columns: minmax(0, 1.1fr) minmax(0, 0.9fr);
+  align-items: center;
+  gap: 70px;
+}
+
+body.lp-page .section-about .section-heading {
+  text-align: left;
+}
+
+body.lp-page .section-about .lead {
+  margin: 0 0 25px;
+  color: #174c7d;
+  font-size: clamp(25px, 3vw, 39px);
+  font-weight: 900;
+  line-height: 1.6;
+}
+
+body.lp-page .section-about .split-layout > div:first-child > p:not(.lead) {
+  max-width: 600px;
+  margin: 0 0 18px;
+  line-height: 2.1;
+}
+
+body.lp-page .about-graphic {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 18px;
+
+  min-width: 0;
+  min-height: 370px;
+  padding: 35px 15px;
+
+  border: 1px solid #d4eaf9;
+  border-radius: 30px;
+
+  background:
+    radial-gradient(
+      circle at center,
+      rgba(106, 207, 255, 0.25),
+      transparent 65%
+    ),
+    rgba(255, 255, 255, 0.85);
+
+  box-shadow: var(--atena-shadow);
+}
+
+body.lp-page .about-graphic span {
+  color: var(--atena-blue);
+  font-size: 14px;
+  font-weight: 900;
+  letter-spacing: 0.25em;
+}
+
+body.lp-page .about-graphic strong {
+  color: #237fc5;
+  font-size: clamp(48px, 6vw, 90px);
+  font-weight: 900;
+  letter-spacing: 0.06em;
+  white-space: nowrap;
+}
+
+body.lp-page .about-graphic small {
+  color: #7396b4;
+  font-size: 11px;
+  font-weight: 800;
+  letter-spacing: 0.16em;
+  text-align: center;
+}
+
+/* =========================================================
+   07. GAME SYSTEM
+   ========================================================= */
+
+body.lp-page .section-system {
+  background: #ffffff;
+}
+
+body.lp-page .system-grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 24px;
+}
+
+body.lp-page .info-card {
+  min-width: 0;
+  padding: 32px 28px;
+  border: 1px solid #d9eaf5;
+  border-radius: 22px;
+  background: #f8fcff;
+  box-shadow: 0 10px 30px rgba(32, 91, 140, 0.05);
+}
+
+body.lp-page .card-number {
+  display: block;
+  margin-bottom: 12px;
+  color: #71c8f4;
+  font-size: 36px;
+  font-weight: 900;
+  line-height: 1;
+}
+
+body.lp-page .info-card h3 {
+  margin: 0 0 15px;
+  color: #1b4f7c;
+  font-size: 19px;
+  font-weight: 900;
+}
+
+body.lp-page .info-card p {
+  margin: 0;
+  font-size: 14px;
+  line-height: 1.9;
+}
+
+body.lp-page .judge-demo {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: center;
+  gap: 24px;
+
+  margin-top: 42px;
+  padding: 42px 30px;
+
+  border: 1px solid #cfe9fa;
+  border-radius: 26px;
+
+  background: linear-gradient(135deg, #effaff, #f6f4ff);
+}
+
+body.lp-page .judge-code {
+  display: flex;
+  gap: 12px;
+}
+
+body.lp-page .judge-code span {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  width: 70px;
+  height: 82px;
+
+  border: 2px solid #a8ddf8;
+  border-radius: 15px;
+  background: #ffffff;
+
+  color: #176da9;
+  font-size: 40px;
+  font-weight: 900;
+}
+
+body.lp-page .judge-arrow {
+  color: #56aee7;
+  font-size: 36px;
+  font-weight: 900;
+}
+
+body.lp-page .judge-result {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+body.lp-page .judge-result strong {
+  color: #176da9;
+  font-size: 28px;
+  font-weight: 900;
+  line-height: 1.3;
+}
+
+body.lp-page .judge-result em {
+  font-size: 17px;
+  font-style: normal;
+}
+
+body.lp-page .judge-note {
+  flex: 0 0 100%;
+  max-width: 700px;
+  margin: 10px auto 0;
+  color: #56738d;
+  font-size: 13px;
+  text-align: center;
+}
+
+body.lp-page .system-footnote {
+  margin: 28px 0 0;
+  color: #6b8399;
+  font-size: 13px;
+  text-align: center;
+}
+
+/* =========================================================
+   08. PERK SYSTEM
+   ========================================================= */
+
+body.lp-page .section-perk {
+  background:
+    radial-gradient(
+      circle at 15% 30%,
+      rgba(108, 214, 255, 0.22),
+      transparent 38%
+    ),
+    radial-gradient(
+      circle at 90% 80%,
+      rgba(181, 150, 255, 0.20),
+      transparent 42%
+    ),
+    linear-gradient(135deg, #f3fbff, #f6f3ff);
+}
+
+body.lp-page .perk-selector {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 28px;
+  margin-bottom: 30px;
+}
+
+body.lp-page .perk-category {
+  min-width: 0;
+}
+
+body.lp-page .perk-category h3 {
+  margin: 0 0 15px;
+  color: #477397;
+  font-size: 13px;
+  font-weight: 900;
+  letter-spacing: 0.12em;
+}
+
+body.lp-page .perk-tabs {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 12px;
+}
+
+body.lp-page .perk-tab {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+
+  min-width: 0;
+  min-height: 132px;
+  padding: 14px 8px;
+
+  border: 1px solid #cde5f5;
+  border-radius: 18px;
+
+  background: rgba(255, 255, 255, 0.90);
+  color: #41688a;
+
+  cursor: pointer;
+
+  transition:
+    transform 0.2s ease,
+    border-color 0.2s ease,
+    box-shadow 0.2s ease;
+}
+
+body.lp-page .perk-tab img {
+  display: block;
+  width: 76px;
+  height: 76px;
+  object-fit: contain;
+}
+
+body.lp-page .perk-tab span {
+  font-size: 11px;
+  font-weight: 900;
+  letter-spacing: 0.04em;
+  overflow-wrap: anywhere;
+}
+
+body.lp-page .perk-tab.is-active {
+  border: 2px solid #31aafa;
+  background: #ffffff;
+  box-shadow:
+    0 0 0 3px rgba(40, 171, 250, 0.10),
+    0 12px 26px rgba(34, 123, 191, 0.12);
+}
+
+body.lp-page .perk-detail {
+  display: grid;
+  grid-template-columns: minmax(0, 300px) minmax(0, 1fr);
+  align-items: center;
+  gap: 50px;
+
+  min-height: 340px;
+  padding: 38px 55px;
+
+  border: 1px solid #d2e9f8;
+  border-radius: 30px;
+
+  background: rgba(255, 255, 255, 0.93);
+  box-shadow: var(--atena-shadow);
+}
+
+body.lp-page .perk-emblem {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 0;
+}
+
+body.lp-page .perk-emblem img {
+  display: block;
+  width: min(100%, 250px);
+  max-height: 260px;
+  object-fit: contain;
+  filter: drop-shadow(0 12px 20px rgba(43, 107, 166, 0.12));
+}
+
+body.lp-page .perk-detail-text {
+  min-width: 0;
+}
+
+body.lp-page .perk-type {
+  margin: 0 0 8px;
+  color: var(--atena-blue);
+  font-size: 12px;
+  font-weight: 900;
+  letter-spacing: 0.16em;
+}
+
+body.lp-page #perk-name {
+  margin: 0 0 10px;
+  color: #183d65;
+  font-size: clamp(36px, 5vw, 66px);
+  font-weight: 900;
+  line-height: 1.1;
+  overflow-wrap: anywhere;
+}
+
+body.lp-page .perk-tagline {
+  margin: 0 0 18px;
+  color: #248cce;
+  font-size: clamp(17px, 2.2vw, 24px);
+  font-weight: 900;
+}
+
+body.lp-page #perk-description {
+  margin: 0;
+  color: #536e87;
+  font-size: 15px;
+  line-height: 2;
+}
+
+/* =========================================================
+   09. GAME MODE
+   ========================================================= */
+
+body.lp-page .section-mode {
+  background: #ffffff;
+}
+
+body.lp-page .mode-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 26px;
+}
+
+body.lp-page .mode-card {
+  position: relative;
+  min-width: 0;
+  min-height: 330px;
+  padding: 42px 38px;
+  overflow: hidden;
+
+  border: 1px solid #d5e8f5;
+  border-radius: 28px;
+  box-shadow: var(--atena-shadow);
+}
+
+body.lp-page .mode-card.ranked {
+  background:
+    radial-gradient(
+      circle at 90% 15%,
+      rgba(255, 161, 207, 0.30),
+      transparent 50%
+    ),
+    linear-gradient(135deg, #fff8fc, #f5f0ff);
+}
+
+body.lp-page .mode-card.friend {
+  background:
+    radial-gradient(
+      circle at 90% 15%,
+      rgba(100, 209, 255, 0.30),
+      transparent 50%
+    ),
+    linear-gradient(135deg, #f3fbff, #eef4ff);
+}
+
+body.lp-page .mode-label {
+  margin: 0 0 10px;
+  color: #6485a4;
+  font-size: 12px;
+  font-weight: 900;
+  letter-spacing: 0.17em;
+}
+
+body.lp-page .mode-card h3 {
+  margin: 0 0 18px;
+  color: #173d65;
+  font-size: clamp(27px, 3vw, 40px);
+  font-weight: 900;
+  line-height: 1.2;
+}
+
+body.lp-page .mode-card > p:not(.mode-label) {
+  max-width: 390px;
+  margin: 0 0 25px;
+  font-size: 15px;
+  line-height: 1.9;
+}
+
+body.lp-page .rank-list {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+body.lp-page .rank-list span {
+  padding: 6px 12px;
+  border: 1px solid rgba(123, 105, 187, 0.18);
+  border-radius: 999px;
+  background: rgba(255, 255, 255, 0.75);
+  color: #645d98;
+  font-size: 10px;
+  font-weight: 900;
+}
+
+body.lp-page .friend-decoration {
+  margin-top: 35px;
+  color: #327db8;
+  font-size: clamp(20px, 2.8vw, 34px);
+  font-weight: 900;
+  letter-spacing: 0.06em;
+}
+
+body.lp-page .friend-decoration span {
+  display: inline-block;
+  margin: 0 10px;
+  color: #f56aa6;
+}
+
+/* =========================================================
+   10. CHARACTER SECTION
    ========================================================= */
 
 body.lp-page .section-character {
-  position: relative;
-  overflow: hidden;
   background:
     radial-gradient(
       circle at 75% 40%,
@@ -20,19 +881,13 @@ body.lp-page .section-character {
     );
 }
 
-/* キャラクター全体レイアウト */
-
 body.lp-page .character-layout {
   display: grid;
   grid-template-columns: 270px minmax(0, 1fr);
-  gap: 36px;
   align-items: stretch;
+  gap: 36px;
   margin-top: 48px;
 }
-
-/* =========================================================
-   CHARACTER SELECT
-   ========================================================= */
 
 body.lp-page .character-select-area {
   min-width: 0;
@@ -46,22 +901,18 @@ body.lp-page .character-select-title {
   letter-spacing: 0.18em;
 }
 
-/* キャラクター一覧 */
-
 body.lp-page .character-list {
   display: grid;
   grid-template-columns: repeat(3, minmax(0, 1fr));
   gap: 10px;
 }
 
-/* 選択ボタン */
-
 body.lp-page .character-select-item {
-  position: relative;
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: flex-end;
+
   min-width: 0;
   height: 112px;
   padding: 6px;
@@ -69,7 +920,6 @@ body.lp-page .character-select-item {
 
   border: 1px solid #cde8fa;
   border-radius: 14px;
-
   background: rgba(255, 255, 255, 0.86);
 
   cursor: pointer;
@@ -77,11 +927,8 @@ body.lp-page .character-select-item {
   transition:
     transform 0.25s ease,
     border-color 0.25s ease,
-    box-shadow 0.25s ease,
-    background 0.25s ease;
+    box-shadow 0.25s ease;
 }
-
-/* 小さいキャラクター画像 */
 
 body.lp-page .character-select-item img {
   display: block;
@@ -91,44 +938,21 @@ body.lp-page .character-select-item img {
   object-position: center bottom;
 }
 
-/* キャラクター名 */
-
 body.lp-page .character-select-item span {
   display: block;
   width: 100%;
   margin-top: 4px;
-
   color: #41658a;
   font-size: 10px;
   font-weight: 800;
   line-height: 1.3;
   text-align: center;
-
   overflow-wrap: anywhere;
 }
 
-/* ホバー */
-
-@media (hover: hover) {
-  body.lp-page .character-select-item:hover {
-    transform: translateY(-4px);
-    border-color: #48b9ff;
-    box-shadow: 0 8px 22px rgba(40, 145, 225, 0.16);
-  }
-}
-
-/* 選択中 */
-
 body.lp-page .character-select-item.is-active {
   border: 2px solid #1a9cff;
-
-  background:
-    linear-gradient(
-      145deg,
-      #ffffff 0%,
-      #d9f3ff 100%
-    );
-
+  background: linear-gradient(145deg, #ffffff, #d9f3ff);
   box-shadow:
     0 0 0 3px rgba(35, 164, 255, 0.12),
     0 10px 25px rgba(20, 133, 223, 0.16);
@@ -138,27 +962,14 @@ body.lp-page .character-select-item.is-active span {
   color: #0789e8;
 }
 
-/* キーボード操作時 */
-
-body.lp-page .character-select-item:focus-visible {
-  outline: 3px solid #168fff;
-  outline-offset: 3px;
-}
-
-/* =========================================================
-   CHARACTER SHOWCASE
-   ========================================================= */
-
 body.lp-page .character-showcase {
   position: relative;
-
   display: grid;
-  grid-template-columns: minmax(0, 1fr) 260px;
+  grid-template-columns: minmax(0, 1fr) 240px;
   align-items: center;
 
   min-width: 0;
   min-height: 620px;
-
   overflow: hidden;
 
   border: 1px solid rgba(183, 220, 247, 0.8);
@@ -176,51 +987,31 @@ body.lp-page .character-showcase {
       rgba(229, 244, 255, 0.94)
     );
 
-  box-shadow:
-    0 24px 60px rgba(46, 112, 166, 0.10);
+  box-shadow: 0 24px 60px rgba(46, 112, 166, 0.10);
 }
 
-/* 背景の装飾 */
-
-body.lp-page .character-showcase::before {
-  content: "";
-  position: absolute;
-
-  width: 460px;
-  height: 460px;
-
-  left: 14%;
-  top: 50%;
-
-  transform: translateY(-50%);
-
-  border: 1px solid rgba(56, 166, 242, 0.18);
-  border-radius: 50%;
-
-  pointer-events: none;
-}
-
+body.lp-page .character-showcase::before,
 body.lp-page .character-showcase::after {
   content: "";
   position: absolute;
-
-  width: 340px;
-  height: 340px;
-
-  left: calc(14% + 60px);
   top: 50%;
-
-  transform: translateY(-50%);
-
-  border: 1px dashed rgba(56, 166, 242, 0.18);
+  left: 35%;
   border-radius: 50%;
-
+  transform: translate(-50%, -50%);
   pointer-events: none;
 }
 
-/* =========================================================
-   CHARACTER ART
-   ========================================================= */
+body.lp-page .character-showcase::before {
+  width: 430px;
+  height: 430px;
+  border: 1px solid rgba(56, 166, 242, 0.18);
+}
+
+body.lp-page .character-showcase::after {
+  width: 310px;
+  height: 310px;
+  border: 1px dashed rgba(56, 166, 242, 0.18);
+}
 
 body.lp-page .character-art {
   position: relative;
@@ -232,51 +1023,37 @@ body.lp-page .character-art {
 
   min-width: 0;
   height: 620px;
-
   overflow: hidden;
 }
 
-/* 全身立ち絵 */
-
 body.lp-page .character-main-image {
   display: block;
-
   width: 100%;
   height: 100%;
-
   object-fit: contain;
   object-position: center bottom;
 
-  filter: drop-shadow(
-    0 16px 18px rgba(24, 74, 115, 0.15)
-  );
+  filter: drop-shadow(0 16px 18px rgba(24, 74, 115, 0.15));
 
   transition:
     opacity 0.25s ease,
     transform 0.25s ease;
 }
 
-/* キャラクター切り替え時の演出 */
-
 body.lp-page .character-main-image.is-changing {
   opacity: 0;
   transform: translateY(14px);
 }
 
-/* =========================================================
-   CHARACTER INFORMATION
-   ========================================================= */
-
 body.lp-page .character-info {
   position: relative;
   z-index: 2;
-
-  padding: 30px 28px 30px 0;
+  min-width: 0;
+  padding: 30px 22px 30px 0;
 }
 
 body.lp-page .character-info-label {
   margin: 0 0 18px;
-
   color: #168fe5;
   font-size: 12px;
   font-weight: 900;
@@ -285,30 +1062,20 @@ body.lp-page .character-info-label {
 
 body.lp-page .character-count {
   margin: 0 0 8px;
-
   color: #7a9bb7;
   font-size: 14px;
   font-weight: 800;
   letter-spacing: 0.12em;
 }
 
-/* キャラクター名 */
-
 body.lp-page #character-name {
   margin: 0;
-
   color: #16385e;
-
-  font-size: clamp(30px, 3.2vw, 52px);
+  font-size: clamp(26px, 3vw, 46px);
   font-weight: 900;
-  line-height: 1.15;
-
+  line-height: 1.2;
   overflow-wrap: anywhere;
 }
-
-/* =========================================================
-   CHARACTER CONTROLS
-   ========================================================= */
 
 body.lp-page .character-controls {
   display: flex;
@@ -326,7 +1093,6 @@ body.lp-page .character-controls button {
 
   border: 1px solid #b8dff8;
   border-radius: 50%;
-
   background: #ffffff;
 
   color: #168fe5;
@@ -338,32 +1104,374 @@ body.lp-page .character-controls button {
   transition:
     transform 0.25s ease,
     background 0.25s ease,
-    color 0.25s ease,
-    box-shadow 0.25s ease;
-}
-
-@media (hover: hover) {
-  body.lp-page .character-controls button:hover {
-    transform: translateY(-3px);
-
-    background: #159bf0;
-    color: #ffffff;
-
-    box-shadow:
-      0 10px 24px rgba(21, 155, 240, 0.25);
-  }
-}
-
-body.lp-page .character-controls button:focus-visible {
-  outline: 3px solid #168fff;
-  outline-offset: 3px;
+    color 0.25s ease;
 }
 
 /* =========================================================
-   TABLET
+   11. GALLERY
+   ========================================================= */
+
+body.lp-page .section-gallery {
+  background: #ffffff;
+}
+
+body.lp-page .gallery-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 26px;
+}
+
+body.lp-page .gallery-item {
+  min-width: 0;
+  margin: 0;
+  overflow: hidden;
+  border: 1px solid #d9eaf5;
+  border-radius: 24px;
+  background: #f6fbff;
+  box-shadow: var(--atena-shadow);
+}
+
+body.lp-page .gallery-item img {
+  display: block;
+  width: 100%;
+  height: 300px;
+  object-fit: cover;
+}
+
+body.lp-page .gallery-item figcaption {
+  padding: 18px 24px;
+  color: #557b9d;
+  font-size: 12px;
+  font-weight: 900;
+  letter-spacing: 0.12em;
+}
+
+body.lp-page .gallery-placeholder {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+
+  min-height: 360px;
+  padding: 30px;
+
+  border: 1px dashed #a9d9f5;
+  border-radius: 24px;
+
+  background: linear-gradient(135deg, #f2faff, #f6f2ff);
+  text-align: center;
+}
+
+body.lp-page .gallery-placeholder span {
+  color: #5a9dcc;
+  font-size: clamp(18px, 2vw, 25px);
+  font-weight: 900;
+  letter-spacing: 0.12em;
+}
+
+body.lp-page .gallery-placeholder p {
+  margin: 15px 0 0;
+  color: #7893aa;
+  font-size: 13px;
+}
+
+/* =========================================================
+   12. FAQ
+   ========================================================= */
+
+body.lp-page .section-faq {
+  background: linear-gradient(135deg, #f4fbff, #f7f5ff);
+}
+
+body.lp-page .faq-list {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+  width: min(100%, 860px);
+  margin: 0 auto;
+}
+
+body.lp-page .faq-list details {
+  border: 1px solid #d5e8f5;
+  border-radius: 15px;
+  background: #ffffff;
+  box-shadow: 0 8px 20px rgba(30, 90, 140, 0.04);
+}
+
+body.lp-page .faq-list summary {
+  position: relative;
+  padding: 23px 55px 23px 25px;
+  color: #274b6c;
+  font-size: 15px;
+  font-weight: 800;
+  cursor: pointer;
+  list-style: none;
+}
+
+body.lp-page .faq-list summary::-webkit-details-marker {
+  display: none;
+}
+
+body.lp-page .faq-list summary::after {
+  content: "+";
+  position: absolute;
+  top: 50%;
+  right: 25px;
+  color: var(--atena-blue);
+  font-size: 25px;
+  line-height: 1;
+  transform: translateY(-50%);
+}
+
+body.lp-page .faq-list details[open] summary::after {
+  content: "−";
+}
+
+body.lp-page .faq-list details p {
+  margin: 0;
+  padding: 0 25px 24px;
+  color: #607b94;
+  font-size: 14px;
+  line-height: 2;
+}
+
+/* =========================================================
+   13. DOWNLOAD
+   ========================================================= */
+
+body.lp-page .section-download {
+  background:
+    radial-gradient(
+      circle at 20% 20%,
+      rgba(117, 219, 255, 0.30),
+      transparent 40%
+    ),
+    radial-gradient(
+      circle at 85% 75%,
+      rgba(255, 163, 208, 0.25),
+      transparent 40%
+    ),
+    linear-gradient(135deg, #eaf9ff, #f4efff);
+
+  text-align: center;
+}
+
+body.lp-page .section-download .section-kicker {
+  margin-bottom: 10px;
+}
+
+body.lp-page .download-logo {
+  display: block;
+  width: min(280px, 70%);
+  max-height: 180px;
+  margin: 32px auto 12px;
+  object-fit: contain;
+}
+
+body.lp-page .section-download .section-inner > p:not(.section-kicker) {
+  color: #5b7a96;
+  font-weight: 700;
+}
+
+body.lp-page .lp-download {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 14px;
+  margin-top: 28px;
+}
+
+body.lp-page .lp-store {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: center;
+
+  min-width: 200px;
+  min-height: 65px;
+  padding: 10px 22px;
+
+  border-radius: 13px;
+  background: #172e47;
+  color: #ffffff;
+  text-align: left;
+}
+
+body.lp-page .lp-store-small {
+  font-size: 10px;
+  line-height: 1.2;
+}
+
+body.lp-page .lp-store-title {
+  font-size: 25px;
+  font-weight: 700;
+  line-height: 1.3;
+}
+
+body.lp-page .lp-soon {
+  margin: 0;
+  color: #3879aa;
+  font-size: 14px;
+  font-weight: 900;
+  letter-spacing: 0.20em;
+}
+
+/* =========================================================
+   14. FOOTER
+   ========================================================= */
+
+body.lp-page .lp-footer {
+  padding: 42px 24px 30px;
+  background: #152b45;
+  color: #ffffff;
+  text-align: center;
+}
+
+body.lp-page .lp-footer nav {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: center;
+  gap: 15px 30px;
+  margin-bottom: 24px;
+}
+
+body.lp-page .lp-footer nav a {
+  color: #dcecf9;
+  font-size: 13px;
+  text-decoration: none;
+}
+
+body.lp-page .lp-footer nav a:hover {
+  text-decoration: underline;
+}
+
+body.lp-page .lp-footer small {
+  color: #a6bed3;
+  font-size: 11px;
+  letter-spacing: 0.08em;
+}
+
+/* =========================================================
+   15. HOVER & FOCUS
+   ========================================================= */
+
+@media (hover: hover) {
+  body.lp-page .perk-tab:hover,
+  body.lp-page .character-select-item:hover {
+    transform: translateY(-4px);
+    border-color: #48b9ff;
+    box-shadow: 0 8px 22px rgba(40, 145, 225, 0.16);
+  }
+
+  body.lp-page .character-controls button:hover {
+    transform: translateY(-3px);
+    background: #159bf0;
+    color: #ffffff;
+  }
+}
+
+body.lp-page a:focus-visible,
+body.lp-page button:focus-visible,
+body.lp-page summary:focus-visible {
+  outline: 3px solid #168fff;
+  outline-offset: 4px;
+}
+
+/* =========================================================
+   16. TABLET / MOBILE NAVIGATION
    ========================================================= */
 
 @media (max-width: 1100px) {
+
+  body.lp-page .site-header {
+    height: 70px;
+    padding: 0 22px;
+  }
+
+  body.lp-page .brand {
+    width: 120px;
+  }
+
+  body.lp-page .menu-toggle {
+    position: relative;
+    z-index: 1002;
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 6px;
+
+    width: 46px;
+    height: 46px;
+    padding: 8px;
+
+    border: 1px solid #d5e8f5;
+    border-radius: 12px;
+    background: #ffffff;
+
+    cursor: pointer;
+  }
+
+  body.lp-page .menu-toggle span {
+    display: block;
+    width: 23px;
+    height: 2px;
+    border-radius: 2px;
+    background: #247db7;
+    transition: transform 0.2s ease, opacity 0.2s ease;
+  }
+
+  body.lp-page .menu-toggle.is-open span:nth-child(1) {
+    transform: translateY(8px) rotate(45deg);
+  }
+
+  body.lp-page .menu-toggle.is-open span:nth-child(2) {
+    opacity: 0;
+  }
+
+  body.lp-page .menu-toggle.is-open span:nth-child(3) {
+    transform: translateY(-8px) rotate(-45deg);
+  }
+
+  body.lp-page .site-nav {
+    position: absolute;
+    top: 70px;
+    left: 0;
+    right: 0;
+    z-index: 1001;
+
+    display: none;
+    flex-direction: column;
+    align-items: stretch;
+    gap: 0;
+
+    max-height: calc(100svh - 70px);
+    padding: 12px 24px 24px;
+    overflow-y: auto;
+
+    border-bottom: 1px solid #d5e8f5;
+    background: rgba(255, 255, 255, 0.98);
+    box-shadow: 0 20px 35px rgba(24, 74, 118, 0.10);
+  }
+
+  body.lp-page .site-nav.is-open {
+    display: flex;
+  }
+
+  body.lp-page .site-nav a {
+    justify-content: flex-start;
+    min-height: 48px;
+    border-bottom: 1px solid #edf3f8;
+    font-size: 13px;
+  }
+
+  body.lp-page .site-nav .nav-download {
+    justify-content: center;
+    margin-top: 14px;
+    border-bottom: none;
+  }
 
   body.lp-page .character-layout {
     grid-template-columns: 220px minmax(0, 1fr);
@@ -379,7 +1487,7 @@ body.lp-page .character-controls button:focus-visible {
   }
 
   body.lp-page .character-showcase {
-    grid-template-columns: minmax(0, 1fr) 200px;
+    grid-template-columns: minmax(0, 1fr) 180px;
     min-height: 540px;
   }
 
@@ -388,16 +1496,216 @@ body.lp-page .character-controls button:focus-visible {
   }
 
   body.lp-page .character-info {
-    padding-right: 18px;
+    padding-right: 16px;
+  }
+
+  body.lp-page .character-showcase::before {
+    width: 340px;
+    height: 340px;
+  }
+
+  body.lp-page .character-showcase::after {
+    width: 250px;
+    height: 250px;
   }
 
 }
 
 /* =========================================================
-   MOBILE
+   17. MOBILE
    ========================================================= */
 
 @media (max-width: 767px) {
+
+  html {
+    scroll-padding-top: 70px;
+  }
+
+  body.lp-page .section {
+    padding: 76px 18px;
+  }
+
+  body.lp-page .section-heading {
+    margin-bottom: 30px;
+  }
+
+  body.lp-page .section-heading h2,
+  body.lp-page .section-download h2 {
+    font-size: clamp(32px, 9vw, 46px);
+  }
+
+  body.lp-page .section-intro {
+    margin-bottom: 30px;
+    font-size: 14px;
+    text-align: left;
+  }
+
+  /* HERO */
+
+  body.lp-page .lp-hero {
+    min-height: auto;
+    padding: 100px 0 75px;
+  }
+
+  body.lp-page .lp-visual-wrap {
+    padding: 0 8px;
+  }
+
+  body.lp-page .lp-visual {
+    width: 100%;
+    max-height: 520px;
+  }
+
+  body.lp-page .lp-logo {
+    top: 0;
+    width: clamp(130px, 38vw, 220px);
+  }
+
+  body.lp-page .hero-text {
+    margin-top: 18px;
+  }
+
+  body.lp-page .lp-copy {
+    font-size: clamp(25px, 7vw, 39px);
+  }
+
+  body.lp-page .hero-sub {
+    font-size: 13px;
+  }
+
+  /* NEWS */
+
+  body.lp-page .news-card {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 12px;
+    padding: 22px;
+  }
+
+  /* ABOUT */
+
+  body.lp-page .split-layout {
+    grid-template-columns: 1fr;
+    gap: 30px;
+  }
+
+  body.lp-page .section-about .section-heading {
+    text-align: center;
+  }
+
+  body.lp-page .section-about .lead {
+    font-size: 27px;
+  }
+
+  body.lp-page .about-graphic {
+    min-height: 260px;
+  }
+
+  body.lp-page .about-graphic strong {
+    font-size: clamp(48px, 14vw, 72px);
+  }
+
+  /* SYSTEM */
+
+  body.lp-page .system-grid {
+    grid-template-columns: 1fr;
+    gap: 15px;
+  }
+
+  body.lp-page .info-card {
+    padding: 26px;
+  }
+
+  body.lp-page .judge-demo {
+    gap: 15px;
+    padding: 30px 15px;
+  }
+
+  body.lp-page .judge-code {
+    gap: 6px;
+  }
+
+  body.lp-page .judge-code span {
+    width: 46px;
+    height: 60px;
+    font-size: 29px;
+  }
+
+  body.lp-page .judge-arrow {
+    font-size: 24px;
+  }
+
+  body.lp-page .judge-result strong {
+    font-size: 21px;
+  }
+
+  body.lp-page .judge-result em {
+    font-size: 13px;
+  }
+
+  body.lp-page .judge-note {
+    font-size: 12px;
+  }
+
+  /* PERK */
+
+  body.lp-page .perk-selector {
+    grid-template-columns: 1fr;
+    gap: 24px;
+  }
+
+  body.lp-page .perk-tabs {
+    gap: 9px;
+  }
+
+  body.lp-page .perk-tab {
+    min-height: 112px;
+    padding: 10px 5px;
+  }
+
+  body.lp-page .perk-tab img {
+    width: 65px;
+    height: 65px;
+  }
+
+  body.lp-page .perk-tab span {
+    font-size: 10px;
+  }
+
+  body.lp-page .perk-detail {
+    grid-template-columns: 1fr;
+    gap: 15px;
+    padding: 30px 22px;
+    text-align: center;
+  }
+
+  body.lp-page .perk-emblem img {
+    width: 175px;
+    height: 175px;
+  }
+
+  body.lp-page #perk-name {
+    font-size: clamp(35px, 10vw, 52px);
+  }
+
+  body.lp-page #perk-description {
+    font-size: 14px;
+    text-align: left;
+  }
+
+  /* GAME MODE */
+
+  body.lp-page .mode-grid {
+    grid-template-columns: 1fr;
+    gap: 18px;
+  }
+
+  body.lp-page .mode-card {
+    min-height: 290px;
+    padding: 32px 25px;
+  }
+
+  /* CHARACTER */
 
   body.lp-page .character-layout {
     display: flex;
@@ -406,33 +1714,28 @@ body.lp-page .character-controls button:focus-visible {
     margin-top: 32px;
   }
 
-  /* メイン表示を上に配置 */
-
   body.lp-page .character-showcase {
     display: flex;
     flex-direction: column;
-
     min-height: 0;
     border-radius: 24px;
+  }
+
+  body.lp-page .character-showcase::before,
+  body.lp-page .character-showcase::after {
+    top: 38%;
+    left: 50%;
   }
 
   body.lp-page .character-showcase::before {
     width: 300px;
     height: 300px;
-    left: 50%;
-    top: 42%;
-    transform: translate(-50%, -50%);
   }
 
   body.lp-page .character-showcase::after {
     width: 220px;
     height: 220px;
-    left: 50%;
-    top: 42%;
-    transform: translate(-50%, -50%);
   }
-
-  /* 立ち絵 */
 
   body.lp-page .character-art {
     width: 100%;
@@ -443,8 +1746,6 @@ body.lp-page .character-controls button:focus-visible {
     width: 100%;
     height: 100%;
   }
-
-  /* 名前と操作 */
 
   body.lp-page .character-info {
     width: 100%;
@@ -475,8 +1776,6 @@ body.lp-page .character-controls button:focus-visible {
     height: 54px;
   }
 
-  /* 選択一覧 */
-
   body.lp-page .character-select-title {
     margin-bottom: 14px;
     text-align: center;
@@ -496,10 +1795,38 @@ body.lp-page .character-controls button:focus-visible {
     height: 76px;
   }
 
+  /* GALLERY */
+
+  body.lp-page .gallery-grid {
+    grid-template-columns: 1fr;
+    gap: 18px;
+  }
+
+  body.lp-page .gallery-item img {
+    height: auto;
+    max-height: 350px;
+    object-fit: cover;
+  }
+
+  body.lp-page .gallery-placeholder {
+    min-height: 220px;
+  }
+
+  /* FAQ */
+
+  body.lp-page .faq-list summary {
+    padding: 20px 50px 20px 20px;
+    font-size: 14px;
+  }
+
+  body.lp-page .faq-list details p {
+    padding: 0 20px 22px;
+  }
+
 }
 
 /* =========================================================
-   SMALL MOBILE
+   18. SMALL MOBILE
    ========================================================= */
 
 @media (max-width: 390px) {
@@ -520,18 +1847,33 @@ body.lp-page .character-controls button:focus-visible {
     height: 72px;
   }
 
+  body.lp-page .perk-tab img {
+    width: 55px;
+    height: 55px;
+  }
+
+  body.lp-page .judge-code span {
+    width: 40px;
+    height: 55px;
+  }
+
 }
 
 /* =========================================================
-   REDUCED MOTION
+   19. REDUCED MOTION
    ========================================================= */
 
 @media (prefers-reduced-motion: reduce) {
 
-  body.lp-page .character-select-item,
-  body.lp-page .character-main-image,
-  body.lp-page .character-controls button {
-    transition: none;
+  html {
+    scroll-behavior: auto;
+  }
+
+  body.lp-page *,
+  body.lp-page *::before,
+  body.lp-page *::after {
+    animation-duration: 0.01ms !important;
+    transition-duration: 0.01ms !important;
   }
 
 }
