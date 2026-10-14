@@ -21,14 +21,17 @@
   <meta property="og:type" content="website">
   <meta property="og:locale" content="ja_JP">
   <meta property="og:title" content="あてな！｜公式サイト">
+
   <meta
     property="og:description"
     content="3桁の数字を読み合え。iPhone向け対戦型ロジックゲーム。"
   >
+
   <meta
     property="og:url"
     content="https://tkapplab22-lab.github.io/atena-official/"
   >
+
   <meta
     property="og:image"
     content="https://tkapplab22-lab.github.io/atena-official/HP.png"
@@ -477,7 +480,11 @@
 
     <!-- CHARACTER -->
 
-    <section class="section section-character" id="character" aria-labelledby="character-title">
+    <section
+      class="section section-character"
+      id="character"
+      aria-labelledby="character-title"
+    >
 
       <div class="section-inner">
 
@@ -488,39 +495,251 @@
         </div>
 
         <p class="section-intro">
-          個性豊かなキャラクターたち。
-          立ち絵とプロフィールは順次公開予定です。
+          『あてな！』に登場するキャラクターたち。
+          気になるキャラクターを選んで、ビジュアルをチェック。
         </p>
 
-        <div class="character-showcase">
+        <div class="character-layout">
 
-          <div class="character-art" aria-hidden="true">
-            <span>CHARACTER<br>VISUAL</span>
+          <!-- CHARACTER SELECT -->
+
+          <div class="character-select-area">
+
+            <p class="character-select-title">
+              SELECT CHARACTER
+            </p>
+
+            <div
+              class="character-list"
+              id="character-list"
+              role="group"
+              aria-label="キャラクター選択"
+            >
+
+              <button
+                class="character-select-item is-active"
+                type="button"
+                data-character="0"
+                data-name="ISA"
+                data-image="images/characters/isa.png"
+                aria-pressed="true"
+                aria-label="ISAを表示"
+              >
+                <img src="images/characters/isa.png" alt="" loading="lazy">
+                <span>ISA</span>
+              </button>
+
+              <button
+                class="character-select-item"
+                type="button"
+                data-character="1"
+                data-name="MAHI"
+                data-image="images/characters/mahi.png"
+                aria-pressed="false"
+                aria-label="MAHIを表示"
+              >
+                <img src="images/characters/mahi.png" alt="" loading="lazy">
+                <span>MAHI</span>
+              </button>
+
+              <button
+                class="character-select-item"
+                type="button"
+                data-character="2"
+                data-name="KAZUKI"
+                data-image="images/characters/kazuki.png"
+                aria-pressed="false"
+                aria-label="KAZUKIを表示"
+              >
+                <img src="images/characters/kazuki.png" alt="" loading="lazy">
+                <span>KAZUKI</span>
+              </button>
+
+              <button
+                class="character-select-item"
+                type="button"
+                data-character="3"
+                data-name="OIRAN"
+                data-image="images/characters/oiran.png"
+                aria-pressed="false"
+                aria-label="OIRANを表示"
+              >
+                <img src="images/characters/oiran.png" alt="" loading="lazy">
+                <span>OIRAN</span>
+              </button>
+
+              <button
+                class="character-select-item"
+                type="button"
+                data-character="4"
+                data-name="AKARI"
+                data-image="images/characters/akari.png"
+                aria-pressed="false"
+                aria-label="AKARIを表示"
+              >
+                <img src="images/characters/akari.png" alt="" loading="lazy">
+                <span>AKARI</span>
+              </button>
+
+              <button
+                class="character-select-item"
+                type="button"
+                data-character="5"
+                data-name="アイアギス"
+                data-image="images/characters/アイアギス.png"
+                aria-pressed="false"
+                aria-label="アイアギスを表示"
+              >
+                <img src="images/characters/アイアギス.png" alt="" loading="lazy">
+                <span>アイアギス</span>
+              </button>
+
+              <button
+                class="character-select-item"
+                type="button"
+                data-character="6"
+                data-name="シェヘラザード"
+                data-image="images/characters/シェヘラザード.png"
+                aria-pressed="false"
+                aria-label="シェヘラザードを表示"
+              >
+                <img src="images/characters/シェヘラザード.png" alt="" loading="lazy">
+                <span>シェヘラザード</span>
+              </button>
+
+              <button
+                class="character-select-item"
+                type="button"
+                data-character="7"
+                data-name="バステト"
+                data-image="images/characters/バステト.png"
+                aria-pressed="false"
+                aria-label="バステトを表示"
+              >
+                <img src="images/characters/バステト.png" alt="" loading="lazy">
+                <span>バステト</span>
+              </button>
+
+              <button
+                class="character-select-item"
+                type="button"
+                data-character="8"
+                data-name="ポセイドン"
+                data-image="images/characters/ポセイドン.png"
+                aria-pressed="false"
+                aria-label="ポセイドンを表示"
+              >
+                <img src="images/characters/ポセイドン.png" alt="" loading="lazy">
+                <span>ポセイドン</span>
+              </button>
+
+              <button
+                class="character-select-item"
+                type="button"
+                data-character="9"
+                data-name="ロキ"
+                data-image="images/characters/ロキ.png"
+                aria-pressed="false"
+                aria-label="ロキを表示"
+              >
+                <img src="images/characters/ロキ.png" alt="" loading="lazy">
+                <span>ロキ</span>
+              </button>
+
+              <button
+                class="character-select-item"
+                type="button"
+                data-character="10"
+                data-name="妲己"
+                data-image="images/characters/妲己.png"
+                aria-pressed="false"
+                aria-label="妲己を表示"
+              >
+                <img src="images/characters/妲己.png" alt="" loading="lazy">
+                <span>妲己</span>
+              </button>
+
+              <button
+                class="character-select-item"
+                type="button"
+                data-character="11"
+                data-name="哪吒"
+                data-image="images/characters/哪吒.png"
+                aria-pressed="false"
+                aria-label="哪吒を表示"
+              >
+                <img src="images/characters/哪吒.png" alt="" loading="lazy">
+                <span>哪吒</span>
+              </button>
+
+              <button
+                class="character-select-item"
+                type="button"
+                data-character="12"
+                data-name="ATENA"
+                data-image="images/characters/atena.png"
+                aria-pressed="false"
+                aria-label="ATENAを表示"
+              >
+                <img src="images/characters/atena.png" alt="" loading="lazy">
+                <span>ATENA</span>
+              </button>
+
+            </div>
+
           </div>
 
-          <div class="character-info">
+          <!-- CHARACTER VISUAL -->
 
-            <p class="character-count" id="character-count">
-              01 / 13
-            </p>
+          <div class="character-showcase">
 
-            <h3 id="character-name">
-              キャラクター 01
-            </h3>
+            <div class="character-art" id="character-art">
 
-            <p class="character-note">
-              ※ キャラクター名・画像は公開素材に合わせて更新します。
-            </p>
+              <img
+                id="character-image"
+                class="character-main-image"
+                src="images/characters/isa.png"
+                alt="ISAのキャラクター立ち絵"
+                loading="lazy"
+              >
 
-            <div class="character-controls">
+            </div>
 
-              <button id="character-prev" type="button" aria-label="前のキャラクター">
-                ←
-              </button>
+            <!-- CHARACTER INFORMATION -->
 
-              <button id="character-next" type="button" aria-label="次のキャラクター">
-                →
-              </button>
+            <div class="character-info">
+
+              <p class="character-info-label">
+                CHARACTER PROFILE
+              </p>
+
+              <p class="character-count" id="character-count">
+                01 / 13
+              </p>
+
+              <h3 id="character-name">
+                ISA
+              </h3>
+
+              <div class="character-controls">
+
+                <button
+                  id="character-prev"
+                  type="button"
+                  aria-label="前のキャラクター"
+                >
+                  <span aria-hidden="true">←</span>
+                </button>
+
+                <button
+                  id="character-next"
+                  type="button"
+                  aria-label="次のキャラクター"
+                >
+                  <span aria-hidden="true">→</span>
+                </button>
+
+              </div>
 
             </div>
 
