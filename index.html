@@ -1,74 +1,905 @@
 <!doctype html>
 <html lang="ja">
+
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#eafaff">
 
-  <title>あてな！｜公式サイト</title>
+  <title>あてな！｜3桁の数字を読み合う対戦型ロジックゲーム【公式】</title>
 
   <meta
     name="description"
-    content="3桁の数字を読み合え！iPhone向け対戦型ロジックゲーム『あてな！』公式サイト。"
+    content="『あてな！』は、3桁の数字を推理して対戦するiPhone向けロジックゲーム。LOCK・LINK、6種類のPERK、ランクマッチやフレンドマッチを紹介。"
   >
 
+  <link
+    rel="canonical"
+    href="https://tkapplab22-lab.github.io/atena-official/"
+  >
+
+  <!-- OGP -->
   <meta property="og:type" content="website">
+  <meta property="og:locale" content="ja_JP">
   <meta property="og:title" content="あてな！｜公式サイト">
-  <meta property="og:description" content="3桁の数字を読み合え。">
+  <meta
+    property="og:description"
+    content="3桁の数字を読み合え。iPhone向け対戦型ロジックゲーム。"
+  >
+  <meta
+    property="og:url"
+    content="https://tkapplab22-lab.github.io/atena-official/"
+  >
   <meta
     property="og:image"
     content="https://tkapplab22-lab.github.io/atena-official/HP.png"
   >
 
+  <meta name="twitter:card" content="summary_large_image">
+
+  <!-- CSS -->
   <link rel="stylesheet" href="css/style.css">
   <link rel="stylesheet" href="css/lp.css">
+
+  <!-- JavaScript -->
+  <script src="js/main.js" defer></script>
+
+  <!-- 構造化データ -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "VideoGame",
+    "name": "あてな！",
+    "description": "3桁の数字を読み合うiPhone向け対戦型ロジックゲーム。",
+    "url": "https://tkapplab22-lab.github.io/atena-official/",
+    "inLanguage": "ja",
+    "gamePlatform": "iOS",
+    "genre": "対戦型ロジックゲーム",
+    "publisher": {
+      "@type": "Person",
+      "name": "TAKAHIKO KAWAMOTO"
+    }
+  }
+  </script>
+
 </head>
 
 <body class="lp-page">
 
-  <main class="lp-main">
+  <a class="skip-link" href="#main">
+    本文へ移動
+  </a>
 
-    <section class="lp-hero" aria-label="あてな！公式サイト">
+  <!-- =====================================
+       HEADER
+       ===================================== -->
 
-      <!-- メインビジュアル -->
+  <header class="site-header" id="site-header">
+
+    <a class="brand" href="#top" aria-label="あてな！ トップへ">
+      <img
+        src="logo.png"
+        alt="あてな！"
+        width="160"
+        height="80"
+      >
+    </a>
+
+    <button
+      class="menu-toggle"
+      type="button"
+      aria-expanded="false"
+      aria-controls="site-nav"
+      aria-label="メニューを開く"
+    >
+      <span></span>
+      <span></span>
+      <span></span>
+    </button>
+
+    <nav
+      class="site-nav"
+      id="site-nav"
+      aria-label="メインナビゲーション"
+    >
+      <a href="#news">NEWS</a>
+      <a href="#about">ABOUT</a>
+      <a href="#system">SYSTEM</a>
+      <a href="#perk">PERK</a>
+      <a href="#mode">MODE</a>
+      <a href="#character">CHARACTER</a>
+      <a href="#gallery">GALLERY</a>
+      <a href="#faq">FAQ</a>
+      <a class="nav-download" href="#download">DOWNLOAD</a>
+    </nav>
+
+  </header>
+
+
+  <!-- =====================================
+       MAIN
+       ===================================== -->
+
+  <main class="lp-main" id="main">
+
+
+    <!-- =====================================
+         TOP
+         ===================================== -->
+
+    <section
+      class="lp-hero"
+      id="top"
+      aria-labelledby="hero-title"
+    >
+
+      <div class="hero-glow" aria-hidden="true"></div>
+
       <div class="lp-visual-wrap">
 
-        <!-- キャラクター入り画像 -->
+        <!-- メインビジュアル -->
         <img
           class="lp-visual"
           src="HP.png"
-          alt="あてな！のキャラクターたち"
+          alt="水色と赤の髪のキャラクターが描かれた『あてな！』メインビジュアル"
+          fetchpriority="high"
         >
 
-        <!-- 中央に重ねるロゴ -->
+        <!-- ロゴ -->
         <img
           class="lp-logo"
           src="logo.png"
-          alt="あてな！"
+          alt=""
+          aria-hidden="true"
         >
 
       </div>
 
-      <!-- キャッチコピー -->
-      <p class="lp-copy">
-        3桁の数字を読み合え。
-      </p>
+      <div class="hero-text">
 
-      <!-- App Store -->
-      <div class="lp-download">
+        <p class="eyebrow">
+          3-DIGIT MIND GAME
+        </p>
 
-        <div class="lp-store" aria-label="App Store 近日公開">
-          <span class="lp-store-small">
-            Download on the
-          </span>
+        <h1 class="lp-copy" id="hero-title">
+          3桁の数字を読み合え。
+        </h1>
 
-          <span class="lp-store-title">
-            App Store
-          </span>
+        <p class="hero-sub">
+          ひらめきと駆け引きで、相手の秘密を見抜け。
+        </p>
+
+        <a class="hero-scroll" href="#about">
+          SCROLL TO EXPLORE
+          <span aria-hidden="true">↓</span>
+        </a>
+
+      </div>
+
+    </section>
+
+
+    <!-- =====================================
+         NEWS
+         ===================================== -->
+
+    <section
+      class="section section-news"
+      id="news"
+      aria-labelledby="news-title"
+    >
+
+      <div class="section-inner">
+
+        <div class="section-heading">
+          <p class="section-kicker">INFORMATION</p>
+          <h2 id="news-title">NEWS</h2>
+          <p>お知らせ</p>
         </div>
 
-        <p class="lp-soon">
-          COMING SOON
+        <div class="news-card">
+
+          <span class="news-tag">
+            INFO
+          </span>
+
+          <p>
+            最新情報は、この公式サイトでお知らせします。
+          </p>
+
+        </div>
+
+      </div>
+
+    </section>
+
+
+    <!-- =====================================
+         ABOUT
+         ===================================== -->
+
+    <section
+      class="section section-about"
+      id="about"
+      aria-labelledby="about-title"
+    >
+
+      <div class="section-inner split-layout">
+
+        <div>
+
+          <div class="section-heading">
+            <p class="section-kicker">WHAT IS ATENA?</p>
+            <h2 id="about-title">ABOUT</h2>
+            <p>あてな！とは</p>
+          </div>
+
+          <p class="lead">
+            たった3桁。<br>
+            だからこそ、読み合いは奥深い。
+          </p>
+
+          <p>
+            『あてな！』は、0〜9の数字から重複しない
+            3桁の秘密コードを設定し、交互に数字を予想して
+            相手のコードを解き明かす対戦型ロジックゲームです。
+          </p>
+
+          <p>
+            数字と位置を手がかりに推理し、
+            先に3 LOCKを達成したプレイヤーが勝利します。
+          </p>
+
+        </div>
+
+        <div
+          class="about-graphic"
+          aria-label="3桁の数字を推理するゲーム"
+        >
+          <span>0 — 9</span>
+          <strong>？ ？ ？</strong>
+          <small>FIND THE SECRET CODE</small>
+        </div>
+
+      </div>
+
+    </section>
+
+
+    <!-- =====================================
+         GAME SYSTEM
+         ===================================== -->
+
+    <section
+      class="section section-system"
+      id="system"
+      aria-labelledby="system-title"
+    >
+
+      <div class="section-inner">
+
+        <div class="section-heading">
+          <p class="section-kicker">HOW TO PLAY</p>
+          <h2 id="system-title">GAME SYSTEM</h2>
+          <p>基本ルール</p>
+        </div>
+
+        <div class="system-grid">
+
+          <article class="info-card">
+
+            <span class="card-number">01</span>
+
+            <h3>SECRET CODE</h3>
+
+            <p>
+              0〜9から、重複しない3つの数字を選んで
+              秘密コードを設定。
+            </p>
+
+          </article>
+
+          <article class="info-card">
+
+            <span class="card-number">02</span>
+
+            <h3>CALL</h3>
+
+            <p>
+              相手の秘密コードを予想して、
+              3桁の数字をCALL。
+            </p>
+
+          </article>
+
+          <article class="info-card">
+
+            <span class="card-number">03</span>
+
+            <h3>3 LOCK TO WIN</h3>
+
+            <p>
+              数字と位置をすべて当てて、
+              3 LOCKを先に達成した方が勝利。
+            </p>
+
+          </article>
+
+        </div>
+
+
+        <!-- LOCK / LINK の説明 -->
+
+        <div class="judge-demo">
+
+          <div class="judge-code">
+            <span>1</span>
+            <span>3</span>
+            <span>2</span>
+          </div>
+
+          <div class="judge-arrow" aria-hidden="true">
+            →
+          </div>
+
+          <div class="judge-result">
+
+            <strong>
+              1 <em>LOCK</em>
+            </strong>
+
+            <strong>
+              2 <em>LINK</em>
+            </strong>
+
+          </div>
+
+          <p class="judge-note">
+            例：秘密コードが「123」のとき
+            「132」とCALLすると、
+            <b>1 LOCK / 2 LINK</b>。
+            LOCKは数字と位置が一致、
+            LINKは数字だけが一致。
+          </p>
+
+        </div>
+
+        <p class="system-footnote">
+          1ターン30秒。
+          対戦開始時は15秒以内に秘密コードを設定し、
+          先攻・後攻はコイントスで決まります。
         </p>
+
+      </div>
+
+    </section>
+
+
+    <!-- =====================================
+         PERK SYSTEM
+         ===================================== -->
+
+    <section
+      class="section section-perk"
+      id="perk"
+      aria-labelledby="perk-title"
+    >
+
+      <div class="section-inner">
+
+        <div class="section-heading">
+          <p class="section-kicker">CHANGE THE GAME</p>
+          <h2 id="perk-title">PERK SYSTEM</h2>
+          <p>読み合いを変える、6つの能力</p>
+        </div>
+
+        <p class="section-intro">
+          攻撃PERKと防御・特殊PERKを1つずつ装備。
+          各PERKは1試合に1回使用でき、
+          同じターンに使用できるのは1つだけ。
+        </p>
+
+
+        <!-- PERK選択 -->
+
+        <div
+          class="perk-tabs"
+          role="tablist"
+          aria-label="PERKを選択"
+        >
+
+          <button
+            class="perk-tab is-active"
+            role="tab"
+            id="perk-tab-0"
+            aria-controls="perk-panel"
+            aria-selected="true"
+            data-perk="0"
+          >
+            PARITY
+          </button>
+
+          <button
+            class="perk-tab"
+            role="tab"
+            id="perk-tab-1"
+            aria-controls="perk-panel"
+            aria-selected="false"
+            data-perk="1"
+            tabindex="-1"
+          >
+            SUM
+          </button>
+
+          <button
+            class="perk-tab"
+            role="tab"
+            id="perk-tab-2"
+            aria-controls="perk-panel"
+            aria-selected="false"
+            data-perk="2"
+            tabindex="-1"
+          >
+            ORDER
+          </button>
+
+          <button
+            class="perk-tab"
+            role="tab"
+            id="perk-tab-3"
+            aria-controls="perk-panel"
+            aria-selected="false"
+            data-perk="3"
+            tabindex="-1"
+          >
+            MASK
+          </button>
+
+          <button
+            class="perk-tab"
+            role="tab"
+            id="perk-tab-4"
+            aria-controls="perk-panel"
+            aria-selected="false"
+            data-perk="4"
+            tabindex="-1"
+          >
+            SHUFFLE
+          </button>
+
+          <button
+            class="perk-tab"
+            role="tab"
+            id="perk-tab-5"
+            aria-controls="perk-panel"
+            aria-selected="false"
+            data-perk="5"
+            tabindex="-1"
+          >
+            REVEAL
+          </button>
+
+        </div>
+
+
+        <!-- PERK詳細 -->
+
+        <article
+          class="perk-detail"
+          id="perk-panel"
+          role="tabpanel"
+          aria-labelledby="perk-tab-0"
+          tabindex="0"
+        >
+
+          <div class="perk-emblem" aria-hidden="true">
+            P
+          </div>
+
+          <div>
+
+            <p class="perk-type" id="perk-type">
+              ATTACK PERK
+            </p>
+
+            <h3 id="perk-name">
+              PARITY
+            </h3>
+
+            <p id="perk-description">
+              指定した位置の数字が偶数か奇数かを知る。
+            </p>
+
+          </div>
+
+        </article>
+
+        <p class="section-note">
+          PERKの発動が成立すると、
+          ターンの残り時間は30秒に戻ります。
+        </p>
+
+      </div>
+
+    </section>
+
+
+    <!-- =====================================
+         GAME MODE
+         ===================================== -->
+
+    <section
+      class="section section-mode"
+      id="mode"
+      aria-labelledby="mode-title"
+    >
+
+      <div class="section-inner">
+
+        <div class="section-heading">
+          <p class="section-kicker">PLAY YOUR WAY</p>
+          <h2 id="mode-title">GAME MODE</h2>
+          <p>2つの対戦モード</p>
+        </div>
+
+        <div class="mode-grid">
+
+          <!-- ランクマッチ -->
+
+          <article class="mode-card ranked">
+
+            <p class="mode-label">
+              COMPETITIVE
+            </p>
+
+            <h3>
+              RANK MATCH
+            </h3>
+
+            <p>
+              勝利を重ね、ランクアップを目指す対戦モード。
+            </p>
+
+            <div
+              class="rank-list"
+              aria-label="ランク一覧"
+            >
+              <span>BRONZE</span>
+              <span>SILVER</span>
+              <span>GOLD</span>
+              <span>PLATINUM</span>
+              <span>DIAMOND</span>
+              <span>MASTER</span>
+            </div>
+
+          </article>
+
+
+          <!-- フレンドマッチ -->
+
+          <article class="mode-card friend">
+
+            <p class="mode-label">
+              PLAY TOGETHER
+            </p>
+
+            <h3>
+              FRIEND MATCH
+            </h3>
+
+            <p>
+              友達を招待して対戦するモード。
+              ランクやRPの変動はありません。
+            </p>
+
+            <div
+              class="friend-decoration"
+              aria-hidden="true"
+            >
+              YOU <span>VS</span> FRIEND
+            </div>
+
+          </article>
+
+        </div>
+
+      </div>
+
+    </section>
+
+
+    <!-- =====================================
+         CHARACTER
+         ===================================== -->
+
+    <section
+      class="section section-character"
+      id="character"
+      aria-labelledby="character-title"
+    >
+
+      <div class="section-inner">
+
+        <div class="section-heading">
+          <p class="section-kicker">MEET THE CAST</p>
+          <h2 id="character-title">CHARACTER</h2>
+          <p>キャラクター</p>
+        </div>
+
+        <p class="section-intro">
+          個性豊かなキャラクターたち。
+          立ち絵とプロフィールは順次公開予定です。
+        </p>
+
+
+        <!-- キャラクター表示 -->
+
+        <div class="character-showcase">
+
+          <!-- 画像を後から追加 -->
+
+          <div
+            class="character-art"
+            aria-hidden="true"
+          >
+            <span>
+              CHARACTER<br>
+              VISUAL
+            </span>
+          </div>
+
+
+          <!-- キャラクター情報 -->
+
+          <div class="character-info">
+
+            <p
+              class="character-count"
+              id="character-count"
+            >
+              01 / 13
+            </p>
+
+            <h3 id="character-name">
+              キャラクター 01
+            </h3>
+
+            <p class="character-note">
+              ※ キャラクター名・画像は公開素材に合わせて更新します。
+            </p>
+
+
+            <!-- 切り替えボタン -->
+
+            <div class="character-controls">
+
+              <button
+                id="character-prev"
+                type="button"
+                aria-label="前のキャラクター"
+              >
+                ←
+              </button>
+
+              <button
+                id="character-next"
+                type="button"
+                aria-label="次のキャラクター"
+              >
+                →
+              </button>
+
+            </div>
+
+          </div>
+
+        </div>
+
+      </div>
+
+    </section>
+
+
+    <!-- =====================================
+         GALLERY
+         ===================================== -->
+
+    <section
+      class="section section-gallery"
+      id="gallery"
+      aria-labelledby="gallery-title"
+    >
+
+      <div class="section-inner">
+
+        <div class="section-heading">
+          <p class="section-kicker">A LOOK INSIDE</p>
+          <h2 id="gallery-title">GALLERY</h2>
+          <p>ギャラリー</p>
+        </div>
+
+        <div class="gallery-grid">
+
+          <figure class="gallery-item">
+
+            <img
+              src="HP.png"
+              alt="『あてな！』メインビジュアル"
+              loading="lazy"
+            >
+
+            <figcaption>
+              MAIN VISUAL
+            </figcaption>
+
+          </figure>
+
+          <div class="gallery-placeholder">
+
+            <span>
+              MORE COMING SOON
+            </span>
+
+            <p>
+              ゲーム画面・イラストは順次公開予定
+            </p>
+
+          </div>
+
+        </div>
+
+      </div>
+
+    </section>
+
+
+    <!-- =====================================
+         FAQ
+         ===================================== -->
+
+    <section
+      class="section section-faq"
+      id="faq"
+      aria-labelledby="faq-title"
+    >
+
+      <div class="section-inner">
+
+        <div class="section-heading">
+          <p class="section-kicker">QUESTIONS & ANSWERS</p>
+          <h2 id="faq-title">FAQ</h2>
+          <p>よくある質問</p>
+        </div>
+
+        <div class="faq-list">
+
+          <details>
+
+            <summary>
+              どんなゲームですか？
+            </summary>
+
+            <p>
+              0〜9から重複しない3桁の秘密コードを作り、
+              相手の数字を推理する対戦型ロジックゲームです。
+            </p>
+
+          </details>
+
+          <details>
+
+            <summary>
+              LOCKとLINKの違いは？
+            </summary>
+
+            <p>
+              LOCKは数字と位置が一致、
+              LINKは数字は一致しているものの
+              位置が違うことを示します。
+            </p>
+
+          </details>
+
+          <details>
+
+            <summary>
+              PERKとは何ですか？
+            </summary>
+
+            <p>
+              対戦中の読み合いに変化を加える能力です。
+              攻撃PERKと防御・特殊PERKを
+              1つずつ装備できます。
+            </p>
+
+          </details>
+
+          <details>
+
+            <summary>
+              友達と対戦できますか？
+            </summary>
+
+            <p>
+              フレンドマッチで友達を招待して
+              対戦する仕様を予定しています。
+            </p>
+
+          </details>
+
+          <details>
+
+            <summary>
+              いつダウンロードできますか？
+            </summary>
+
+            <p>
+              現在準備中です。
+              公開情報は公式サイトでお知らせします。
+            </p>
+
+          </details>
+
+        </div>
+
+      </div>
+
+    </section>
+
+
+    <!-- =====================================
+         DOWNLOAD
+         ===================================== -->
+
+    <section
+      class="section section-download"
+      id="download"
+      aria-labelledby="download-title"
+    >
+
+      <div class="section-inner">
+
+        <p class="section-kicker">
+          GET READY
+        </p>
+
+        <h2 id="download-title">
+          DOWNLOAD
+        </h2>
+
+        <img
+          class="download-logo"
+          src="logo.png"
+          alt="あてな！"
+          loading="lazy"
+        >
+
+        <p>
+          iPhone向けに準備中。
+        </p>
+
+        <div class="lp-download">
+
+          <div
+            class="lp-store"
+            aria-label="App Store 近日公開"
+          >
+
+            <span class="lp-store-small">
+              Download on the
+            </span>
+
+            <span class="lp-store-title">
+              App Store
+            </span>
+
+          </div>
+
+          <p class="lp-soon">
+            COMING SOON
+          </p>
+
+        </div>
 
       </div>
 
@@ -76,10 +907,15 @@
 
   </main>
 
-  <!-- フッター -->
+
+  <!-- =====================================
+       FOOTER
+       ===================================== -->
+
   <footer class="lp-footer">
 
     <nav aria-label="フッターナビゲーション">
+
       <a href="privacy.html">
         プライバシーポリシー
       </a>
@@ -91,6 +927,7 @@
       <a href="support.html">
         お問い合わせ
       </a>
+
     </nav>
 
     <small>
