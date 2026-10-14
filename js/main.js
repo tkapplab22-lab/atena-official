@@ -182,87 +182,125 @@ document.addEventListener("DOMContentLoaded", () => {
      03. CHARACTER SYSTEM
      ======================================================= */
 
-  /*
-   * キャラクター画像と正式名称は後から設定する。
-   * 現段階では13人分の仮表示。
-   */
-
-  const characters = Array.from({ length: 13 }, (_, index) => ({
-    name: `キャラクター ${String(index + 1).padStart(2, "0")}`,
-    image: null
-  }));
+  const characterButtons = Array.from(
+    document.querySelectorAll(".character-select-item")
+  );
 
   const characterCount = document.getElementById("character-count");
   const characterName = document.getElementById("character-name");
-  const characterArt = document.querySelector(".character-art");
+  const characterImage = document.getElementById("character-image");
+
   const characterPrev = document.getElementById("character-prev");
   const characterNext = document.getElementById("character-next");
 
-  let currentCharacter = 0;
-
   if (
+    characterButtons.length &&
     characterCount &&
     characterName &&
-    characterArt &&
+    characterImage &&
     characterPrev &&
     characterNext
   ) {
 
-    const renderCharacter = () => {
-      const character = characters[currentCharacter];
+    const characters = characterButtons.map((button, index) => ({
+      index,
+      name: button.dataset.name || `CHARACTER ${index + 1}`,
+      image: button.dataset.image || ""
+    }));
+
+    const reduceMotion = window.matchMedia(
+      "(prefers-reduced-motion: reduce)"
+    );
+
+    let currentCharacter = 0;
+    let changeTimer = null;
+    let changeToken = 0;
+
+    const updateSelection = (index) => {
+      characterButtons.forEach((button, buttonIndex) => {
+        const selected = buttonIndex === index;
+
+        button.classList.toggle("is-active", selected);
+        button.setAttribute("aria-pressed", String(selected));
+      });
+    };
+
+    const updateCharacterInfo = (index) => {
+      const character = characters[index];
 
       characterCount.textContent =
-        `${String(currentCharacter + 1).padStart(2, "0")} / ` +
+        `${String(index + 1).padStart(2, "0")} / ` +
         `${String(characters.length).padStart(2, "0")}`;
 
       characterName.textContent = character.name;
 
-      characterArt.replaceChildren();
-
-      if (character.image) {
-
-        const image = document.createElement("img");
-
-        image.src = character.image;
-        image.alt = character.name;
-        image.loading = "lazy";
-
-        image.style.width = "100%";
-        image.style.height = "100%";
-        image.style.objectFit = "contain";
-
-        characterArt.appendChild(image);
-
-        characterArt.removeAttribute("aria-hidden");
-
-      } else {
-
-        const placeholder = document.createElement("span");
-
-        placeholder.innerHTML = "CHARACTER<br>VISUAL";
-
-        characterArt.appendChild(placeholder);
-
-        characterArt.setAttribute("aria-hidden", "true");
-
-      }
+      updateSelection(index);
     };
 
+    const changeCharacter = (index, animate = true) => {
+
+      if (index < 0 || index >= characters.length) {
+        return;
+      }
+
+      const character = characters[index];
+
+      currentCharacter = index;
+      changeToken += 1;
+
+      const token = changeToken;
+
+      if (changeTimer !== null) {
+        window.clearTimeout(changeTimer);
+        changeTimer = null;
+      }
+
+      updateCharacterInfo(index);
+
+      const applyImage = () => {
+        if (token !== changeToken) return;
+
+        characterImage.src = character.image;
+        characterImage.alt = `${character.name}のキャラクター立ち絵`;
+
+        characterImage.classList.remove("is-changing");
+      };
+
+      if (!animate || reduceMotion.matches) {
+        applyImage();
+        return;
+      }
+
+      characterImage.classList.add("is-changing");
+
+      changeTimer = window.setTimeout(() => {
+        changeTimer = null;
+        applyImage();
+      }, 250);
+
+    };
+
+    characterButtons.forEach((button, index) => {
+      button.addEventListener("click", () => {
+        changeCharacter(index);
+      });
+    });
+
     characterPrev.addEventListener("click", () => {
-      currentCharacter =
+      const previousIndex =
         (currentCharacter - 1 + characters.length) % characters.length;
 
-      renderCharacter();
+      changeCharacter(previousIndex);
     });
 
     characterNext.addEventListener("click", () => {
-      currentCharacter =
+      const nextIndex =
         (currentCharacter + 1) % characters.length;
 
-      renderCharacter();
+      changeCharacter(nextIndex);
     });
 
-    renderCharacter();
+    changeCharacter(0, false);
 
   }
 
