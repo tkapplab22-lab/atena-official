@@ -1290,6 +1290,22 @@ body.lp-page .character-select-item.is-active span {
   color: #0789e8;
 }
 
+/* キャラクター切り替え時：名前を少し遅れて表示（約0.5秒） */
+body.lp-page #character-name.is-revealing {
+  animation: character-name-reveal 0.5s ease both;
+}
+
+@keyframes character-name-reveal {
+  0%, 30% {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
 /* ==========================================================
    11. GALLERY
    ========================================================== */
