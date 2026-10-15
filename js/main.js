@@ -264,6 +264,12 @@ document.addEventListener("DOMContentLoaded", () => {
 
       updateCharacterInfo(index);
 
+      if (animate && !reduceMotion.matches) {
+        characterName.classList.remove("is-revealing");
+        void characterName.offsetWidth;
+        characterName.classList.add("is-revealing");
+      }
+
       const applyImage = () => {
         if (token !== changeToken) return;
 
