@@ -44,6 +44,451 @@
 
   <script src="js/main.js" defer></script>
 
+  <!-- =====================================
+       SPLASH SCREEN STYLES
+       ===================================== -->
+
+  <style>
+    html.atena-loading {
+      overflow: hidden;
+    }
+
+    html.atena-loading body {
+      overflow: hidden;
+    }
+
+    #atena-splash {
+      position: fixed;
+      inset: 0;
+      z-index: 999999;
+
+      display: flex;
+      align-items: center;
+      justify-content: center;
+
+      width: 100%;
+      min-height: 100vh;
+      min-height: 100dvh;
+
+      margin: 0;
+      padding: 24px;
+
+      box-sizing: border-box;
+
+      background:
+        radial-gradient(
+          circle at 50% 42%,
+          rgba(21, 116, 174, 0.26) 0%,
+          rgba(10, 37, 70, 0.16) 35%,
+          transparent 65%
+        ),
+        linear-gradient(
+          145deg,
+          #061321 0%,
+          #0b2340 52%,
+          #050f1e 100%
+        );
+
+      color: #ffffff;
+
+      opacity: 1;
+      visibility: visible;
+
+      transition:
+        opacity 0.75s ease,
+        visibility 0.75s ease;
+
+      overflow: hidden;
+      isolation: isolate;
+    }
+
+    #atena-splash,
+    #atena-splash *,
+    #atena-splash *::before,
+    #atena-splash *::after {
+      box-sizing: border-box;
+    }
+
+    #atena-splash::before {
+      content: "";
+
+      position: absolute;
+      inset: -50%;
+
+      z-index: -1;
+
+      background:
+        repeating-linear-gradient(
+          0deg,
+          transparent 0,
+          transparent 49px,
+          rgba(66, 190, 255, 0.035) 50px
+        ),
+        repeating-linear-gradient(
+          90deg,
+          transparent 0,
+          transparent 49px,
+          rgba(66, 190, 255, 0.035) 50px
+        );
+
+      transform: perspective(700px) rotateX(28deg);
+
+      animation: atena-splash-grid 9s linear infinite;
+
+      pointer-events: none;
+    }
+
+    #atena-splash::after {
+      content: "";
+
+      position: absolute;
+      top: 50%;
+      left: 50%;
+
+      width: min(80vw, 650px);
+      height: min(80vw, 650px);
+
+      border-radius: 50%;
+
+      background: radial-gradient(
+        circle,
+        rgba(43, 174, 244, 0.15) 0%,
+        rgba(43, 174, 244, 0.055) 35%,
+        transparent 70%
+      );
+
+      transform: translate(-50%, -50%);
+
+      pointer-events: none;
+    }
+
+    .atena-splash-content {
+      position: relative;
+      z-index: 2;
+
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+
+      width: min(100%, 480px);
+
+      text-align: center;
+    }
+
+    .atena-splash-logo-wrap {
+      position: relative;
+
+      display: flex;
+      align-items: center;
+      justify-content: center;
+
+      width: min(75vw, 350px);
+      min-height: 160px;
+
+      margin: 0 auto 42px;
+    }
+
+    .atena-splash-logo-wrap::before {
+      content: "";
+
+      position: absolute;
+      inset: 12%;
+
+      border-radius: 50%;
+
+      background: rgba(43, 190, 255, 0.16);
+
+      filter: blur(48px);
+
+      animation: atena-splash-aura 2.5s ease-in-out infinite alternate;
+    }
+
+    .atena-splash-logo {
+      position: relative;
+      z-index: 1;
+
+      display: block;
+
+      width: 100%;
+      max-width: 350px;
+      height: auto;
+
+      object-fit: contain;
+
+      filter:
+        drop-shadow(0 0 12px rgba(51, 184, 255, 0.22));
+
+      animation: atena-splash-logo-float 2.6s ease-in-out infinite;
+    }
+
+    .atena-splash-label {
+      margin: 0 0 18px;
+
+      color: #89dfff;
+
+      font-family:
+        -apple-system,
+        BlinkMacSystemFont,
+        "Helvetica Neue",
+        Arial,
+        sans-serif;
+
+      font-size: 11px;
+      font-weight: 700;
+
+      letter-spacing: 0.38em;
+
+      text-indent: 0.38em;
+    }
+
+    .atena-splash-progress {
+      display: flex;
+      align-items: baseline;
+      justify-content: center;
+
+      min-height: 90px;
+
+      margin: 0 0 24px;
+
+      color: #ffffff;
+
+      font-family:
+        -apple-system,
+        BlinkMacSystemFont,
+        "Helvetica Neue",
+        Arial,
+        sans-serif;
+
+      font-variant-numeric: tabular-nums;
+      font-feature-settings: "tnum";
+
+      line-height: 1;
+    }
+
+    .atena-splash-number {
+      display: inline-block;
+
+      min-width: 3ch;
+
+      font-size: clamp(58px, 12vw, 86px);
+      font-weight: 800;
+
+      letter-spacing: -0.055em;
+
+      text-align: right;
+
+      text-shadow:
+        0 0 22px rgba(50, 192, 255, 0.35);
+    }
+
+    .atena-splash-percent {
+      margin-left: 8px;
+
+      color: #73d6ff;
+
+      font-size: clamp(22px, 5vw, 32px);
+      font-weight: 700;
+    }
+
+    .atena-splash-track {
+      position: relative;
+
+      width: min(76vw, 340px);
+      height: 5px;
+
+      margin: 0 auto;
+
+      border-radius: 999px;
+
+      background: rgba(125, 197, 237, 0.16);
+
+      box-shadow:
+        inset 0 0 8px rgba(0, 0, 0, 0.25);
+
+      overflow: visible;
+    }
+
+    .atena-splash-bar {
+      position: relative;
+
+      width: 0%;
+      height: 100%;
+
+      border-radius: inherit;
+
+      background: linear-gradient(
+        90deg,
+        #178ce5 0%,
+        #38c5ff 55%,
+        #b2f2ff 100%
+      );
+
+      box-shadow:
+        0 0 12px rgba(51, 193, 255, 0.65),
+        0 0 24px rgba(51, 193, 255, 0.24);
+
+      transition: width 0.055s linear;
+    }
+
+    .atena-splash-bar::after {
+      content: "";
+
+      position: absolute;
+      top: 50%;
+      right: -2px;
+
+      width: 10px;
+      height: 10px;
+
+      border-radius: 50%;
+
+      background: #d8f9ff;
+
+      box-shadow:
+        0 0 12px #6bdcff,
+        0 0 22px rgba(67, 199, 255, 0.75);
+
+      transform: translateY(-50%);
+    }
+
+    .atena-splash-status {
+      min-height: 20px;
+
+      margin: 20px 0 0;
+
+      color: rgba(197, 228, 247, 0.72);
+
+      font-family:
+        -apple-system,
+        BlinkMacSystemFont,
+        "Helvetica Neue",
+        Arial,
+        sans-serif;
+
+      font-size: 10px;
+      font-weight: 600;
+
+      letter-spacing: 0.25em;
+    }
+
+    #atena-splash.is-complete .atena-splash-logo {
+      animation: atena-splash-logo-complete 0.7s ease both;
+    }
+
+    #atena-splash.is-complete .atena-splash-logo-wrap::before {
+      animation: atena-splash-aura-complete 0.7s ease both;
+    }
+
+    #atena-splash.is-complete .atena-splash-number {
+      color: #dffaff;
+
+      text-shadow:
+        0 0 14px rgba(84, 210, 255, 0.8),
+        0 0 34px rgba(84, 210, 255, 0.4);
+    }
+
+    #atena-splash.is-leaving {
+      opacity: 0;
+      visibility: hidden;
+
+      pointer-events: none;
+    }
+
+    @keyframes atena-splash-grid {
+      from {
+        transform:
+          perspective(700px)
+          rotateX(28deg)
+          translateY(0);
+      }
+
+      to {
+        transform:
+          perspective(700px)
+          rotateX(28deg)
+          translateY(50px);
+      }
+    }
+
+    @keyframes atena-splash-aura {
+      from {
+        opacity: 0.55;
+        transform: scale(0.92);
+      }
+
+      to {
+        opacity: 1;
+        transform: scale(1.1);
+      }
+    }
+
+    @keyframes atena-splash-logo-float {
+      0%,
+      100% {
+        transform: translateY(0);
+      }
+
+      50% {
+        transform: translateY(-8px);
+      }
+    }
+
+    @keyframes atena-splash-logo-complete {
+      0% {
+        transform: translateY(0) scale(1);
+
+        filter:
+          drop-shadow(0 0 12px rgba(51, 184, 255, 0.22));
+      }
+
+      55% {
+        transform: translateY(-3px) scale(1.065);
+
+        filter:
+          drop-shadow(0 0 30px rgba(91, 218, 255, 0.85))
+          drop-shadow(0 0 65px rgba(91, 218, 255, 0.35));
+      }
+
+      100% {
+        transform: translateY(0) scale(1.02);
+
+        filter:
+          drop-shadow(0 0 22px rgba(91, 218, 255, 0.65));
+      }
+    }
+
+    @keyframes atena-splash-aura-complete {
+      from {
+        opacity: 0.6;
+        transform: scale(1);
+      }
+
+      to {
+        opacity: 1;
+        transform: scale(1.4);
+      }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      #atena-splash::before,
+      .atena-splash-logo,
+      .atena-splash-logo-wrap::before {
+        animation: none;
+      }
+
+      #atena-splash,
+      .atena-splash-bar {
+        transition-duration: 0.01ms;
+      }
+    }
+  </style>
+
+  <!-- スプラッシュ表示中のスクロールを防止 -->
+  <script>
+    document.documentElement.classList.add("atena-loading");
+  </script>
+
   <script type="application/ld+json">
   {
     "@context": "https://schema.org",
@@ -63,6 +508,72 @@
 </head>
 
 <body class="lp-page">
+
+  <!-- =====================================
+       SPLASH SCREEN
+       ===================================== -->
+
+  <div
+    id="atena-splash"
+    role="status"
+    aria-label="あてな！公式サイトを読み込み中"
+    aria-live="off"
+  >
+
+    <div class="atena-splash-content">
+
+      <div class="atena-splash-logo-wrap">
+        <img
+          class="atena-splash-logo"
+          src="logo.png"
+          alt="あてな！"
+          width="350"
+          height="175"
+          fetchpriority="high"
+        >
+      </div>
+
+      <p class="atena-splash-label">
+        NOW LOADING
+      </p>
+
+      <div
+        class="atena-splash-progress"
+        aria-hidden="true"
+      >
+        <span
+          class="atena-splash-number"
+          id="atena-splash-number"
+        >0</span>
+
+        <span class="atena-splash-percent">%</span>
+      </div>
+
+      <div
+        class="atena-splash-track"
+        role="progressbar"
+        aria-label="読み込み進捗"
+        aria-valuemin="0"
+        aria-valuemax="100"
+        aria-valuenow="0"
+        id="atena-splash-progressbar"
+      >
+        <div
+          class="atena-splash-bar"
+          id="atena-splash-bar"
+        ></div>
+      </div>
+
+      <p
+        class="atena-splash-status"
+        id="atena-splash-status"
+      >
+        INITIALIZING
+      </p>
+
+    </div>
+
+  </div>
 
   <a class="skip-link" href="#main">
     本文へ移動
@@ -908,6 +1419,189 @@
     <small>© 2026 TAKAHIKO KAWAMOTO</small>
 
   </footer>
+
+  <!-- =====================================
+       SPLASH SCREEN SCRIPT
+       ===================================== -->
+
+  <script>
+    (function () {
+      "use strict";
+
+      const splash = document.getElementById("atena-splash");
+      const number = document.getElementById("atena-splash-number");
+      const bar = document.getElementById("atena-splash-bar");
+      const progressbar = document.getElementById("atena-splash-progressbar");
+      const status = document.getElementById("atena-splash-status");
+
+      if (!splash || !number || !bar || !progressbar || !status) {
+        document.documentElement.classList.remove("atena-loading");
+        return;
+      }
+
+      const reduceMotion = window.matchMedia(
+        "(prefers-reduced-motion: reduce)"
+      ).matches;
+
+      const MIN_DURATION = reduceMotion ? 0 : 2300;
+      const MAX_WAIT = 8000;
+      const COMPLETE_HOLD = reduceMotion ? 0 : 550;
+      const FADE_DURATION = reduceMotion ? 0 : 750;
+
+      const startTime = performance.now();
+
+      let currentProgress = 0;
+      let resourcesReady = document.readyState === "complete";
+      let finished = false;
+      let animationFrame = null;
+      let fallbackTimer = null;
+
+      function setProgress(value) {
+        const safeValue = Math.max(
+          0,
+          Math.min(100, Math.floor(value))
+        );
+
+        currentProgress = safeValue;
+
+        number.textContent = String(safeValue);
+        bar.style.width = safeValue + "%";
+
+        progressbar.setAttribute(
+          "aria-valuenow",
+          String(safeValue)
+        );
+
+        if (safeValue < 30) {
+          status.textContent = "INITIALIZING";
+        } else if (safeValue < 65) {
+          status.textContent = "LOADING ASSETS";
+        } else if (safeValue < 100) {
+          status.textContent = "PREPARING EXPERIENCE";
+        } else {
+          status.textContent = "READY";
+        }
+      }
+
+      function cleanup() {
+        if (animationFrame !== null) {
+          cancelAnimationFrame(animationFrame);
+          animationFrame = null;
+        }
+
+        if (fallbackTimer !== null) {
+          clearTimeout(fallbackTimer);
+          fallbackTimer = null;
+        }
+      }
+
+      function finishSplash() {
+        if (finished) {
+          return;
+        }
+
+        finished = true;
+
+        cleanup();
+
+        setProgress(100);
+
+        splash.classList.add("is-complete");
+
+        window.setTimeout(function () {
+          splash.classList.add("is-leaving");
+
+          document.documentElement.classList.remove(
+            "atena-loading"
+          );
+
+          window.setTimeout(function () {
+            splash.remove();
+          }, FADE_DURATION + 50);
+
+        }, COMPLETE_HOLD);
+      }
+
+      function animateProgress(now) {
+        if (finished) {
+          return;
+        }
+
+        const elapsed = now - startTime;
+
+        const normalized = Math.min(
+          elapsed / Math.max(MIN_DURATION, 1),
+          1
+        );
+
+        const eased = 1 - Math.pow(1 - normalized, 2.4);
+
+        const target = resourcesReady
+          ? Math.floor(eased * 100)
+          : Math.min(95, Math.floor(eased * 95));
+
+        if (target > currentProgress) {
+          setProgress(target);
+        }
+
+        if (
+          resourcesReady &&
+          elapsed >= MIN_DURATION
+        ) {
+          finishSplash();
+          return;
+        }
+
+        animationFrame = requestAnimationFrame(
+          animateProgress
+        );
+      }
+
+      function markResourcesReady() {
+        resourcesReady = true;
+      }
+
+      if (!resourcesReady) {
+        window.addEventListener(
+          "load",
+          markResourcesReady,
+          { once: true }
+        );
+      }
+
+      fallbackTimer = window.setTimeout(function () {
+        resourcesReady = true;
+        finishSplash();
+      }, MAX_WAIT);
+
+      if (reduceMotion) {
+        if (resourcesReady) {
+          finishSplash();
+        } else {
+          window.addEventListener(
+            "load",
+            finishSplash,
+            { once: true }
+          );
+        }
+      } else {
+        setProgress(0);
+
+        animationFrame = requestAnimationFrame(
+          animateProgress
+        );
+      }
+
+      window.addEventListener(
+        "pageshow",
+        function (event) {
+          if (event.persisted && !finished) {
+            finishSplash();
+          }
+        }
+      );
+    })();
+  </script>
 
 </body>
 </html>
