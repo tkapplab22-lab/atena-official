@@ -519,3 +519,395 @@ document.addEventListener("DOMContentLoaded", () => {
   }
 
 });
+
+
+/* =========================================================
+   05. MOBILE HERO / PARALLAX
+   ========================================================= */
+
+(function () {
+  "use strict";
+
+  const MOBILE_BREAKPOINT = 767;
+
+  /*
+    既存のCSSは変更せず、この機能に必要なスタイルだけ
+    JavaScriptから追加する。
+
+    PC表示では適用しない。
+  */
+
+  const heroStyle = document.createElement("style");
+
+  heroStyle.id = "atena-mobile-hero-style";
+
+  heroStyle.textContent = `
+    @media (max-width: ${MOBILE_BREAKPOINT}px) {
+
+      body.lp-page .lp-hero {
+        display: flex;
+        flex-direction: column;
+        justify-content: flex-start;
+        align-items: stretch;
+
+        min-height: 0;
+        padding: 70px 0 42px;
+
+        overflow: hidden;
+      }
+
+      body.lp-page .lp-visual-wrap {
+        position: relative;
+
+        display: block;
+
+        width: 100%;
+        max-width: none;
+
+        height: clamp(480px, 74svh, 760px);
+
+        margin: 0;
+        padding: 0;
+
+        overflow: hidden;
+
+        background: #d7f3ff;
+      }
+
+      body.lp-page .lp-visual-wrap .lp-visual {
+        position: absolute;
+        top: -9%;
+        left: 0;
+
+        display: block;
+
+        width: 100%;
+        height: 118%;
+        max-height: none;
+
+        margin: 0;
+
+        object-fit: cover;
+        object-position: 50% 50%;
+
+        transform:
+          translate3d(
+            0,
+            var(--atena-image-shift, 0px),
+            0
+          );
+
+        will-change: transform;
+      }
+
+      body.lp-page .lp-visual-wrap .lp-logo {
+        position: absolute;
+        top: 6%;
+        left: 50%;
+        z-index: 3;
+
+        width: clamp(155px, 48vw, 250px);
+        max-width: 250px;
+        max-height: 150px;
+
+        object-fit: contain;
+
+        transform:
+          translate3d(
+            -50%,
+            var(--atena-logo-shift, 0px),
+            0
+          );
+
+        filter:
+          drop-shadow(
+            0 8px 18px rgba(17, 80, 145, 0.28)
+          );
+
+        will-change: transform;
+      }
+
+      body.lp-page .hero-text {
+        position: relative;
+        z-index: 4;
+
+        width: calc(100% - 36px);
+        max-width: 540px;
+
+        margin: 0 auto;
+        padding: 25px 0 0;
+
+        text-align: center;
+      }
+
+      body.lp-page .hero-text .eyebrow {
+        margin-bottom: 12px;
+      }
+
+      body.lp-page .hero-text .lp-copy {
+        font-size: clamp(25px, 6.7vw, 37px);
+        line-height: 1.35;
+      }
+
+      body.lp-page .hero-text .hero-sub {
+        margin-top: 13px;
+
+        font-size: 13px;
+        line-height: 1.8;
+      }
+
+      body.lp-page .hero-text .hero-scroll {
+        margin-top: 22px;
+      }
+
+      body.lp-page .hero-text.atena-hero-reveal {
+        animation:
+          atena-hero-text-enter 850ms
+          cubic-bezier(0.2, 0.7, 0.2, 1)
+          both;
+      }
+
+      @keyframes atena-hero-text-enter {
+        from {
+          opacity: 0;
+          transform: translate3d(0, 25px, 0);
+        }
+
+        to {
+          opacity: 1;
+          transform: translate3d(0, 0, 0);
+        }
+      }
+
+    }
+
+    @media (max-width: 390px) {
+
+      body.lp-page .lp-visual-wrap {
+        height: clamp(440px, 70svh, 660px);
+      }
+
+      body.lp-page .lp-visual-wrap .lp-logo {
+        width: 48vw;
+      }
+
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+
+      body.lp-page .lp-visual-wrap .lp-visual,
+      body.lp-page .lp-visual-wrap .lp-logo {
+        transform: none;
+        will-change: auto;
+      }
+
+      body.lp-page .lp-visual-wrap .lp-logo {
+        transform: translateX(-50%);
+      }
+
+      body.lp-page .hero-text.atena-hero-reveal {
+        animation: none;
+      }
+
+    }
+  `;
+
+  document.head.appendChild(heroStyle);
+
+  function initializeMobileHero() {
+
+    const hero = document.querySelector(".lp-hero");
+    const visualWrap = document.querySelector(".lp-visual-wrap");
+    const visual = document.querySelector(".lp-visual");
+    const logo = document.querySelector(".lp-visual-wrap .lp-logo");
+    const heroText = document.querySelector(".hero-text");
+
+    if (
+      !hero ||
+      !visualWrap ||
+      !visual ||
+      !logo ||
+      !heroText
+    ) {
+      return;
+    }
+
+    const mobileQuery = window.matchMedia(
+      `(max-width: ${MOBILE_BREAKPOINT}px)`
+    );
+
+    const reduceMotionQuery = window.matchMedia(
+      "(prefers-reduced-motion: reduce)"
+    );
+
+    let ticking = false;
+
+    /*
+      スクロール位置に応じて画像とロゴを
+      異なる速度で動かす。
+
+      transformのみを変更し、
+      レイアウトの再計算を抑える。
+    */
+
+    function updateParallax() {
+
+      ticking = false;
+
+      if (
+        !mobileQuery.matches ||
+        reduceMotionQuery.matches
+      ) {
+        visual.style.removeProperty(
+          "--atena-image-shift"
+        );
+
+        logo.style.removeProperty(
+          "--atena-logo-shift"
+        );
+
+        return;
+      }
+
+      const rect = hero.getBoundingClientRect();
+
+      const viewportHeight = window.innerHeight;
+
+      /*
+        ヒーローが画面外なら更新不要。
+      */
+
+      if (
+        rect.bottom < 0 ||
+        rect.top > viewportHeight
+      ) {
+        return;
+      }
+
+      /*
+        ヒーロー上端が上へ移動した距離。
+      */
+
+      const scrollAmount = Math.max(
+        0,
+        -rect.top
+      );
+
+      /*
+        画像の移動量を制限することで、
+        スクロール時の過度な見切れを防ぐ。
+      */
+
+      const imageShift = Math.min(
+        scrollAmount * 0.12,
+        65
+      );
+
+      const logoShift = Math.min(
+        scrollAmount * 0.055,
+        30
+      );
+
+      visual.style.setProperty(
+        "--atena-image-shift",
+        `${imageShift.toFixed(2)}px`
+      );
+
+      logo.style.setProperty(
+        "--atena-logo-shift",
+        `${logoShift.toFixed(2)}px`
+      );
+    }
+
+    function requestParallaxUpdate() {
+
+      if (ticking) {
+        return;
+      }
+
+      ticking = true;
+
+      window.requestAnimationFrame(
+        updateParallax
+      );
+    }
+
+    /*
+      スクロール中は1フレームにつき
+      最大1回だけ更新する。
+    */
+
+    window.addEventListener(
+      "scroll",
+      requestParallaxUpdate,
+      { passive: true }
+    );
+
+    window.addEventListener(
+      "resize",
+      requestParallaxUpdate,
+      { passive: true }
+    );
+
+    /*
+      OSのモーション設定が変更された場合にも対応。
+    */
+
+    const handleMotionChange = () => {
+      requestParallaxUpdate();
+    };
+
+    if (reduceMotionQuery.addEventListener) {
+      reduceMotionQuery.addEventListener(
+        "change",
+        handleMotionChange
+      );
+    }
+
+    if (mobileQuery.addEventListener) {
+      mobileQuery.addEventListener(
+        "change",
+        handleMotionChange
+      );
+    }
+
+    /*
+      テキスト出現演出。
+      スプラッシュ画面が消えた後にも
+      自然に見えるよう少し待って開始する。
+    */
+
+    if (
+      mobileQuery.matches &&
+      !reduceMotionQuery.matches
+    ) {
+      window.setTimeout(() => {
+        heroText.classList.add(
+          "atena-hero-reveal"
+        );
+      }, 250);
+    }
+
+    /*
+      初期表示位置を反映。
+    */
+
+    requestParallaxUpdate();
+
+  }
+
+  if (document.readyState === "loading") {
+
+    document.addEventListener(
+      "DOMContentLoaded",
+      initializeMobileHero,
+      { once: true }
+    );
+
+  } else {
+
+    initializeMobileHero();
+
+  }
+
+})();
