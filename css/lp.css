@@ -2143,8 +2143,9 @@ body.lp-page .lp-visual-wrap .lp-logo {
   left: 50% !important;
   right: auto !important;
 
-  width: clamp(180px, 23vw, 340px) !important;
-  max-width: 340px !important;
+  width: clamp(250px, 32vw, 460px) !important;
+  max-width: 460px !important;
+  max-height: none !important;
 
   z-index: 5;
 
@@ -2159,8 +2160,8 @@ body.lp-page .lp-visual-wrap .lp-logo {
 
     left: 50% !important;
 
-    width: clamp(170px, 48vw, 240px) !important;
-    max-width: 240px !important;
+    width: clamp(240px, 68vw, 340px) !important;
+    max-width: 340px !important;
 
     transform: translate(-50%, -50%) !important;
   }
