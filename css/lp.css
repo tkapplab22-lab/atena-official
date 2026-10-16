@@ -2126,3 +2126,61 @@ body.lp-page summary:focus-visible {
   }
 
 }
+/* ==========================================================
+   ATENA! HERO LOGO POSITION FIX
+   PC / iPhone 共通
+   ========================================================== */
+
+/* ロゴの配置基準をメインビジュアルに統一 */
+body.lp-page .lp-visual-wrap {
+  position: relative;
+}
+
+/* PC：ロゴを画像の下部中央に配置 */
+body.lp-page .lp-visual-wrap .lp-logo {
+  position: absolute !important;
+
+  top: auto !important;
+  bottom: 5% !important;
+  left: 50% !important;
+  right: auto !important;
+
+  z-index: 5;
+
+  width: clamp(180px, 23vw, 340px) !important;
+  max-width: 340px !important;
+  max-height: none !important;
+
+  object-fit: contain;
+
+  transform: translateX(-50%) !important;
+
+  filter:
+    drop-shadow(0 5px 12px rgba(0, 35, 80, 0.35));
+}
+
+/* スマホ：キャラクターの顔を避けて下部に配置 */
+@media (max-width: 767px) {
+
+  body.lp-page .lp-visual-wrap .lp-logo {
+    top: auto !important;
+    bottom: 4% !important;
+
+    left: 50% !important;
+
+    width: clamp(170px, 48vw, 240px) !important;
+    max-width: 240px !important;
+
+    transform: translateX(-50%) !important;
+  }
+
+}
+
+/* 動きを減らす設定への対応 */
+@media (prefers-reduced-motion: reduce) {
+
+  body.lp-page .lp-visual-wrap .lp-logo {
+    transition: none !important;
+  }
+
+}
