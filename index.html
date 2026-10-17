@@ -45,6 +45,66 @@
   <script src="js/main.js" defer></script>
 
   <!-- =====================================
+       HERO COMING SOON: ロゴ直下の告知表示
+       ===================================== -->
+  <style>
+    body.lp-page .lp-visual-wrap .hero-app-store {
+      position: absolute;
+      top: 66%;
+      left: 50%;
+      z-index: 6;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      width: 200px;
+      min-height: 64px;
+      padding: 10px 20px;
+      border: 1px solid rgba(255, 255, 255, 0.28);
+      border-radius: 12px;
+      background: rgba(12, 18, 30, 0.92);
+      color: #ffffff;
+      box-shadow: 0 8px 24px rgba(0, 20, 50, 0.25);
+      transform: translate(-50%, -50%);
+      pointer-events: none;
+    }
+
+    body.lp-page .hero-app-store-platform {
+      display: block;
+      font-size: 12px;
+      font-weight: 600;
+      line-height: 1.4;
+      letter-spacing: 0.08em;
+    }
+
+    body.lp-page .hero-app-store-label {
+      display: block;
+      font-size: 19px;
+      font-weight: 800;
+      line-height: 1.5;
+      letter-spacing: 0.08em;
+      white-space: nowrap;
+    }
+
+    @media (max-width: 767px) {
+      body.lp-page .lp-visual-wrap .hero-app-store {
+        top: 65%;
+        width: 170px;
+        min-height: 56px;
+        padding: 8px 14px;
+      }
+
+      body.lp-page .hero-app-store-platform {
+        font-size: 11px;
+      }
+
+      body.lp-page .hero-app-store-label {
+        font-size: 16px;
+      }
+    }
+  </style>
+
+  <!-- =====================================
        SPLASH SCREEN STYLES
        ===================================== -->
 
@@ -637,6 +697,12 @@
           aria-hidden="true"
         >
 
+        <!-- App Store 公開前表示：公開後はApple公式バッジに差し替え -->
+        <div class="hero-app-store" aria-label="iOS版 近日公開予定">
+          <span class="hero-app-store-platform">iOS</span>
+          <span class="hero-app-store-label">COMING SOON</span>
+        </div>
+
       </div>
 
       <div class="hero-text">
@@ -772,7 +838,7 @@
           </div>
 
           <p class="judge-note">
-            例：秘密コードが「123」のとき「132」とCALLすると、
+                        例：秘密コードが「123」のとき「132」とCALLすると、
             <b>1 LOCK / 2 LINK</b>。
             LOCKは数字と位置が一致、LINKは数字だけが一致。
           </p>
